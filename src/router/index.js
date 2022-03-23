@@ -7,7 +7,6 @@ const routes = [
         name: 'dashboard',
         component: Home,
         meta:{ 
-            layout: 'FlatLayout',
             title: 'Dashboard'
         }
     },
