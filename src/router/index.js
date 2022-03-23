@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
+import TeamDetail from '@/pages/TeamDetail.vue'
 
 const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'dashboard',
         component: Home,
         meta:{ 
             layout: 'FlatLayout',
@@ -12,22 +13,25 @@ const routes = [
         }
     },
     {
-        path: '/teams',
-        name: 'teams',
-        component: () => import('@/pages/Teams.vue'),
-        meta:{
+        path: '/audit',
+        name: 'audit',
+        component: Home,
+        meta:{ 
             layout: 'FlatLayout',
-            title: 'Teams',
-             breadcrumb: (route) => ([
-                {
-                    text: 'Teams Section',
-                    active: true,
-                    to: { name: 'teams',}
-                },
-            ]),
-            // requiresAuth: true,
+            title: 'Audit Trail'
         }
     },
+    {
+        path: '/reconciliation',
+        name: 'recon',
+        component: Home,
+        meta:{ 
+            layout: 'FlatLayout',
+            title: 'Reconciliation'
+        }
+    },
+    
+
 ]
 
 const router = createRouter({

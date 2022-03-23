@@ -9,6 +9,9 @@ module.exports = {
         roboto:"'Roboto', sans-serif",
         brand:"'Pacifico', cursive"
       },
+      fontSize:{
+        'xs': '.75rem',
+      },
       colors:{
         'churpy-green':'#40ba58',
         'churpy-navy':'#0a122a',
