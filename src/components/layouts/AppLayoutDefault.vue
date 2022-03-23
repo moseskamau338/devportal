@@ -1,11 +1,15 @@
 <template>
+    <Banner />
+    <!-- toaster: error, success, info -->
+    <Toast />
+
   <div>
     <!-- Static sidebar for desktop -->
       <Sidebar />
 
-    <div class="md:pl-[10rem] flex flex-col flex-1">
+    <div class="md:pl-[10rem] flex flex-col flex-1 h-screen">
      <TopBar @toggle-sidebar="sidebarOpen = !sidebarOpen" />
-      <main>
+      <main class="mb-auto">
         <div class="py-6">
           <Breadcrumb />
 
@@ -16,23 +20,42 @@
           </div>
         </div>
       </main>
+       <footer class="max-w-8xl w-[95%] h-16 mx-auto items-center relative bottom-0 flex justify-between">
+          <div>
+            <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="www.churpy.co" target="_blank" 
+            class="text-churpy-green">Churpy Inc.</a>, All rights Reserved</h6>
+            <!-- <button @click="notify = !notify">{{notify ? 'Hide' : 'Show'}} Notification</button> -->
+          </div>
+          <div>
+            <h6 class="text-xs text-brand-gray">
+              <i class="fa-solid fa-microchip font-semibold text-churpy-green"></i>
+              Churpy Reconciliation Engine
+              </h6>
+          </div>
+        </footer>
     </div>
   </div>
 
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from '@headlessui/vue'
+<script>
 import Breadcrumb from '@/components/page/Breadcrumb.vue'
 import TopBar from '@/components/page/TopBar.vue'
 import Sidebar from '@/components/page/Sidebar.vue'
+import Banner from '@/components/page/Banner.vue'
+ import { TransitionRoot, TransitionChild } from '@headlessui/vue'
+import { ref } from 'vue'
+import Toast from '../page/Toast.vue'
+
+export default{
+  components: {
+    Breadcrumb,
+    TopBar,
+    Sidebar,
+    Banner,
+    Toast  
+  },
+}
 
 
 </script>
-

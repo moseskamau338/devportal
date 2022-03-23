@@ -6,7 +6,6 @@ export default [
     title: 'Audit',
     route: 'audit',
     icon: 'fa-solid fa-ballot-check',
-    disabled: true,
   },
    {
     title: 'Reconciliation',

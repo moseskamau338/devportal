@@ -1,5 +1,5 @@
 <template>
-     <div class="sticky top-0 z-10 flex-shrink-0 flex h-12 bg-white shadow-sm w-[98%] rounded-md m-auto mt-4 dark:bg-churpy-navy dark:text-white">
+     <div class="sticky top-0 z-10 flex-shrink-0 flex h-12 bg-white shadow-sm w-[98%] rounded-md mx-auto mt-4 dark:bg-churpy-navy dark:text-white">
         <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-churpy-green md:hidden" @click="sidebarOpen = true">
           <span class="sr-only">Open sidebar</span>
           <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
