@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
-import TeamDetail from '@/pages/TeamDetail.vue'
 
 const routes = [
     {
@@ -15,7 +14,7 @@ const routes = [
     {
         path: '/audit',
         name: 'audit',
-        component: Home,
+        component: () => import('@/pages/Audit.vue'),
         meta:{ 
             layout: 'FlatLayout',
             title: 'Audit Trail',
@@ -35,7 +34,7 @@ const routes = [
     {
         path: '/reconciliation',
         name: 'recon',
-        component: Home,
+        component: () => import('@/pages/Recon.vue'),
         meta:{ 
             layout: 'FlatLayout',
             title: 'Reconciliation',

@@ -1,10 +1,12 @@
 <template>
   <BaseLayout>
-      <router-view v-slot={Component}>
-        <transition name="zoom-fade" mode="out-in">
+      <router-view v-slot="{ Component , route}">
+        <transition name="zoom-fade" :key="route.path">
           <component :is="Component" />
         </transition>
       </router-view>
+
+
   </BaseLayout>
 </template>
 

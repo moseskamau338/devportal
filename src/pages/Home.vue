@@ -1,8 +1,8 @@
 <template>
-  <p v-if="loaded" class="text-prose">
+  <p class="text-prose">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe ex facilis quidem voluptate sed, repellat quibusdam voluptatem natus dicta? Explicabo natus ratione, delectus odit quo officiis. Numquam nam non iusto!
   </p>
-  <DashboardLoader v-else />
+  <!-- <DashboardLoader v-else /> -->
 
 </template>
 

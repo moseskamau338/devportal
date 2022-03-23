@@ -1,12 +1,5 @@
 <template>
   <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
-    <!-- breadcrumb area -->
-    <!-- <h1>{{route.meta.breadcrumb ? route.meta.breadcrumb() : []}}</h1>
-    <ol class="flex items-center space-x-4">
-        <li v-for="(item, index) in (route.meta.breadcrumb ? route.meta.breadcrumb() : [])" :key="index">
-            {{item.text}}
-        </li>
-    </ol> -->
     <nav class="flex" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-2" >
         <li>
