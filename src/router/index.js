@@ -18,7 +18,18 @@ const routes = [
         component: Home,
         meta:{ 
             layout: 'FlatLayout',
-            title: 'Audit Trail'
+            title: 'Audit Trail',
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Audit Trail',
+                    active: true,
+                },
+            ]),
         }
     },
     {
@@ -27,7 +38,18 @@ const routes = [
         component: Home,
         meta:{ 
             layout: 'FlatLayout',
-            title: 'Reconciliation'
+            title: 'Reconciliation',
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Recon.',
+                    active: true,
+                },
+            ]),
         }
     },
     

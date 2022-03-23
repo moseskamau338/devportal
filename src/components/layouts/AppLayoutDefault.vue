@@ -7,7 +7,7 @@
      <TopBar @toggle-sidebar="sidebarOpen = !sidebarOpen" />
       <main>
         <div class="py-6">
-          <!-- <Breadcrumb /> -->
+          <Breadcrumb />
 
           <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 mt-4">
             <!-- Replace with your content -->

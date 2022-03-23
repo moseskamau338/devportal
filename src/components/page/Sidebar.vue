@@ -82,9 +82,6 @@ export default {
             sidebarOpen: false,
         }
     },
-    created(){
-        console.log(navs);
-    },
 }
 </script>
 

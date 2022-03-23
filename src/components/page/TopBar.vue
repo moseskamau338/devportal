@@ -15,12 +15,10 @@
 
         <!-- branding -->
           <div class="flex items-center">
-            <h1 class="text-churpy-navy"><span class="font-brand text-2xl">Churpy</span> Reconciliation Engine</h1>
+            <h1 class="text-brand-gray"><span class="font-brand text-2xl">Churpy</span> Reconciliation Engine</h1>
           </div>
 
-
           <div class="ml-4 flex items-center md:ml-6">
-           
             <button type="button" @click="$emit('toggle-sidebar')" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green">
               <span class="sr-only">View notifications</span>
               <i class="fa-solid fa-bell text-xl" aria-hidden="true"></i>
