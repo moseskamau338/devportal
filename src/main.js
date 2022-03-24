@@ -3,5 +3,10 @@ import App from './App.vue'
 import router from './router'
 import './assets/index.css'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
+import { createPinia } from 'pinia'
 
-createApp(App).use(router).component('BaseLayout', BaseLayout).mount('#app')
+createApp(App)
+    .use(router)
+    .use(createPinia())
+    .component('BaseLayout', BaseLayout)
+    .mount('#app')

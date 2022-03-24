@@ -35,7 +35,7 @@
 
    <div class="hidden md:flex md:w-42 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-churpy-dark overflow-y-auto">
+      <div class="flex flex-col flex-grow pt-5 bg-churpy-dark dark:bg-churpy-night-box overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4">
             <img class="h-8 w-auto md:hidden" src="/images/logo-icon.png" alt="Churpy.co" />
             <img class="h-8 w-auto ml-2 sm:hidden md:block" src="/images/logo-light.svg" alt="Churpy.co" />

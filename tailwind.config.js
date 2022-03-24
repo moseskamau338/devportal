@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode:'class',
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -16,6 +17,10 @@ module.exports = {
         'churpy-green':'#40ba58',
         'churpy-navy':'#0a122a',
         'churpy-dark':'#283046',
+        // dark mode vars
+        'churpy-night':'#0F172A',
+        'churpy-night-box':'#1E293B',
+
         'brand-gray':'#656B7A',
         'prose':'#474a52'
       }

@@ -1,11 +1,13 @@
 <template>
-        <!-- toaster: error, success, info -->
+
+    <!-- toaster: error, success, info -->
     <teleport to="#notifications">
-        <TransitionRoot draggable
-        enter="transition transform duration-800 ease-out" 
-        enter-from="translate-x-4 opacity-0" enter-to="translate-x-0 opacity-100"
-        leave="transition transform duration-400 ease-in" leave-from="opacity-100" leave-to="opacity-0"
-        :show="notify" class="fixed bg-white ring-2 ring-indigo-300 flex z-50 top-0 right-5 shadow-xl my-5 h-auto p-1 rounded-md max-w-[400px] overflow-hidden">
+        <TransitionRoot
+            enter="transition transform duration-800 ease-out" 
+            enter-from="translate-x-4 opacity-0" enter-to="translate-x-0 opacity-100"
+            leave="transition transform duration-400 ease-in" leave-from="opacity-100" leave-to="opacity-0"
+            :show="notify" class="fixed bg-white ring-2 ring-indigo-300 flex z-50 top-0 right-5 shadow-xl my-5 h-auto p-1 rounded-md max-w-[400px] overflow-hidden"
+        >
           <div class="w-auto mx-auto mr-1">
             <TransitionChild as="template"
               enter="transition transform duration-400 ease-out" 
@@ -48,7 +50,7 @@ export default{
     TransitionChild
   },
     setup(){
-      const notify = ref(true)
+      const notify = ref(false)
 
       return {
         notify

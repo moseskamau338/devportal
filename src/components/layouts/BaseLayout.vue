@@ -9,7 +9,7 @@ import AppLayoutDefault from './AppLayoutDefault.vue'
 import { markRaw, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 export default {
-  name: 'AppLayout',
+  name: 'BaseLayout',
   setup() {
     const route = useRoute()
 
