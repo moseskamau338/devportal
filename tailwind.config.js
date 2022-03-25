@@ -15,6 +15,8 @@ module.exports = {
       },
       colors:{
         'churpy-green':'#40ba58',
+        'light-green':'#E5F8ED',
+        'success':'#55C770',
         'churpy-navy':'#0a122a',
         'churpy-dark':'#283046',
         // dark mode vars

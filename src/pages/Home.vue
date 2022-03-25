@@ -27,16 +27,23 @@
           :key="idx"
           :class="[
             'h-full p-3',
-            'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60',
           ]"
         >
-          <div class="grid grid-flow-row grid-cols-3 grid-rows-3">
-            <div class="col-span-2 bg-green-400">01</div>
-            <div class="col-span-2 bg-pink-400">02</div>
-            <div class="bg-orange-400">03</div>
-            <div class="bg-slate-400">04</div>
-            <div class="bg-red-400">05</div>
-          </div>
+          <GridRow>
+            <Bank class="col-span-7"/>
+            <Bank />
+            <Bank />
+            <Bank class="bg-gray-500 text-white col-span-2 row-span-2" />
+            <Bank />
+            <Bank />
+            <Bank />
+            <Bank />
+            <Bank />
+            <Bank />
+            <Bank />
+            <Bank />
+           
+          </GridRow>
         </TabPanel>
       </TabPanels>
     </TabGroup>
@@ -46,8 +53,10 @@
 
 <script setup>
 import { onMounted, ref } from '@vue/runtime-core';
-import DashboardLoader from '../components/loaders/DashboardLoader.vue';
+import DashboardLoader from '@/components/loaders/DashboardLoader.vue';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import Bank from '@/components/widgets/Dashboard/Bank.vue';
+import GridRow from '../components/widgets/GridRow.vue';
 
 let loaded = ref(false)
 const categories = ref([

@@ -17,7 +17,7 @@
               v-model="switch_val"
               @change="() => console.log('Switched')"
               :class="switch_val ? 'bg-churpy-dark' : 'bg-churpy-green'"
-              class="relative inline-flex flex-shrink-0 h-[25px] w-[50px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+              class="relative md:inline-flex flex-shrink-0 h-[25px] w-[50px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 hidden"
             >
               <span class="sr-only">Use setting</span>
               <span
@@ -35,7 +35,7 @@
       </div>
 
       <!-- branding -->
-      <div class="flex items-center">
+      <div class="sm:flex items-center hidden ">
         <h1 class="text-brand-gray dark:text-gray-400">
           <span class="font-brand text-2xl">Churpy</span> Reconciliation Engine
         </h1>

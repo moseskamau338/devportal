@@ -4,6 +4,7 @@ import router from './router'
 import './assets/index.css'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import { createPinia } from 'pinia'
+import('./setup')
 
 createApp(App)
     .use(router)
