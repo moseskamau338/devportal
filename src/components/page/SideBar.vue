@@ -9,6 +9,7 @@
         <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm shadow-churpy-green' : 'text-indigo-100 hover:bg-green-400/30', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
             <i :class="item.icon" class="fa-solid mr-3 flex-shrink-0 text-indigo-100"></i>
             {{ item.name }}
+            
         </a>
         </nav>
     </div>
