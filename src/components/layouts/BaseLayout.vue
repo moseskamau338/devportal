@@ -19,14 +19,11 @@ export default {
       () => route.meta?.layout || undefined,
       async (metaLayout) => {
         try {
-          console.log('Meta layout: ',metaLayout);
           const component = metaLayout && await import(/* @vite-ignore */ `/src/components/layouts/${metaLayout}.vue`)
-          console.log('Component from meta: ',component);
           layout.value = markRaw(component?.default || AppLayoutDefault) 
         } catch (e) {
           layout.value = markRaw(AppLayoutDefault)
         }
-        console.log(layout.value);
       },
       { immediate: true }
     )
