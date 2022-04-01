@@ -15,7 +15,6 @@
         <div class="my-auto">
            <Switch
               v-model="switch_val"
-              @change="() => console.log('Switched')"
               :class="switch_val ? 'bg-churpy-dark' : 'bg-churpy-green'"
               class="relative md:inline-flex flex-shrink-0 h-[25px] w-[50px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 hidden"
             >
@@ -125,7 +124,7 @@ watch(switch_val, async (newVal, oldVal) => {
     }
     //set theme in store
     uiStore.changeTheme(theme)
-    localStorage.theme = theme
+    localStorage.uiStore.theme = theme
 
 })
 

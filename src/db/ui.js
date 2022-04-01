@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 
 export const useUiStore = defineStore('uiStore', {
+    persist: {enabled:true},
     state: ()=>{
         return {
             theme: 'dark'
