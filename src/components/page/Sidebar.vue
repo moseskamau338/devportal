@@ -68,30 +68,33 @@
     </div>
 </template>
 
+
 <script>
-import navs from '@/navigation'
+export default{
+  name:'Sidebar'
+}
+</script>
+
+<script setup>
 import {
   Dialog,
   DialogOverlay,
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
+import { ref,onMounted } from "vue";
+import navs from '@/navigation';
 
-export default {
-    name:'Sidebar',
-    components:{
-        Dialog,
-        DialogOverlay,
-        TransitionChild,
-        TransitionRoot,
-    },
-    data(){
-        return {
-            navs,
-            sidebarOpen: false,
-        }
-    },
-}
+import { inject } from 'vue';
+const emitter = inject('emitter')
+
+  const sidebarOpen = ref(false);
+    
+  onMounted(()=>{
+    emitter.on('open_side_bar', () => {
+      sidebarOpen.value = true
+    })
+})
 </script>
 
 <style>

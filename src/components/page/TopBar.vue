@@ -5,7 +5,7 @@
     <button
       type="button"
       class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-churpy-green md:hidden"
-      @click="sidebarOpen = true"
+      @click="openSidebar"
     >
       <span class="sr-only">Open sidebar</span>
       <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
@@ -101,6 +101,8 @@
 import { Menu, MenuButton, MenuItem, MenuItems, Switch } from "@headlessui/vue";
 import { ref, watch } from 'vue'
 import {useUiStore} from '@/db/ui'
+import { inject } from 'vue';
+const emitter = inject('emitter')
 
 const uiStore = useUiStore();
 
@@ -127,5 +129,10 @@ watch(switch_val, async (newVal, oldVal) => {
     localStorage.uiStore.theme = theme
 
 })
+
+function openSidebar(){
+  emitter.emit('open_side_bar')
+
+}
 
 </script>
