@@ -5,11 +5,12 @@ export default [
   {
     title: 'Work Area',
     route: 'workArea',
-    icon: 'fa-solid fa-triangle-person-digging text-yellow-500',
+    icon: 'fa-solid fa-triangle-person-digging',
   },
   {
     title: 'Audit',
     route: 'audit',
+    disabled:true,
     icon: 'fa-solid fa-ballot-check',
   },
    {
