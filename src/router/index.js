@@ -11,6 +11,20 @@ const routes = [
         }
     },
     {
+        path: '/work-area',
+        name: 'workArea',
+        component: () => import('@/pages/WorkArea.vue'),
+        meta:{ 
+            title: 'Working Area',
+            breadcrumb: (route) => ([
+                {
+                    text: 'Working Area',
+                    active: true,
+                },
+            ]),
+        }
+    },
+    {
         path: '/audit',
         name: 'audit',
         component: () => import('@/pages/Audit.vue'),
