@@ -8,10 +8,16 @@
         <p class="mt-2 text-sm text-gray-700">Table description goes here or maybe a <code class="bg-red-200/50 px-0.5 rounded px-1">slot</code>.</p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add user</button>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input type="text" name="account-number" id="account-number" class="focus:ring-churpy-green focus:border-churpy-green block w-full dark:bg-churpy-night-box dark:border-gray-500 pr-10 sm:text-sm border-gray-300 rounded-md leading-3 py-1.5" placeholder="Search records...">
+          <div class=" flex absolute inset-y-0 right-0 pr-3 items-center pointer-events-none">
+            <!-- Heroicon name: solid/question-mark-circle -->
+            <i class="fa-solid fa-search dark:text-gray-600"></i>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="mt-8 flex flex-col">
+    <div class="mt-4 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded-lg h-80 overflow-y-auto">
@@ -33,7 +39,7 @@
               </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
-                <tr v-for="(record, index) in data" class="hover:bg-gray-200 transition-all cursor-pointer">
+                <tr :key="index" @click="rowClicked(record)" v-for="(record, index) in data" class="dark:hover:bg-gray-300 hover:bg-gray-200 transition-all cursor-pointer">
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-400 sm:pl-6">
                   {{record.id}}
                 </td>
@@ -85,7 +91,7 @@
                 </p>
               </div>
               <div class="flex items-center">
-                <select class="h-fit py-1 top-0 mr-3 border-gray-400 rounded text-xs text-center align-middle focus:ring-churpy-green focus-visible:ring-churpy-green">
+                <select class="h-fit py-1 top-0 mr-3 border-gray-400 rounded text-xs text-center align-middle focus:ring-churpy-green focus-visible:ring-churpy-green dark:bg-churpy-night-box dark:border-gray-500">
                   <option>5</option>
                   <option>10</option>
                   <option>20</option>
@@ -95,7 +101,7 @@
                 </select>
 
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                  <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-churpy-night-box dark:border-gray-500 text-sm font-medium text-gray-500 hover:bg-gray-50">
                     <span class="sr-only">Previous</span>
                     <!-- Heroicon name: solid/chevron-left -->
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -103,14 +109,12 @@
                     </svg>
                   </a>
                   <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-                  <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 1 </a>
-                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 2 </a>
-                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"> 3 </a>
-                  <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"> ... </span>
-                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"> 8 </a>
-                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 9 </a>
-                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 10 </a>
-                  <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <a href="#" aria-current="page" class="z-10 bg-churpy-green/30 border-churpy-green text-churpy-dark relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:bg-churpy-night-box dark:text-churpy-green dark:border-gray-500"> 1 </a>
+                  <a href="#" class="bg-white border-gray-300 hover:bg-churpy-green/30 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:bg-churpy-night-box dark:border-gray-500"> 2 </a>
+                  <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-churpy-green/30 dark:bg-churpy-night-box dark:border-gray-500"> ... </span>
+                   <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-churpy-green/30  dark:bg-churpy-night-box dark:border-gray-500"> 9 </a>
+                  <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-churpy-green/30 dark:bg-churpy-night-box dark:border-gray-500"> 10 </a>
+                  <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-churpy-green/30 hover:bg-gray-50 dark:bg-churpy-night-box dark:border-gray-500">
                     <span class="sr-only">Next</span>
                     <!-- Heroicon name: solid/chevron-right -->
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -167,5 +171,9 @@ const data = ref([
   {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
   {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
 ])
-
+ function rowClicked(index){
+   console.log(index)
+   data.value[data.value.indexOf(index)].id = 'Clicked'
+  // alert('Row clicked!', JSON.stringify(index))
+ }
 </script>

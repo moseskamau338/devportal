@@ -22,7 +22,7 @@
       </main>
        <footer class="max-w-8xl w-[95%] h-16 mx-auto items-center relative bottom-0 flex justify-between">
           <div>
-            <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="www.churpy.co" target="_blank" 
+            <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="https://churpy.co" target="_blank"
             class="text-churpy-green">Churpy Inc.</a>, All rights Reserved</h6>
             <!-- <button @click="notify = !notify">{{notify ? 'Hide' : 'Show'}} Notification</button> -->
           </div>
