@@ -3,11 +3,10 @@ import * as stringFilters from './string/index'
 import * as arrayFilters from './array/index'
 import * as otherFilters from './other/index'
 
-var AppFilters = {
+const AppFilters = {
   ...arrayFilters,
   ...stringFilters,
   ...util,
-  otherFilters
+  ...otherFilters
 }
-
 export default AppFilters;

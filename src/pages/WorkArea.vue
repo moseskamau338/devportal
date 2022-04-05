@@ -22,10 +22,10 @@
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded-lg h-80 overflow-y-auto">
             <table class="min-w-full divide-y divide-gray-300">
-              <thead class="bg-gray-100 dark:bg-churpy-dark sticky z-10 top-0">
+              <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-400 sm:pl-6">Invoice ID</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold text-gray-900 dark:text-gray-400">Date</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-xs font-semibold text-gray-900 dark:text-gray-400 sm:pl-6">Invoice ID</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">Date</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold text-gray-900 dark:text-gray-400">Currency</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold text-gray-900 dark:text-gray-400">Invoice Amount</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold text-gray-900 dark:text-gray-400">Reconciled Amount</th>
@@ -39,14 +39,20 @@
               </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
-                <tr :key="index" @click="rowClicked(record)" v-for="(record, index) in data" class="dark:hover:bg-gray-300 hover:bg-gray-200 transition-all cursor-pointer">
+                <tr :key="index" @click="rowClicked(record)" v-for="(record, index) in data" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-400 sm:pl-6">
                   {{record.id}}
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{record.date}}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{record.ccy}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{record.amount}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{record.recon_amount}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-bold">
+                    {{$filters.number(record.amount,'0.00',{ thousandsSeparator: ',' })}}
+                  </span>
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <span class="text-churpy-green font-bold">{{$filters.number(record.recon_amount, '0.00')}}</span>
+                </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{record.gl}}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 truncate">{{record.customer}}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
