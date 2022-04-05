@@ -10,7 +10,6 @@ export default [
   {
     title: 'Audit',
     route: 'audit',
-    disabled:true,
     icon: 'fa-solid fa-ballot-check',
   },
    {
