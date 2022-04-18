@@ -1,6 +1,6 @@
 <template>
-<h1>We are doing audits</h1>
-  <p>Aduditts ongoing</p>
+<h1>Audit designs coming soon</h1>
+  <p>Testing loaders</p>
   <base-content-loader>
     <rect x="52" y="29" rx="7" ry="7" width="78" height="74" /> 
     <path d="M 112.44 52.26 c -5.6 0 -10.15 3.87 -10.15 8.63 V 76.8 h 1 V 60.89 c 0 -4.28 4.09 -7.76 9.12 -7.76 h 18.39 v -0.87 z" /> 

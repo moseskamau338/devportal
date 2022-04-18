@@ -21,12 +21,14 @@
     components: { ContentLoader },
     computed:{
       primaryColor(){
-        return useUiStore().theme === 'dark'?
-          '#1E293B': '#ebebeb'
+        return '#ebebeb';
+        //return useUiStore().theme === 'dark'?
+        //  '#1E293B': '#ebebeb'
       },
       secondaryColor(){
-        return useUiStore().theme === 'dark'?
-          '#283046': '#ffffff'
+        return '#ffffff';
+        //return useUiStore().theme === 'dark'?
+        //  '#283046': '#ffffff'
       }
     }
   }
