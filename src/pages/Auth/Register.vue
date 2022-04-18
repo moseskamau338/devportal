@@ -1,5 +1,5 @@
 <template>
-  <section class="w-screen md:overflow-hidden bg-gray-100">
+  <section class="w-screen bg-gray-100">
     <nav class="flex justify-between bg-gray-200 max-h-fit items-center w-screen lg:space-x-2 py-1.5 lg:p-3 px-5 lg:px-10 fixed top-0">
       <a href="https://churpy.co" type="button" class="flex relative items-center px-4 py-1.5 text-xs hover:opacity-80 cursor-pointer font-medium rounded bg-green-100 text-gray-600 shadow-sm md:mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit space-x-2 sm:mr-5">
             <i class="fa-solid fa-arrow-left mr-5"></i>
@@ -11,27 +11,41 @@
         <h1 class="font-semibold text-xl ml-0">Signup and get the most out of <span class="font-brand">Churpy</span></h1>
         <p class="prose mb-2">Can't wait to have you onboard! This will be a <strong>minimal setup</strong> to get you operational as quick as possible.</p>
       </div>
-    <section class="mx-auto flex justify-center lg:pt-8">
+    <section class="mx-auto flex justify-center">
       <div class="flex flex-col lg:flex-row lg:justify-center lg:-ml-32 space-x-5 w-screen lg:fit mb-96 md:mb-0">
         <div class="flex lg:flex-col space-x-2 lg:space-x-0 lg:items-start lg:place-content-center mt-4 px-5 lg:w-[300px] items-center">
-          <button type="button" class="inline-flex items-center px-2.5 py-1.5 text-sm lg:text-md hover:opacity-80 cursor-pointer font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit w-fit lg:w-full space-x-2">
+          <button type="button" @click="steps = 1" :class="[
+              steps === 1? 'bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white' : 'bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-gray-800',
+              'inline-flex items-center px-2.5 py-1.5 text-sm lg:text-md font-medium rounded mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit w-fit lg:w-full']">
             <i class="fa-solid fa-user-tag mr-3"></i>
             Personal Details
           </button>
-          <button type="button" class="inline-flex items-center px-2.5 py-1.5 text-sm lg:text-md font-medium rounded bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-gray-800 mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit w-fit lg:w-full">
+          <button @click="steps = 2" type="button" :class="[
+              steps === 2? 'bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white' : 'bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-gray-800',
+              'inline-flex items-center px-2.5 py-1.5 text-sm lg:text-md font-medium rounded mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit w-fit lg:w-full']">
             <i class="fa-solid fa-house-building mr-3"></i>
             Company
           </button>
         </div>
-        <div class="h-[500px] max-w-fit w-screen py-3">
+        <div class="h-[500px] w-screen py-3 max-w-2xl">
           <div>
             <div class="-ml-1.5 mr-2.5">
-              <div class="pt-6">
+              <!--Panels-->
+              <TransitionRoot as="div" :show="steps === 1"
+                  enter="transition transform duration-800 ease-out"
+                  enter-from="translate-x-4 opacity-0" enter-to="translate-x-0 opacity-100"
+                  leave="transition transform duration-400 ease-in" leave-from="opacity-100" leave-to="opacity-0"
+                  class="pt-6">
                 <div>
                   <h3 class="text-lg leading-6 font-medium text-gray-900">Personal Details</h3>
                   <p class="mt-1 text-sm text-gray-500">Tell us a bit about who you are and how you want to use the account.</p>
                 </div>
-                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <TransitionChild as="div"
+                   enter="transition transform duration-400 ease-out"
+                    enter-from="rotate-90 scale-50 opacity-0" enter-to="rotate-0 scale-100 opacity-100"
+                    leave="transition transform duration-400 ease-in"
+                   leave-from="opacity-100" leave-to="opacity-0"
+                  class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                   <div class="sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium text-gray-700"> First name </label>
                     <div class="mt-1">
@@ -135,8 +149,34 @@
                   <div class="sm:col-span-3">
                     <label for="city" class="block text-sm font-medium text-gray-700"> Password </label>
                     <div class="mt-1">
-                      <input type="text" name="city" id="city" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="*****" />
+                      <input type="password" name="city" id="city" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="*****" />
                     </div>
+                  </div>
+
+                  <div class="sm:col-span-6">
+                    <RadioGroup v-model="selectedEnvironment">
+                      <RadioGroupLabel class="text-base font-medium text-gray-900"> Select account type </RadioGroupLabel>
+
+                      <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
+                        <RadioGroupOption as="template" v-for="environment in environments" :key="environment.id" :value="environment" v-slot="{ checked, active }">
+                          <div :class="[checked ? 'border-transparent' : 'border-gray-300', active ? 'border-churpy-green ring-2 ring-churpy-green' : '', 'relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none duration-700']">
+                            <div class="flex-1 flex">
+                              <div class="flex flex-col">
+                                <RadioGroupLabel as="span" class="block text-sm font-medium text-gray-900">
+                                  {{ environment.title }}
+                                </RadioGroupLabel>
+                                <RadioGroupDescription as="span" class="mt-1 flex items-center text-sm text-gray-500">
+                                  {{ environment.description }}
+                                </RadioGroupDescription>
+                              </div>
+                            </div>
+                            <i class="fa-solid fa-check-circle text-lg" :class="[!checked ? 'invisible' : '', 'text-green-600']" aria-hidden="true"></i>
+                            <div :class="[active ? 'border' : 'border-2', checked ? 'border-green-500' : 'border-transparent', 'absolute -inset-px rounded-lg pointer-events-none duration-1000']" aria-hidden="true" />
+                          </div>
+                        </RadioGroupOption>
+                      </div>
+                    </RadioGroup>
+
                   </div>
 
                  <div class="sm:col-span-3">
@@ -158,9 +198,29 @@
                   </div>
                  </div>
 
+                </TransitionChild>
+              </TransitionRoot>
 
+            <!--  panel 2 company-->
+              <TransitionRoot as="div" :show="steps === 2"
+                  enter="transition transform duration-800 ease-out"
+                  enter-from="translate-x-4 opacity-0" enter-to="translate-x-0 opacity-100"
+                  leave="transition transform duration-400 ease-in" leave-from="opacity-100" leave-to="opacity-0"
+                  class="pt-6">
+                <div>
+                  <h3 class="text-lg leading-6 font-medium text-gray-900">Company Details</h3>
+                  <p class="mt-1 text-sm text-gray-500">Do you represent a company? Tell us a bit about it.</p>
                 </div>
-              </div>
+                <TransitionChild as="div"
+                   enter="transition transform duration-400 ease-out"
+                    enter-from="rotate-90 scale-50 opacity-0" enter-to="rotate-0 scale-100 opacity-100"
+                    leave="transition transform duration-400 ease-in"
+                   leave-from="opacity-100" leave-to="opacity-0"
+                  class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem, delectus dolores error incidunt laudantium necessitatibus obcaecati optio praesentium quas quibusdam, recusandae rerum tempora tenetur voluptate? Dolorem iure quia sint.
+                </TransitionChild>
+              </TransitionRoot>
+
             </div>
 
           </div>
@@ -179,28 +239,30 @@
 
 <script>
 import {
-  Combobox,
-  ComboboxInput,
-  ComboboxButton,
-  ComboboxOptions,
-  ComboboxOption,
-  TransitionRoot,
+  Combobox, ComboboxInput, ComboboxButton,
+  ComboboxOptions, ComboboxOption, TransitionRoot,
+  RadioGroup, RadioGroupDescription,
+  RadioGroupLabel, RadioGroupOption, TransitionChild
 } from '@headlessui/vue'
 import {ref,computed} from "vue";
-import axios from 'axios'
+//import axios from 'axios'
 import debounce from "lodash/debounce";
 
 export default {
   name: "Register",
   components:{
+    TransitionChild,
     Combobox,
     ComboboxInput,
     ComboboxButton,
     ComboboxOptions,
     ComboboxOption,
     TransitionRoot,
+    RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption
   },
   setup(){
+    const steps = ref(1)
+
     const countries = [
       { id: 1, name: 'Kenya' },
       { id: 2, name: 'Uganda' },
@@ -209,7 +271,12 @@ export default {
       { id: 5, name: 'USA' },
       { id: 6, name: 'Canada' },
     ]
+    const environments = [
+      { id: 1, title: 'Sandbox', description: 'Am just exploring'},
+      { id: 2, title: 'LIVE', description: 'I will run live data'},
+    ]
 
+    const selectedEnvironment = ref(environments[0])
     let selected = ref(countries[0])
     let query = ref('')
 
@@ -243,7 +310,9 @@ export default {
           }, 500)
     )
     return {
-      selected, query, filteredCountries
+      selected, query, filteredCountries,
+      environments: environments,
+      selectedEnvironment, steps
     }
   }
 }
