@@ -7,7 +7,7 @@
     <!-- Static sidebar for desktop -->
       <Sidebar />
 
-    <div class="md:pl-[10rem] flex flex-col flex-1 h-screen">
+    <div class="md:pl-[10rem] flex flex-col flex-1 h-screen ">
      <TopBar @toggle-sidebar="sidebarOpen = !sidebarOpen" />
       <main class="mb-auto">
         <div class="py-6">
