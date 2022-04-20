@@ -66,8 +66,16 @@ const routes = [
     //auth pages
     {
         path: '/signup',
-        name: 'Signup',
+        name: 'signup',
         component: () => import('@/pages/Auth/Register.vue') ,
+        meta:{
+            layout: 'FlatLayout'
+        }
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/pages/Auth/Login.vue') ,
         meta:{
             layout: 'FlatLayout'
         }
