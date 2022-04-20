@@ -35,42 +35,39 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">Sign in to Churpy</h1>
-        <button class="bg-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
-          <img src="/images/brands/google-icon.svg" alt="google logo" class="h-8 w-auto mr-4" />
-          Sign in with Google
-        </button>
+        <h1 class="font-bold text-2xl">Reset you password</h1>
+
+        <p class="text-lg mt-2">Enter a new <i>secure password</i> for your account.</p>
 
         <div class="mt-4">
           <div class="relative flex py-1 items-center">
               <div class="flex-grow border-t border-gray-400"></div>
-              <span class="flex-shrink mx-4 text-gray-400">Or signin with your email</span>
+              <span class="flex-shrink mx-4 text-gray-400">
+                <i class="fa-solid fa-user-tag"></i>
+                janedoe@mailhost.com
+              </span>
               <div class="flex-grow border-t border-gray-400"></div>
           </div>
         </div>
 
         <form class="space-y-3">
           <div>
-              <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
-              <div class="mt-1">
-                <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="e.g email@company.com" />
-              </div>
-            </div>
-          <div>
-            <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+            <label for="password" class="block text-sm font-medium text-gray-700"> New Password </label>
             <div class="mt-1">
               <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="******" />
             </div>
           </div>
 
           <div>
-           <p> Forgot your password?
-             <span class="text-indigo-600 underline">Reset it here</span>
-           </p>
+            <label for="password" class="block text-sm font-medium text-gray-700"> Confirm Password </label>
+            <div class="mt-1">
+              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="******" />
+            </div>
           </div>
 
+
           <div class="pt-8">
-            <button type="button" class="inline-flex items-center px-8 py-1.5 text-md font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">Sign In</button>
+            <button type="button" class="inline-flex items-center px-8 py-1.5 text-md font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">Reset Password</button>
           </div>
         </form>
 
@@ -87,7 +84,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "ResetPassword",
 
 }
 </script>

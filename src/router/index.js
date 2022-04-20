@@ -65,7 +65,7 @@ const routes = [
 
     //auth pages
     {
-        path: '/signup',
+        path: '/auth/signup',
         name: 'signup',
         component: () => import('@/pages/Auth/Register.vue') ,
         meta:{
@@ -73,9 +73,25 @@ const routes = [
         }
     },
     {
-        path: '/login',
+        path: '/auth/login',
         name: 'login',
         component: () => import('@/pages/Auth/Login.vue') ,
+        meta:{
+            layout: 'FlatLayout'
+        }
+    },
+    {
+        path: '/auth/forgot-password',
+        name: 'forgotPassword',
+        component: () => import('@/pages/Auth/ForgotPassword.vue') ,
+        meta:{
+            layout: 'FlatLayout'
+        }
+    },
+     {
+        path: '/auth/reset-password',
+        name: 'resetPassword',
+        component: () => import('@/pages/Auth/ResetPassword.vue') ,
         meta:{
             layout: 'FlatLayout'
         }
