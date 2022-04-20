@@ -6,13 +6,13 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">All-in-one workbench</h1>
+        <h1 class="font-bold text-2xl">What we offer you</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
-          <span class="font-brand">Churpy</span> now provides you with an elegant way to customize your dashboard metrics and make the best of our analytics capabilities
+          All our products are guaranteed to improve your productivity and save you a tone of costs in the long-run
         </p>
         
         <div id="sliders_area" class="mt-8 relative items-center justify-center">
-          <img src="/images/pages/dashboard1.png" class="w-[80%] shadow-xl" alt="">
+          <img src="/images/pages/benefits.png" class="w-[60%] ml-10 shadow-xl" alt="">
           <img src="/images/pages/green-plant.png" class="absolute -right-2 h-48 -bottom-10" alt="">
         </div>
       </div>
