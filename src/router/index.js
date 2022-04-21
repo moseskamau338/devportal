@@ -60,7 +60,25 @@ const routes = [
             ]),
         }
     },
-
+    {
+        path: '/my-team',
+        name: 'team',
+        component: () => import('@/pages/ManageTeam.vue'),
+        meta:{
+            title: 'Manage Team',
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Teams',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',

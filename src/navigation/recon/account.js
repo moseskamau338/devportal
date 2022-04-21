@@ -4,7 +4,7 @@ export default [
   },
   {
     title: 'My Team',
-    route: 'audit',
+    route: 'team',
     icon: 'fa-solid fa-users',
   },
    {

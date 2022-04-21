@@ -36,10 +36,17 @@
 
       <div class="mt-4">
         <h1 class="font-bold text-2xl">Sign in to Churpy</h1>
-        <button class="bg-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
-          <img src="/images/brands/google-icon.svg" alt="google logo" class="h-8 w-auto mr-4" />
-          Sign in with Google
-        </button>
+        <div class="flex lg:space-x-6 flex-col space-y-3 lg:flex-row">
+          <button class="bg-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
+            <img src="/images/brands/google-icon.svg" alt="google logo" class="h-6 w-auto mr-3" />
+            Sign in with Google
+          </button>
+
+          <button class="bg-blue-500 text-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
+           <i class="fa-brands fa-linkedin text-xl mr-3"></i>
+            Sign in with Linked In
+          </button>
+        </div>
 
         <div class="mt-4">
           <div class="relative flex py-1 items-center">

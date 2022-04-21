@@ -8,7 +8,7 @@
       <div class="mt-4">
         <h1 class="font-bold text-2xl">What we offer you</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
-          All our products are guaranteed to improve your productivity and save you a tone of costs in the long-run
+          All our products are guaranteed to improve your productivity and save you a lot in costs in the long-run
         </p>
         
         <div id="sliders_area" class="mt-8 relative items-center justify-center">
