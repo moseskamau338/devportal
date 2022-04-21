@@ -1,20 +1,17 @@
 export default [
   {
-    header: 'Recon. Operations',
+    header: 'Reconciliation',
   },
   {
-    title: 'Work Area',
-    route: 'workArea',
-    icon: 'fa-solid fa-triangle-person-digging',
-  },
-  {
-    title: 'Audit',
-    route: 'audit',
-    icon: 'fa-solid fa-ballot-check',
-  },
-   {
     title: 'Reconciliation',
     route: 'recon',
-     icon: 'fa-solid fa-microchip',
+    icon: 'fa-solid fa-microchip',
   },
+
+  {
+    title: 'Bank Transactions',
+    route: 'workArea',
+    icon: 'fa-solid fa-file-invoice-dollar',
+  },
+
 ]

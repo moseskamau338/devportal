@@ -54,6 +54,14 @@
             </nav>
         </div>
       </div>
+
+    <!-- sandbox indicator-->
+     <div class="bg-yellow-600 flex justify-between h-fit w-full px-2 py-0.5 space-x-2 items-center relative">
+      <span class="text-white font-bold text-xs">Sandbox Account</span>
+       <button type="button" class="inline-flex mt-4 items-center px-2.5 py-1.5 text-xs font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
+         <i class="fa-solid fa-power-off mr-2"></i>
+         Go LIVE</button>
+     </div>
     </div>
 </template>
 

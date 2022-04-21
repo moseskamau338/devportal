@@ -1,20 +1,15 @@
 export default [
   {
-    header: 'User Management',
+    header: 'Account Management',
   },
   {
-    title: 'Manage Users',
-    route: 'users',
-    icon: 'UsersIcon',
+    title: 'My Team',
+    route: 'audit',
+    icon: 'fa-solid fa-users',
   },
    {
     title: 'Account Settings',
-    route: 'settings',
-    icon: 'UserIcon',
-  },
-  {
-    title: 'Support',
-    route: 'support',
-    icon: 'LifeBuoyIcon',
+    route: 'audit',
+    icon: 'fa-duotone fa-gear',
   },
 ]

@@ -1,10 +1,20 @@
 export default [
-    {
-    header: 'Invoice Market Place',
+  {
+    header: 'Marketplace',
   },
    {
     title: 'Invoice Marketplace',
-    route: 'customers',
-    icon: 'CreditCardIcon',
+    route: 'audit',
+    icon: 'fa-solid fa-store',
+  },
+  {
+    title: 'Expected Payments',
+    route: 'audit',
+    icon: 'fa-solid fa-money-bill-wave',
+  },
+  {
+    title: 'Bank/ERP Settings',
+    route: 'audit',
+    icon: 'fa-solid fa-square-sliders',
   },
 ]
