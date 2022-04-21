@@ -1,134 +1,72 @@
 <template>
-  <TabGroup >
-      <TabList class="flex p-1 space-x-1 dark:bg-churpy-dark bg-gray-200 
-      rounded-lg max-w-fit">
-        <Tab
-          v-for="category in categories"
-          as="template"
-          v-slot="{ selected }"
-        >
-          <button
-            :class="[
-              'w-fit px-4 py-1.5 text-xs font-medium rounded',
-              'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-churpy-green dark:ring-offset-churpy-night ring-white ring-opacity-60 transition-all duration-800 ease-out',
-              selected
-                ? 'bg-churpy-green text-white dark:text-churpy-dark shadow'
-                : 'text-churpy-dark dark:text-gray-300',
-            ]"
-          >
-            {{ category }}
-          </button>
-        </Tab>
-      </TabList>
+ <div class="bg-white dark:bg-churpy-night-box mx-10 mb-14 min-h-[500px] rounded-md shadow-md pl-3 pt-4 relative">
+  <h1 class="text-xl">Welcome to <span class="font-brand">Churpy</span> Reconciliation Engine</h1>
+   <p class="prose-base">We have a few options to get you up and running fast. Feel free to skip any step.</p>
 
-      <TabPanels class="mt-2 bg-transparent">
-        <TabPanel
-          v-for="(cats, idx) in categories"
-          :key="idx"
-          :class="[
-            'h-full p-3',
-          ]"
+   <TabGroup as="div" vertical class="min-h-[300px] mt-8 mx-20 grid grid-cols-2">
+      <TabList as="div" class="grid grid-cols-1 gap-5 justify-items-start h-32">
+        <Tab as="template" :key="index" v-for="(action, index) in ['Setup your team', 'Manage connections', 'Invite and manage clients', 'Go LIVE']" v-slot="{ selected }"
         >
-        <template :index="index" v-for="(row, index) in gridConfig">
-          <GridRow :class="`${row.commonRowClasses} ${row.commonColClasses}`">
-          <template :key="index2" v-for="(widget, index2) in row.widgetConfigurations">
-            <!-- import widget -->
-            <component 
-            v-for="count in widget.count"
-            v-bind="{widgetClass:widget.widgetClasses}" :is="widgetRegister[widget.widget]"
-            ></component>
-          </template>
-          </GridRow>
-          </template>
+          <div class="flex items-center w-[90%] py-1.5 px-2 rounded cursor-pointer" :class="{'bg-gray-200 dark:bg-churpy-night' : selected}">
+            <span :class="[
+                selected ? 'bg-white' : 'bg-gray-200',
+                'flex items-center justify-center h-6 w-6 rounded-full text-gray-800 shadow-md mr-3']">{{index+1}}</span>
+
+            <h2 class="text-lg" :class="{'font-bold': selected}">{{ action }}</h2>
+          </div>
+        </Tab>
+
+      </TabList>
+      <TabPanels as="div" class="border rounded-md p-4">
+        <TabPanel>
+          <h1 class="font-semibold text-lg">Setting up team</h1>
+          <p class="prose-base">You might need to invite your team over and assign roles as required. You can also define various role groups to better organize your account.</p>
+          <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Manage Team &rightarrow;</button>
+
+        </TabPanel>
+        <TabPanel>
+           <h1 class="font-semibold text-lg">Bring in some data (Bank/ERP)</h1>
+          <p class="prose-base">You can connect your accounting system and pull in invoice or bank data. Alternatively, you can upload formated records and speed up the process.</p>
+
+          <div class="flex flex-col w-fit">
+            <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Connect accounting system &rightarrow;</button>
+
+            <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-2 w-fit"><i class="fa-solid fa-cloud-upload mr-3"></i> Upload Data</button>
+          </div>
+
+        </TabPanel>
+        <TabPanel>
+          <h1 class="font-semibold text-lg">Invite and manage clients (Marketplace)</h1>
+          <p class="prose-base">Your clients are key, inviting them to use Churpy's Marketplace early will smoothen your collection flows and make reconciliation a breeze.</p>
+          <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Add Clients &rightarrow;
+          </button>
+
+        </TabPanel>
+        <TabPanel>
+          <h1 class="font-semibold text-lg">GO LIVE</h1>
+          <p class="prose-base">If you are all set and ready to run a <strong>LIVE</strong> account, hit the <b>GO LIVE</b> button and find out what you need for the process alongside billing details. If you need help, our <a href="#" class="text-green-700 hover:underline">support staff</a> are on standby</p>
+          <button type="button" class="inline-flex mt-8 items-center px-2.5 py-1.5 text-sm font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
+         <i class="fa-solid fa-power-off mr-2"></i>
+         Go LIVE</button>
         </TabPanel>
       </TabPanels>
     </TabGroup>
-  <!-- <DashboardLoader v-else /> -->
+ </div>
+
 
 </template>
 
-<script setup>
-import { ref } from '@vue/runtime-core';
-// import DashboardLoader from '@/components/loaders/DashboardLoader.vue';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-// import Bank from '@/components/widgets/Dashboard/Bank.vue';
-import GridRow from '../components/widgets/GridRow.vue';
-import { defineAsyncComponent } from 'vue';
+<script>
+  import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
-const widgetRegister = ref({
-  testWidget: defineAsyncComponent(() => import('@/components/widgets/TestWidget.vue')),
-  bankWidget: defineAsyncComponent(() => import('@/components/widgets/Dashboard/Bank.vue')),
-})
+export default {
+  name:'Dashboard',
+  components:{
+    TabGroup, TabList, Tab, TabPanels, TabPanel
+  },
+  setup(){
 
+  }
+}
 
-let loaded = ref(false)
-const categories = ref([
-  'Dashboard', 'Analytics'
-])
-
-const gridConfig = ref(
-  [
-    {
-      commonRowClasses:'gap-2 grid-rows-1',
-      commonColClasses:'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-      widgetConfigurations:
-        [
-          {
-            widget: 'testWidget',
-            count:3, //this could be based on data count etc eg 3 banks[]
-            widgetClasses: ''
-          }
-        ], //bank section
-    },
-     {
-        commonRowClasses:'gap-2 grid-rows-1',
-        commonColClasses:'my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-        widgetConfigurations:
-        [{
-          widget: 'testWidget', // widget would change: stats
-          count:4,
-          widgetClasses: ''
-        }]//stats
-    },
-      {
-        commonRowClasses:'gap-2 grid-rows-1',
-        commonColClasses:'my-4 grid-cols-1 md:grid-cols-4 lg:grid-cols-5',
-        widgetConfigurations:
-          [
-            {
-              widget: 'testWidget', // widget would change: customer
-              count:1,
-              widgetClasses: 'md:col-span-2 lg:col-span-2'
-            },
-            {
-              widget: 'testWidget', // widget would change: aging
-              count:1,
-              widgetClasses: 'md:col-span-2 lg:col-span-3'
-            }
-          ]//customer + aging
-      },
-      {
-        commonRowClasses:'gap-2 grid-rows-1',
-        commonColClasses:'my-4 grid-cols-1',
-        widgetConfigurations:
-        [
-          {
-            widget: 'testWidget', // widget would change: match-rate
-            count:1,
-            widgetClasses: ''
-          }
-        ] //match-rate
-      }
-    ]
-)
-
-
- setTimeout(() => {
-  //  console.log('loaded');
-    loaded.value = true
-  }, 3000);
 </script>
-
-<style>
-
-</style>

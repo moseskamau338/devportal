@@ -6,9 +6,7 @@ const routes = [
         path: '/',
         name: 'dashboard',
         component: Home,
-        meta:{ 
-            title: 'Dashboard'
-        }
+
     },
     {
         path: '/work-area',
