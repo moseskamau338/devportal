@@ -11,6 +11,6 @@ export default{
 </script>
 
 <script setup>
-import TableWidget from "@/components/widgets/Table.vue";
+import TableWidget from "@/components/widgets/Tables/DataTable.vue";
 import Elements from "@/components/parts/Elements.vue";
 </script>

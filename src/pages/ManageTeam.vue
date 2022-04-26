@@ -22,7 +22,14 @@
 
 
           </TabPanel>
-          <TabPanel class="transition-all">Content 3</TabPanel>
+          <TabPanel class="transition-all">
+            // Developing table lite
+            <TableLite :headers="[{key:'key1'}]" :records="[{key1:'foo'}]">
+              <template v-slot:key1="row">
+                <strong class="text-red-700">something {{row.record}}</strong>
+              </template>
+            </TableLite>
+          </TabPanel>
         </TabPanels>
       </TabGroup>
   </div>
@@ -31,9 +38,11 @@
 <script>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import Members from "@/components/page/Teams/Members.vue";
+import TableLite from "@/components/widgets/Tables/TableLite.vue";
 export default{
-  name: 'MeanTeam',
+  name: 'ManageTeam',
   components:{
+    TableLite,
     Members,
     TabGroup, TabList, Tab, TabPanels, TabPanel
   },
