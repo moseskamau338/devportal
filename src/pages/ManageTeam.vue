@@ -24,7 +24,7 @@
           </TabPanel>
           <TabPanel class="transition-all">
             // Developing table lite
-            <TableLite :headers="[{key:'key1'}]" :records="[{key1:'foo'}]">
+            <TableLite :headers="[{key:'key1'}, {key:'key2', label:'Custom label'}]" :records="[{key1:'foo', key2:'baz'}]">
               <template v-slot:key1="row">
                 <strong class="text-red-700">something {{row.record}}</strong>
               </template>
