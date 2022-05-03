@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-full">
+  <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[90%] lg:w-screen">
      <TabGroup>
         <TabList as="div" class="border-b-2 border-slate-200 pt-3 px-3 flex">
           <Tab as="div" class="-mb-0.5" v-slot="{ selected }" v-for="(item, index) in [
@@ -26,10 +26,8 @@
                 <p class="prose">
                   Check the appropriate box to assign permissions to roles as categorized below
                 </p>
-                <div class="flex justify-between w-full">
-                      <Permissions class="mx-5" :groups="groups" />
-
-                      <div id="summary" class="w-[500px] rounded px-4 py-2 bg-white border-gray-100 shadow dark:bg-churpy-night-box">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 relative">
+                      <div id="summary" class="lg:w-[500px] lg:col-start-2 lg:row-start-1 relative w-full rounded px-4 py-2 bg-white border-gray-100 shadow dark:bg-churpy-night-box">
                         <h1 class="font-bold">Manage user groups</h1>
                         <p class="prose text-sm mt-2">
                           You can create as many groups as needed to manage your users. <br>
@@ -49,7 +47,7 @@
                           </div>
                         </form>
 
-                        <ul class="mt-3 space-y-2 max-h-[300px] overflow-y-auto">
+                        <ul class="mt-3 space-y-2 lg:max-h-[300px] max-h-32 overflow-y-auto">
                           <li :key="index" v-for="(group, index) in groups">
                             <div class="flex flex-col">
                               <div class="flex justify-between">
@@ -68,7 +66,7 @@
                         </ul>
 
                       </div>
-
+                      <Permissions class="mx-5 lg:col-start-1 lg:row-start-1 w-full" :groups="groups" />
                 </div>
 
           </TabPanel>
@@ -110,7 +108,7 @@ export default{
       if (group_name.value.length>0){
         processing.value = true
         setTimeout(()=>{
-          groups.value.push({name: group_name.value, users:0, created_at:moment().format('MMMM Do YYYY')})
+          groups.value.unshift({name: group_name.value, users:0, created_at:moment().format('MMMM Do YYYY')})
           //reset
           group_name.value = ''
           //emitter.emit('toast', {title:'Group added successfully', type:'success'})
