@@ -18,9 +18,9 @@
       </div>
 
       <!-- branding -->
-      <div class="sm:flex items-center hidden ">
-        <h1 class="text-brand-gray dark:text-gray-400">
-          <span class="font-brand text-2xl">Churpy</span> Reconciliation Engine
+      <div class="flex items-center">
+        <h1 class="text-brand-gray dark:text-gray-400 text-xs md:text-lg">
+          <span class="font-brand ">Churpy</span> Reconciliation Engine
         </h1>
       </div>
 

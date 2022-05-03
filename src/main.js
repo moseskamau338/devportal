@@ -6,9 +6,9 @@ import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
 import AppFilters from './library/filters'
+import {functions} from './library/globalHelpers'
 import mitt from 'mitt'
 import {maska} from "maska";
-
 
 const emitter = mitt()
 const pinia = createPinia()
@@ -24,6 +24,7 @@ const app = createApp(App)
 app.provide('emitter', emitter)
 
 app.config.globalProperties.$filters = AppFilters
+app.config.globalProperties.$helpers = functions
 
 app.use(router)
     .use(pinia)

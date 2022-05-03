@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between items-center mt-10">
     <div id="right-actions pt-10">
-      <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white hover:bg-churpy-dark bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-night-box transition-all h-fit">
+      <button @click="showCreate = !showCreate" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white hover:bg-green-600 bg-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
         <i class="fa-solid fa-user-plus mr-2 text-sm"></i>
         Add Member</button>
     </div>
@@ -23,7 +23,7 @@
             <table class="min-w-full divide-y divide-gray-300">
               <thead class="bg-gray-50">
                 <tr>
-                  <th v-for="(head, index) in ['Name', 'Phone', 'Email', 'Role', 'Status', 'Actions']" :key="index"  scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">
+                  <th v-for="(head, index) in ['Name', 'Phone', 'Email', 'Role', 'Actions']" :key="index"  scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">
                     <a href="#" class="group inline-flex">
                       {{ head }}
                       <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -35,7 +35,10 @@
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
                 <tr v-for="(member, index) in members" :key="index">
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ member.name }}</td>
+                  <td class="whitespace-nowrap flex items-center py-4 pl-4 pr-3 text-sm font-medium text-gray-700 sm:pl-6">
+                    <div class="h-6 w-6 rounded-full text-sm flex items-center justify-center mr-2 p-4" :style="`background-color: ${$helpers.getRandomColor(member.name).color}`">{{$helpers.getRandomColor(member.name).character}}</div>
+                    {{ member.name }}
+                  </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ member.phone }}</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ member.email }}</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -73,14 +76,11 @@
                     </Listbox>
 
                   </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-300 text-green-800"> {{ member.status }} </span>
 
-                  </td>
                   <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit<span class="sr-only">, {{ member.name }}</span></a
-                    >
+                      <button @click="actions.showEditForm(member)" type="button" class="inline-flex items-center px-2 py-0.5 border border-transparent text-xs font-medium rounded shadow-sm text-white hover:bg-green-600 bg-churpy-green focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
+                        Manage
+                      </button>
                   </td>
                 </tr>
               </tbody>
@@ -90,13 +90,23 @@
       </div>
     </div>
 
+  <!--modals-->
+  <CreateMember :show="showCreate" />
+  <EditMember :show="edit.show" :member="edit.member" />
 </template>
 
 <script>
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
+import Modal from "@/components/page/Modal.vue";
+import {ref, inject, onMounted} from "vue";
+import CreateMember from "@/components/page/Teams/CreateMember.vue";
+import EditMember from "@/components/page/Teams/EditMember.vue";
 export default {
   name: "Members",
   components: {
+    CreateMember,
+    EditMember,
+    Modal,
     Listbox,
     ListboxButton,
     ListboxLabel,
@@ -104,12 +114,36 @@ export default {
     ListboxOptions,
   },
   setup(){
-    const members = [
-      {name: 'Moses Kamau Muchiri', email: 'moseskamau338@gmail.com', phone:'+2547566453',status:'active', role: {id:1,name:'Admin'}}
-    ]
+    const emitter = inject('emitter')
+    const members = ref([
+      {name: 'Moses Kamau Muchiri', email: 'moseskamau338@gmail.com', phone:'+2547566453', role: {id:1,name:'Admin'}},
+      {name: 'James Kamau', email: 'james@companyx.com', phone:'+2547236853', role: {id:1,name:'Admin'}}
+    ])
+    const showCreate = ref(false)
+    const edit = ref({
+      show: false,
+      member: {}
+    })
+    const actions = {
+      submitCreateForm : () =>{
+        console.log('creating')
+      },
+      showEditForm: (member) => {
+        edit.value.show = true;
+        edit.value.member = member
+      }
+    }
+
+    //hooks
+    onMounted(()=>{
+          emitter.on('close_modal', ()=>{
+               showCreate.value = false
+                edit.value.show = false
+           })
+        })
 
 
-    return {members}
+    return {members, showCreate, actions, edit}
   }
 }
 </script>

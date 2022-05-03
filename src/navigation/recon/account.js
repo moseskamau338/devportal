@@ -5,7 +5,7 @@ export default [
   {
     title: 'My Team',
     route: 'team',
-    icon: 'fa-solid fa-users',
+    icon: 'fa-solid fa-people-group',
   },
    {
     title: 'Account Settings',
