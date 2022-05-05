@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
+import NProgress from 'nprogress/nprogress'
+import 'nprogress/nprogress.css'
+NProgress.configure({
+    showSpinner: true
+})
 
 const routes = [
     {
@@ -149,6 +154,19 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+})
+
+router.beforeResolve((to, from,next) =>{
+    if (to.path){
+        NProgress.start()
+    }
+    setTimeout(()=>{
+        next();
+    }, 3000)
+})
+
+router.afterEach(()=>{
+    NProgress.done();
 })
 
 export default router

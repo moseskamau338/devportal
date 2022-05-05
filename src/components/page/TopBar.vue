@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-10 flex-shrink-0 flex h-12 bg-white shadow-sm w-[98%] rounded-md mx-auto mt-4 dark:bg-churpy-night-box dark:text-white"
+    class="sticky top-0 z-10 flex-shrink-0 flex h-8 md:h-12 bg-white shadow-sm rounded-md mx-auto mt-4 dark:bg-churpy-night-box dark:text-white w-[98%]"
   >
     <button
       type="button"
@@ -28,10 +28,10 @@
         <button
           type="button"
           @click="$emit('toggle-sidebar')"
-          class="bg-gray-400/40 rounded-full text-churpy-dark dark:text-gray-400 h-8 w-8 justify-center items-center hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green"
+          class="bg-gray-400/40 rounded-full text-churpy-dark dark:text-gray-400 h-6 w-6 md:h-7 md:w-7 flex justify-center items-center hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green"
         >
           <span class="sr-only">View notifications</span>
-          <i class="fa-solid fa-bell text-xl" aria-hidden="true"></i>
+          <i class="fa-solid fa-bell text-xs md:text-lg" aria-hidden="true"></i>
         </button>
 
         <!-- Profile dropdown -->
@@ -42,7 +42,7 @@
             >
               <span class="sr-only">Open user menu</span>
               <img
-                class="h-8 w-8 rounded-full"
+                class="md:h-8 md:w-8 h-6 w-6 rounded-full"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt=""
               />

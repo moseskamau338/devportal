@@ -35,7 +35,7 @@
                 <table class="min-w-full divide-y divide-gray-300">
                   <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
                   <tr class="py-0">
-                    <th  v-for="(field, index) in fields" scope="col" class="px-2 min-w-2 group py-3 text-xs font-semibold text-churpy-dark dark:text-gray-400 uppercase" :class="field.key !== 'description'? 'text-center':''">
+                      <th  v-for="(field, index) in fields" scope="col" class="px-2 min-w-2 group py-3 text-xs font-semibold text-churpy-dark dark:text-gray-400 uppercase" :class="field.key !== 'description'? 'text-center':''">
                         <!--<i class="fa-solid fa-arrow-alt-down text-gray-400 cursor-pointer ml-0 mr-1 group-hover:scale-105 group-hover:text-gray-600 transition-all "></i>-->
 
                         <span v-if="!field.action" class="relative flex items-center justify-between">

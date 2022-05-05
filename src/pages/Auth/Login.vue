@@ -31,7 +31,7 @@
     <div class="w-full px-4 md:px-32">
       <nav class="flex justify-between lg:justify-end px-6 py-6">
         <img src="/images/logo-full.png" alt="Churpy full color logo" class="h-12 w-auto lg:hidden">
-        <a href="#" class="font-bold hover:underline">Register</a>
+        <router-link :to="{name: 'signup'}" class="font-bold hover:underline">Register</router-link>
       </nav>
 
       <div class="mt-4">

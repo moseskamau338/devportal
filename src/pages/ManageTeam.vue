@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[90%] lg:w-screen">
+  <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[98%] lg:w-full">
      <TabGroup>
         <TabList as="div" class="border-b-2 border-slate-200 pt-3 px-3 flex">
           <Tab as="div" class="-mb-0.5" v-slot="{ selected }" v-for="(item, index) in [
@@ -26,7 +26,7 @@
                 <p class="prose">
                   Check the appropriate box to assign permissions to roles as categorized below
                 </p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-8 relative">
                       <div id="summary" class="lg:w-[500px] lg:col-start-2 lg:row-start-1 relative w-full rounded px-4 py-2 bg-white border-gray-100 shadow dark:bg-churpy-night-box">
                         <h1 class="font-bold">Manage user groups</h1>
                         <p class="prose text-sm mt-2">
@@ -66,7 +66,10 @@
                         </ul>
 
                       </div>
-                      <Permissions class="mx-5 lg:col-start-1 lg:row-start-1 w-full" :groups="groups" />
+                      <div>
+                        <h2 class="font-bold">Permissions</h2>
+                          <Permissions class="mx-5 lg:col-start-1 lg:row-start-1 w-full" :groups="groups" />
+                      </div>
                 </div>
 
           </TabPanel>
