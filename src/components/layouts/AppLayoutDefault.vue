@@ -7,7 +7,10 @@
     <!-- Static sidebar for desktop -->
       <Sidebar />
 
-    <div class="md:pl-[13rem] flex flex-col flex-1 h-screen ">
+    <div :class="{
+      'md:pl-[13rem]' : store.mainSidebarOpen,
+      'md:pl-[5rem]' : !store.mainSidebarOpen
+    }" class="flex flex-col flex-1 h-screen transition-all">
      <TopBar @toggle-sidebar="sidebarOpen = !sidebarOpen" />
       <main class="mb-auto">
         <div class="py-6">
@@ -43,9 +46,9 @@ import Breadcrumb from '@/components/page/Breadcrumb.vue'
 import TopBar from '@/components/page/TopBar.vue'
 import Sidebar from '@/components/page/Sidebar.vue'
 import Banner from '@/components/page/Banner.vue'
- import { TransitionRoot, TransitionChild } from '@headlessui/vue'
-import { ref } from 'vue'
 import Toast from '../page/Toast.vue'
+import {useUiStore} from "@/db/ui";
+
 
 export default{
   components: {
@@ -53,8 +56,13 @@ export default{
     TopBar,
     Sidebar,
     Banner,
-    Toast  
+    Toast
   },
+
+  setup(){
+    const store = useUiStore()
+    return {store}
+  }
 }
 
 

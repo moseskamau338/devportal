@@ -160,9 +160,7 @@ router.beforeResolve((to, from,next) =>{
     if (to.path){
         NProgress.start()
     }
-    setTimeout(()=>{
-        next();
-    }, 3000)
+    next();
 })
 
 router.afterEach(()=>{

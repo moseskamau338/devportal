@@ -4,7 +4,8 @@ export const useUiStore = defineStore('uiStore', {
     persist: {enabled:true},
     state: ()=>{
         return {
-            theme: 'dark'
+            theme: false,
+            mainSidebarOpen: true,
         }
     },
     actions:{
@@ -12,6 +13,9 @@ export const useUiStore = defineStore('uiStore', {
             if (val === this.theme) return;
             if(!['dark','light','media'].includes(val)) return;
             this.theme = val;
+        },
+        toggleCollapse(){
+            this.mainSidebarOpen = !this.mainSidebarOpen
         }
     }
 })
