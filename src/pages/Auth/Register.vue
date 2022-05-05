@@ -7,7 +7,7 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">Churpy Eco-system</h1>
+        <h1 class="font-bold text-2xl text-gray-700">Churpy Eco-system</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
           <span class="font-brand">Churpy</span> offers you a variety of products to suite any challenge you might have during your reconciliation workflows.
         </p>
@@ -53,11 +53,11 @@
     <div class="w-full px-4 md:pl-32 xl:px-32">
       <nav class="flex justify-between lg:justify-end px-6 py-6">
         <img src="/images/logo-full.png" alt="Churpy full color logo" class="h-12 w-auto lg:hidden">
-        <router-link :to="{name: 'login'}" class="font-bold hover:underline">Signin</router-link>
+        <router-link :to="{name: 'login'}" class="font-bold hover:underline text-gray-700">Signin</router-link>
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">Welcome aboard!</h1>
+        <h1 class="font-bold text-2xl text-gray-700">Welcome aboard!</h1>
 
         <div class="flex lg:hidden px-8 mt-3 space-x-6">
           <button type="button" @click="steps = 1" :class="[
@@ -339,7 +339,7 @@
       </div>
 
       <div class="absolute bottom-0 xl:pb-8">
-        <p>Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
+        <p class="text-gray-500">Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
       </div>
 
     </div>

@@ -6,7 +6,7 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">All-in-one workbench</h1>
+        <h1 class="font-bold text-2xl text-gray-700">All-in-one workbench</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
           <span class="font-brand">Churpy</span> now provides you with an elegant way to customize your dashboard metrics and make the best of our analytics capabilities
         </p>
@@ -31,12 +31,12 @@
     <div class="w-full px-4 md:px-32">
       <nav class="flex justify-between lg:justify-end px-6 py-6">
         <img src="/images/logo-full.png" alt="Churpy full color logo" class="h-12 w-auto lg:hidden">
-        <router-link :to="{name: 'signup'}" class="font-bold hover:underline">Register</router-link>
+        <router-link :to="{name: 'signup'}" class="font-bold hover:underline text-gray-700">Register</router-link>
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">Sign in to Churpy</h1>
-        <div class="flex lg:space-x-6 flex-col space-y-3 lg:flex-row">
+        <h1 class="font-bold text-2xl text-gray-700">Sign in to Churpy</h1>
+        <div class="flex lg:space-x-6 flex-col space-y-3 lg:flex-row text-gray-500">
           <button class="bg-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
             <img src="/images/brands/google-icon.svg" alt="google logo" class="h-6 w-auto mr-3" />
             Sign in with Google
@@ -71,7 +71,7 @@
           </div>
 
           <div>
-           <p> Forgot your password?
+           <p class="text-gray-500"> Forgot your password?
              <span class="text-indigo-600 underline">Reset it here</span>
            </p>
           </div>
@@ -84,7 +84,7 @@
       </div>
 
       <div class="absolute bottom-0 pb-8">
-        <p>Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
+        <p class="text-gray-500">Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
       </div>
 
     </div>

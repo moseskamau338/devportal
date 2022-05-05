@@ -6,7 +6,7 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">What we offer you</h1>
+        <h1 class="font-bold text-2xl text-gray-700">What we offer you</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
           All our products are guaranteed to improve your productivity and save you a lot in costs in the long-run
         </p>
@@ -31,12 +31,12 @@
     <div class="w-full px-4 md:px-32">
       <nav class="flex justify-between lg:justify-end px-6 py-6">
         <img src="/images/logo-full.png" alt="Churpy full color logo" class="h-12 w-auto lg:hidden">
-        <a href="#" class="font-bold hover:underline">Register</a>
+        <router-link :to="{name:'signup'}" class="font-bold hover:underline text-gray-700">Register</router-link>
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl">Forgot password?</h1>
-        <p class="mt-3">Don't worry, it happens. Enter the address associated to your account below and we will sort you out.</p>
+        <h1 class="font-bold text-2xl text-gray-700">Forgot password?</h1>
+        <p class="mt-3 text-gray-500">Don't worry, it happens. Enter the address associated to your account below and we will sort you out.</p>
 
 
         <form class="mt-5">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="absolute bottom-0 pb-8">
-        <p>Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
+        <p class="text-gray-500">Your data is protected by our <span class="text-churpy-green">Privacy Policy</span> and <span class="text-churpy-green">Terms and Conditions</span></p>
       </div>
 
     </div>
