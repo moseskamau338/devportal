@@ -83,21 +83,21 @@
                   <div class="sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium text-gray-700"> First name </label>
                     <div class="mt-1">
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Jane" />
+                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="Jane" />
                     </div>
                   </div>
 
                   <div class="sm:col-span-3">
                     <label for="last-name" class="block text-sm font-medium text-gray-700"> Last name </label>
                     <div class="mt-1">
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Doe" />
+                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="Doe" />
                     </div>
                   </div>
 
                   <div class="sm:col-span-3">
                     <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                     <div class="mt-1">
-                      <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="e.g +1 234 3445 3553" />
+                      <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="e.g +1 234 3445 3553" />
                     </div>
                   </div>
 
@@ -176,14 +176,14 @@
                   <div class="sm:col-span-3">
                     <label for="tel" class="block text-sm font-medium text-gray-700"> Phone </label>
                     <div class="mt-1">
-                      <input type="tel" v-maska="'###############'" required name="tel" id="tel" autocomplete="tel" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="+1-202-555-0152" />
+                      <input type="tel" v-maska="'###############'" required name="tel" id="tel" autocomplete="tel" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="+1-202-555-0152" />
                     </div>
                   </div>
 
                   <div class="sm:col-span-3">
                     <label for="city" class="block text-sm font-medium text-gray-700"> Password </label>
                     <div class="mt-1">
-                      <input type="password" name="city" id="city" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="*****" />
+                      <input type="password" name="city" id="city" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="*****" />
                     </div>
                   </div>
 
@@ -245,7 +245,7 @@
                    <div class="sm:col-span-3">
                     <label for="tel" class="block text-sm font-medium text-gray-700"> Company Name </label>
                     <div class="mt-1">
-                      <input type="text" required name="company" id="company" autocomplete="company" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Company X" />
+                      <input type="text" required name="company" id="company" autocomplete="company" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="Company X" />
                     </div>
                   </div>
 
@@ -319,14 +319,14 @@
                   <div class="sm:col-span-3">
                     <label for="city" class="block text-sm font-medium text-gray-700"> Pick bank to integrate to</label>
                     <div class="mt-1">
-                      <input type="text" name="banks" id="banks" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="e.g KCB, Standard Chartered, NCBA" />
+                      <input type="text" name="banks" id="banks" autocomplete="address-level2" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="e.g KCB, Standard Chartered, NCBA" />
                     </div>
                   </div>
 
                   <div class="sm:col-span-6">
                     <div class="flex items-center h-5">
                       <input id="terms" aria-describedby="terms-description" name="terms" type="checkbox" class="focus:ring-green-500 h-4 w-4 text-churpy-green border-gray-300 rounded" />
-                         <span class="ml-2">
+                         <span class="ml-2 text-gray-500">
                            I have read and do agree to <span class="font-brand">Churpy</span>'s <a href="#" class="text-churpy-green hover:underline">Terms and Conditions</a>
                          </span>
                     </div>

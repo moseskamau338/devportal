@@ -54,14 +54,14 @@
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700"> New Password </label>
             <div class="mt-1">
-              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="******" />
+              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="******" />
             </div>
           </div>
 
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700"> Confirm Password </label>
             <div class="mt-1">
-              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="******" />
+              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="******" />
             </div>
           </div>
 

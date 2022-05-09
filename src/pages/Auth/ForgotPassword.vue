@@ -43,7 +43,7 @@
           <div>
               <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
               <div class="mt-1">
-                <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="e.g email@company.com" />
+                <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="e.g email@company.com" />
               </div>
             </div>
 
