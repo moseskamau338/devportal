@@ -13,12 +13,9 @@ export const useUiStore = defineStore('uiStore', {
             this.changeTheme(this.theme? 'dark' : 'light');
         },
         changeTheme(theme){
-            console.log('Setting changed theme: ', this.theme)
             if (theme === 'dark'){
-                console.log('Adding DARK mode')
                 document.documentElement.classList.add(theme)
             }else{
-                console.log('Adding LIGHT mode')
                 document.documentElement.classList.remove('dark')
             }
         },
