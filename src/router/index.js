@@ -84,6 +84,25 @@ const routes = [
             ]),
         }
     },
+    {
+        path: '/setup/erp',
+        name: 'erp-settings',
+        component: () => import('@/pages/Erp.vue'),
+        meta:{
+            title: 'ERP Settings',
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'ERP Settings',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',

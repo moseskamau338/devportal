@@ -14,7 +14,7 @@ export default [
   },
   {
     title: 'Bank/ERP Settings',
-    route: 'audit',
+    route: 'erp-settings',
     icon: 'fa-solid fa-square-sliders',
   },
 ]
