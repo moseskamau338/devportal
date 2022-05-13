@@ -8,9 +8,9 @@
           >
             <div class="flex items-center w-[90%] py-1.5 px-2 rounded cursor-pointer" :class="{'bg-green-300/30' : selected}">
 
-              <h2 class="text-sm" :class="{'font-semibold text-churpy-green': selected}">
+              <h2 class="text-xs" :class="{'font-semibold text-churpy-green flex': selected}">
                 <i class="fa-solid mr-1" :class="action.icon"></i>
-                {{ action.name }}
+                <span>{{ action.name }}</span>
               </h2>
             </div>
           </Tab>
@@ -19,9 +19,20 @@
       </TabList>
       <TabPanels as="div" class="pl-6 lg:col-span-5">
         <TabPanel>
-          <h1 class="font-semibold text-lg">Setting up team</h1>
-          <p class="prose-base">You might need to invite your team over and assign roles as required. You can also define various role groups to better organize your account.</p>
-          <router-link :to="{name:'team'}" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Manage Team &rightarrow;</router-link>
+          <h1 class="font-semibold text-lg">Select your accounting system below and proceed to authentication.</h1>
+          <!--alert-->
+          <div class="bg-yellow-100 border-l-4 border-yellow-400 px-4 py-2 w-fit shadow rounded">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <i class="fa-solid fa-exclamation-triangle text-yellow-400" aria-hidden="true"></i>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                  Make sure you authorize only data from your <b>TEST/QA</b> account.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </TabPanel>
         <TabPanel>
