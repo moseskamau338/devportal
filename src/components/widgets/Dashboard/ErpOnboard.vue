@@ -21,18 +21,10 @@
         <TabPanel>
           <h1 class="font-semibold text-lg">Select your accounting system below and proceed to authentication.</h1>
           <!--alert-->
-          <div class="bg-yellow-100 border-l-4 border-yellow-400 px-4 py-2 w-fit shadow rounded">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <i class="fa-solid fa-exclamation-triangle text-yellow-400" aria-hidden="true"></i>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-yellow-700">
-                  Make sure you authorize only data from your <b>TEST/QA</b> account.
-                </p>
-              </div>
-            </div>
-          </div>
+          <alert variant="warning">
+             Make sure you authorize only data from your <b>TEST/QA</b> account.
+          </alert>
+
 
         </TabPanel>
         <TabPanel>
@@ -70,10 +62,12 @@
 
 <script>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import Alert from "@/components/parts/Alert.vue";
 
 export default {
   name: "ErpOnboard",
   components:{
+    Alert,
     TabGroup, TabList, Tab, TabPanels, TabPanel
   }
 }

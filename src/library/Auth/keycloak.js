@@ -2,9 +2,9 @@ import Keycloak from 'keycloak-js';
 
 
 export const initOptions = {
-  url: import.meta.env.VITE_URL,
-  realm: import.meta.env.VITE_AUTH_REALM,
-  clientId: import.meta.env.VITE_AUTH_CLIENTID,
+  url: 'http://localhost:3002/auth/',//import.meta.env.VITE_URL,
+  realm: 'master',//import.meta.env.VITE_AUTH_REALM,
+  clientId: 'churpy_recon',//import.meta.env.VITE_AUTH_CLIENTID,
   onLoad: 'login-required'
 }
 

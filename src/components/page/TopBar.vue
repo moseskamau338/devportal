@@ -25,6 +25,7 @@
       </div>
 
       <div class="ml-4 flex items-center md:ml-6">
+
         <button
           type="button"
           @click="$emit('toggle-sidebar')"
@@ -73,6 +74,9 @@
                   >{{ item.name }}</a
                 >
               </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <button @click="keycloak.logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Sign out</button>
+              </MenuItem>
             </MenuItems>
           </transition>
         </Menu>
@@ -86,17 +90,16 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { inject } from 'vue';
 import Toggler from '../parts/Toggler.vue';
 const emitter = inject('emitter')
+const keycloak = inject('keycloak')
 
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
 ];
 
 function openSidebar(){
   emitter.emit('open_side_bar')
-
 }
 
 </script>
