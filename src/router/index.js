@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import NProgress from 'nprogress/nprogress'
 import 'nprogress/nprogress.css'
+
+
 NProgress.configure({
     showSpinner: true
 })
@@ -11,14 +13,18 @@ const routes = [
         path: '/',
         name: 'dashboard',
         component: Home,
+        meta:{
+            requiresAuth: true
+        }
 
     },
     {
         path: '/work-area',
         name: 'workArea',
         component: () => import('@/pages/WorkArea.vue'),
-        meta:{ 
+        meta:{
             title: 'Working Area',
+             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
                     text: 'Working Area',
@@ -31,8 +37,9 @@ const routes = [
         path: '/audit',
         name: 'audit',
         component: () => import('@/pages/Audit.vue'),
-        meta:{ 
+        meta:{
             title: 'Audit Trail',
+             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
                     text: 'Dashboard',
@@ -50,7 +57,7 @@ const routes = [
         path: '/reconciliation',
         name: 'recon',
         component: () => import('@/pages/Recon.vue'),
-        meta:{ 
+        meta:{
             title: 'Reconciliation',
             breadcrumb: (route) => ([
                 {
@@ -71,6 +78,7 @@ const routes = [
         component: () => import('@/pages/ManageTeam.vue'),
         meta:{
             title: 'Manage Team',
+             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
                     text: 'Dashboard',
@@ -90,6 +98,7 @@ const routes = [
         component: () => import('@/pages/Erp.vue'),
         meta:{
             title: 'ERP Settings',
+             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
                     text: 'Dashboard',
@@ -138,9 +147,9 @@ const routes = [
     },
 
     // default pages
-    { 
-        path: '/:pathMatch(.*)*', 
-        name: 'NotFound', 
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
         component: () => import('@/pages/error/404.vue') ,
         meta:{
             layout: 'FlatLayout'
@@ -150,7 +159,7 @@ const routes = [
     //     path: '/reconciliation',
     //     name: 'recon',
     //     component: () => import('@/pages/Recon.vue'),
-    //     meta:{ 
+    //     meta:{
     //         layout: 'FlatLayout',
     //         title: 'Reconciliation',
     //         breadcrumb: (route) => ([
@@ -166,7 +175,7 @@ const routes = [
     //         ]),
     //     }
     // },
-    
+
 
 ]
 
@@ -174,16 +183,17 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+ router.beforeResolve((to, from, next) => {
+        if (to.path) {
+            NProgress.start()
+        }
+        next();
+    })
 
-router.beforeResolve((to, from,next) =>{
-    if (to.path){
-        NProgress.start()
-    }
-    next();
-})
+    router.afterEach(() => {
+        NProgress.done();
+    })
 
-router.afterEach(()=>{
-    NProgress.done();
-})
+
 
 export default router
