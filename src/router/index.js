@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import NProgress from 'nprogress/nprogress'
 import 'nprogress/nprogress.css'
-
+import {keycloak, checkAuth} from "../library/Auth/keycloak";
 
 NProgress.configure({
     showSpinner: true
@@ -118,7 +118,8 @@ const routes = [
         name: 'signup',
         component: () => import('@/pages/Auth/Register.vue') ,
         meta:{
-            layout: 'FlatLayout'
+            layout: 'FlatLayout',
+            requiresGuest: true,
         }
     },
     {
@@ -126,7 +127,8 @@ const routes = [
         name: 'login',
         component: () => import('@/pages/Auth/Login.vue') ,
         meta:{
-            layout: 'FlatLayout'
+            layout: 'FlatLayout',
+             requiresGuest: true,
         }
     },
     {
@@ -134,7 +136,8 @@ const routes = [
         name: 'forgotPassword',
         component: () => import('@/pages/Auth/ForgotPassword.vue') ,
         meta:{
-            layout: 'FlatLayout'
+            layout: 'FlatLayout',
+             requiresGuest: true,
         }
     },
      {
@@ -142,7 +145,8 @@ const routes = [
         name: 'resetPassword',
         component: () => import('@/pages/Auth/ResetPassword.vue') ,
         meta:{
-            layout: 'FlatLayout'
+            layout: 'FlatLayout',
+             requiresGuest: true,
         }
     },
 
@@ -152,7 +156,7 @@ const routes = [
         name: 'NotFound',
         component: () => import('@/pages/error/404.vue') ,
         meta:{
-            layout: 'FlatLayout'
+            layout: 'FlatLayout',
         }
     },
     // {
@@ -183,16 +187,42 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
- router.beforeResolve((to, from, next) => {
-        if (to.path) {
-            NProgress.start()
-        }
-        next();
-    })
+export let nextMain = ()=>{}
+export let requiresAuth = false;
+export let requiresGuest = false;
 
-    router.afterEach(() => {
-        NProgress.done();
-    })
+   router.beforeEach((to, from, next) => {
+       if (to.path) {NProgress.start()}
+       console.log('About to check auth')
+       requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+       requiresGuest = to.matched.some(record => record.meta.requiresGuest)
+       if (to.matched.some(record => record.meta.requiresAuth)){
+           console.log('Auth required')
+           nextMain = next
+           if (checkAuth()){
+               console.log('Auth passed')
+
+               //guest screen?
+               if (requiresGuest){
+                    console.log('Must be guest to access')
+                    next({name: 'dashboard'})
+              }else{next()}
+
+           }else{
+               console.log('Auth check failed')
+               keycloak.login()
+           }
+       }else{
+           console.log('No need for auth')
+           next()
+       }
+ })
+
+
+
+router.afterEach(() => {
+    NProgress.done();
+})
 
 
 

@@ -53,7 +53,7 @@
     <div class="w-full px-4 md:pl-32 xl:px-32">
       <nav class="flex justify-between lg:justify-end px-6 py-6">
         <img src="/images/logo-full.png" alt="Churpy full color logo" class="h-12 w-auto lg:hidden">
-        <router-link :to="{name: 'login'}" class="font-bold hover:underline text-gray-700">Signin</router-link>
+        <a href="/auth/login" class="font-bold hover:underline text-gray-700">Signin</a>
       </nav>
 
       <div class="mt-4">

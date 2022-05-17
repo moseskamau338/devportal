@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
+import {createApp, nextTick} from 'vue'
 import App from './App.vue'
-import router from './router'
+import router, {nextMain,requiresAuth, requiresGuest} from './router'
 import './assets/index.css'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import { createPinia } from 'pinia'
@@ -29,16 +29,39 @@ import('./setup')
         .mixin({directives:{maska}})
 
 
-const loadApp = ()=>{
-  app.mount('#app')
-}
 
-router.beforeResolve(async (to, from, next) => {
-    const forward = () => { loadApp(); next();}
-
-    if (!to.meta.requiresAuth){forward()}else{
-        await checkAuth().then((res)=>{
-            if (res){forward()}
-        }).catch((error)=>{keycloak.login()})
+keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
+  console.log('Authentication status: ', auth)
+  if (!auth) {
+    console.log('Requires auth? ', requiresAuth)
+    if (requiresAuth) {keycloak.login();}
+    else {
+        console.log('LOGGED IN or NOT')
+        app.mount('#app')
+        nextMain()
     }
-})
+    //
+  } else {
+      console.log("Authenticated");
+      app.mount('#app')
+    console.log('App loaded')
+
+    nextMain() //force next route
+    //Token Refresh
+      setInterval(() => {
+        keycloak.updateToken(70).then((refreshed) => {
+          if (refreshed) {
+            console.log('Token refreshed' + refreshed);
+          } else {
+            console.log('Token not refreshed, valid for '
+              + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
+          }
+        }).catch(() => {
+          console.log('Failed to refresh token');
+        });
+      }, 6000)
+  }
+
+}).catch(() => {
+  console.log("Authenticated Failed");
+});
