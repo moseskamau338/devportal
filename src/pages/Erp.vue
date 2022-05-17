@@ -14,14 +14,23 @@
             </button>
           </Tab>
         </TabList>
-        <TabPanels class="p-4">
+        <TabPanels class="p-4 min-h-[500px]">
           <TabPanel as="div" class="transition-all">
             <!--show this if nothing connected-->
             <erp-onboard />
             <!--<erp-connections />-->
           </TabPanel>
           <TabPanel as="div" class="transition-all">
-            Link Bank Acc
+            <span class="font-bold my-1 flex justify-between">Linking bank accounts is disabled in Sandbox mode.
+            <span type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm rounded-sm shadow-sm text-white font-bold bg-orange-400 h-fit">Sandbox Account</span>
+            </span>
+            <p class="mb-2">However, we have 2 options that you can use to explore with:</p>
+            <ul class="list-['-'] marker:text-lg marker:mr-3 ml-3 font-bold">
+              <li>Use Churpy's Sandbox <a href="#" class="text-green-600 hover:underline">bank statements</a></li>
+              <li>Upload your own bank statements
+                <a href="#" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></a>
+              </li>
+            </ul>
           </TabPanel>
           <TabPanel as="div" class="transition-all">
             Map GL to Bank
