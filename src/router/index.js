@@ -211,8 +211,9 @@ export let requiresGuest = false;
            }else{
                console.log('Auth check failed')
                setTimeout(()=>{
-                   keycloak.login()
-               }, 300)
+                   //recheck authentication (should be updated by main.js)
+                   if (!checkAuth()){keycloak.login()}
+               }, 500)
            }
        }else{
            console.log('No need for auth')
