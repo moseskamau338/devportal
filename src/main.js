@@ -44,9 +44,10 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
   } else {
       console.log("Authenticated");
       app.mount('#app')
-    console.log('App loaded')
+      console.log('App loaded')
 
-    nextMain() //force next route
+      nextMain() //force next route
+    console.log( keycloak.tokenParsed)
     //Token Refresh
       setInterval(() => {
         keycloak.updateToken(70).then((refreshed) => {
@@ -58,6 +59,7 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
           }
         }).catch(() => {
           console.log('Failed to refresh token');
+          keycloak.login()
         });
       }, 6000)
   }
