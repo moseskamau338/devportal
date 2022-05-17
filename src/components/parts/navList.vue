@@ -1,9 +1,14 @@
 <template>
     <template :key="index" v-for="(item, index) in navs">
-      <div class="space-y-2 flex flex-col" :class="{
+      <div class="space-y-2 flex flex-col group" :class="{
             'text-left':status,
             'md:text-center':!status,
           }">
+
+        <span v-show="!status && item.title" class="hidden group-hover:md:flex min-w-max text-left absolute shadow-md bg-churpy-night-box text-gray-300 mt-2 px-2 py-1 ml-14 rounded text-xs transition transition-opacity delay-1000 duration-500 ease-in-out">
+          {{ item.title }}
+        </span>
+
           <div
           class="text-slate-500 align-content-bottom text-xs w-full h-6 mt-5" v-if="item.header">
               <span :class="{'md:hidden' : !status}">{{item.header}}</span>
@@ -16,7 +21,7 @@
           <div
           class="text-slate-500 group flex px-2 py-1 text-xs rounded-md transition-all hover:translate-x-1"
           v-if="item.disabled">
-              <span >
+              <span>
                   <i :class="[
                         status? '' : 'text-lg',
                         item.icon

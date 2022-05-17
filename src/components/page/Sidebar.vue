@@ -41,7 +41,7 @@
       </Dialog>
     </TransitionRoot>
 
-   <div class="no-scrollbar hidden md:flex md:w-42 md:flex-col md:fixed md:inset-y-0 transition-all">
+   <div class="no-scrollbar hidden md:flex md:w-42 md:flex-col md:fixed md:inset-y-0 transition-all z-10">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="no-scrollbar flex flex-col flex-grow pt-5 bg-churpy-dark dark:bg-churpy-night-box overflow-y-auto">
         <!--sidebar toggler-->

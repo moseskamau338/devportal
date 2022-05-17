@@ -25,32 +25,79 @@
              Make sure you authorize only data from your <b>TEST/QA</b> account.
           </alert>
 
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2">
 
-        </TabPanel>
-        <TabPanel>
-           <h1 class="font-semibold text-lg">Bring in some data (Bank/ERP)</h1>
-          <p class="prose-base">You can connect your accounting system and pull in invoice or bank data. Alternatively, you can upload formated records and speed up the process.</p>
+            <div class="h-full w-full px-4 py-3 overflow-y-auto max-h- rounded bg-gray-50">
 
-          <div class="flex flex-col w-fit">
-            <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Connect accounting system &rightarrow;</button>
+              <input v-model="query" type="text" placeholder="Search ERP..." class="my-2 transition-all rounded border border-gray-200 leading-none focus:border-churpy-green focus:ring-churpy-green placeholder-gray-300 w-full mb-5">
+              
+              <RadioGroup class="max-h-[300px]" v-model="selected">
+                <RadioGroupLabel class="sr-only">ERP</RadioGroupLabel>
+                <div class="space-y-2">
+                  <RadioGroupOption
+                    as="template"
+                    v-for="erp in filtered"
+                    :key="erp.name"
+                    :value="erp"
+                    v-slot="{ active, checked }"
+                  >
+                    <div
+                      :class="[
+                        active
+                          ? 'ring-2 ring-gray-300 ring-offset-2'
+                          : '',
+                        checked ? 'border-2 border-churpy-green bg-opacity-75 ' : '',
+                      ]"
+                      class="relative flex cursor-pointer rounded px-5 py-2 shadow-md focus:outline-none"
+                    >
+                      <div class="flex w-full items-center justify-between">
+                        <div class="flex items-center">
+                          <div class="text-md">
+                            <RadioGroupLabel
+                              as="p"
+                              class="font-medium text-gray-600"
+                            >
+                              {{ erp.name }}
+                            </RadioGroupLabel>
+                          </div>
+                        </div>
+                        <div v-show="checked" class="shrink-0 text-churpy-green">
+                          <i class="fa-duotone fa-check-circle text-lg"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                </div>
+              </RadioGroup>
+            </div>
+            <div class="border border-gray-700 rounded border-dashed min-h-[200px] h-[280px] p-4 mx-5">
+              <h2 class="my-2 text-gray-700 font-bold text-xl">Can't find your ERP?</h2>
+              <p>
+                All accounting platforms listed here have been officially integrated by Churpy.
+                If you can't find yours, schedule a call with us below for further assistance
+              </p>
+              <div class="flex flex-col w-[50%] mt-4">
+                <label class="font-light">Enter ERP name</label>
+                <input type="text" placeholder="E.g SAP ECC..." class="mt-3 border-gray-400 text-sm py-1 rounded focus:ring-churpy-green focus:border-churpy-green placeholder-gray-400">
+              </div>
 
-            <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-2 w-fit"><i class="fa-solid fa-cloud-upload mr-3"></i> Upload Data</button>
+              <div class="mt-4 flex relative">
+                <button type="button" class="inline-flex absolute right-0 items-center px-2.5 py-1.5 border border-transparent text-xs rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
+                  <i class="fa-solid fa-phone mr-2"></i>
+                  Schedule a call</button>
+              </div>
+            </div>
+
           </div>
 
         </TabPanel>
         <TabPanel>
-          <h1 class="font-semibold text-lg">Invite and manage clients (Marketplace)</h1>
-          <p class="prose-base">Your clients are key, inviting them to use Churpy's Marketplace early will smoothen your collection flows and make reconciliation a breeze.</p>
-          <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Add Clients &rightarrow;
-          </button>
+          Authenticate
 
         </TabPanel>
         <TabPanel>
-          <h1 class="font-semibold text-lg">GO LIVE</h1>
-          <p class="prose-base">If you are all set and ready to run a <strong>LIVE</strong> account, hit the <b>GO LIVE</b> button and find out what you need for the process alongside billing details. If you need help, our <a href="#" class="text-green-700 hover:underline">support staff</a> are on standby</p>
-          <button type="button" class="inline-flex mt-8 items-center px-2.5 py-1.5 text-sm font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
-         <i class="fa-solid fa-power-off mr-2"></i>
-         Go LIVE</button>
+         Authorize
+
         </TabPanel>
       </TabPanels>
     </TabGroup>
@@ -61,14 +108,44 @@
 </template>
 
 <script>
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import {computed, ref} from "vue";
+import { TabGroup, TabList, Tab, TabPanels, TabPanel, RadioGroup,
+    RadioGroupLabel, RadioGroupOption, } from '@headlessui/vue'
 import Alert from "@/components/parts/Alert.vue";
+import {find} from "lodash";
 
 export default {
   name: "ErpOnboard",
   components:{
     Alert,
-    TabGroup, TabList, Tab, TabPanels, TabPanel
+    TabGroup, TabList, Tab, TabPanels, TabPanel,
+    RadioGroup, RadioGroupLabel, RadioGroupOption,
+  },
+  setup(){
+    const query = ref('')
+    const erps = [
+      {name: 'Microsoft Dynamics'},
+      {name: 'Oracle'},
+      {name: 'Quickbooks Online'},
+      {name: 'Sage 200'},
+      {name: 'Xero'},
+      {name: 'Zoho'},
+      {name: 'Zoho1'},
+      {name: 'Zoho2'},
+      {name: 'Zoho3'},
+      {name: 'Zoho4'},
+      {name: 'Zoho5'},
+    ]
+    const filtered = computed(()=>{
+      if (query.value.length === 0) return erps
+
+      return erps.filter(erp => erp.name.toLowerCase().includes(query.value.toLowerCase()))
+
+    })
+
+const selected = ref(erps[0])
+
+    return {erps, selected, filtered, query}
   }
 }
 </script>

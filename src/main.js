@@ -47,13 +47,10 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
       console.log('App loaded')
 
       nextMain() //force next route
-    console.log( keycloak.tokenParsed)
     //Token Refresh
       setInterval(() => {
         keycloak.updateToken(70).then((refreshed) => {
-          if (refreshed) {
-            console.log('Token refreshed' + refreshed);
-          } else {
+          if (!refreshed) {
             console.log('Token not refreshed, valid for '
               + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
           }
