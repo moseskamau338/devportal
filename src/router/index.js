@@ -210,7 +210,9 @@ export let requiresGuest = false;
 
            }else{
                console.log('Auth check failed')
-               keycloak.login()
+               setTimeout(()=>{
+                   keycloak.login()
+               }, 300)
            }
        }else{
            console.log('No need for auth')
