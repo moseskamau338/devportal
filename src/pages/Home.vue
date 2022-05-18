@@ -31,7 +31,7 @@
           <div class="flex flex-col w-fit">
             <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Connect accounting system &rightarrow;</button>
 
-            <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-2 w-fit"><i class="fa-solid fa-cloud-upload mr-3"></i> Upload Data</button>
+            <router-link :to="{name:'upload-data'}" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-2 w-fit"><i class="fa-solid fa-cloud-upload mr-3"></i> Upload Data</router-link>
           </div>
 
         </TabPanel>

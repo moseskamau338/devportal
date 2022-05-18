@@ -112,6 +112,26 @@ const routes = [
             ]),
         }
     },
+    {
+        path: '/onboard/upload',
+        name: 'upload-data',
+        component: () => import('@/pages/UploadReconData.vue'),
+        meta:{
+            title: 'Upload Data',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Upload',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',

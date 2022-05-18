@@ -27,9 +27,9 @@
               </span>
               <p class="mb-2">However, we have 2 options that you can use to explore with:</p>
               <ul class="list-['-'] marker:text-lg marker:mr-3 ml-3 font-bold">
-                <li>Use Churpy's Sandbox <a href="#" class="text-green-600 hover:underline">bank statements</a></li>
+                <li>Use Churpy's Sandbox <router-link :to="{name:'erp-settings'}" class="text-green-600 hover:underline">bank statements</router-link></li>
                 <li>Upload your own bank statements
-                  <a href="#" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></a>
+                  <router-link :to="{name:'upload-data'}" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></router-link>
                 </li>
               </ul>
             </div>
