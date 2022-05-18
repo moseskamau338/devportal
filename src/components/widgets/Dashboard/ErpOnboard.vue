@@ -1,14 +1,14 @@
 <template>
-   <div class="bg-transparent dark:bg-churpy-night-box h-[500px] rounded-md relative overflow-y-auto">
-   <TabGroup as="div" vertical class="min-h-[300px] grid grid-cols-6">
-      <TabList as="div" class="grid grid-cols-1 lg:col-span-1 gap-1 items-center h-[500px] relative">
-        <div class="absolute h-[80%] flex space-y-3 flex-col justify-center border-r-2">
+   <div class="bg-transparent dark:bg-churpy-night-box h-[500px] max-w-fit md:max-w-full rounded-md relative overflow-y-auto">
+   <TabGroup as="div" vertical class="min-h-[300px] md:grid md:grid-cols-6">
+      <TabList as="div" class="grid md:grid-cols-1 md:col-span-1 md:gap-1 items-center h-14 mb-2 border px-2 md:border-none md:h-[500px] md:relative">
+        <div class="md:absolute md:h-[80%] flex md:space-y-3 md:flex-col flex-row md:justify-center md:border-r-2">
           <Tab as="template" :key="index" v-for="(action, index) in [
               {name:'Connect ERP', icon:'fa-file-invoice'}, {name:'Authenticate', icon:'fa-lock-keyhole'}, {name:'Authorize Data Transfer', icon:'fa-shield-halved'}]" v-slot="{ selected }"
           >
             <div class="flex items-center  mr-2 py-1.5 px-2 rounded cursor-pointer" :class="{'bg-green-300/30' : selected}">
 
-              <h2 class="text-xs flex items-center" :class="{'font-semibold text-churpy-green': selected}">
+              <h2 class="text-[10px] md:text-xs flex items-center" :class="{'font-semibold text-churpy-green': selected}">
                 <i class="fa-solid mr-1" :class="action.icon"></i>
                 <span>{{ action.name }}</span>
               </h2>
@@ -17,7 +17,7 @@
         </div>
 
       </TabList>
-      <TabPanels as="div" class="pl-6 lg:col-span-5 relative overflow-hidden">
+      <TabPanels as="div" class="pl-6 md:col-span-5 relative overflow-hidden">
         <Transition
           enter-active-class="transform ease-out duration-300 transition delay-100 opacity-0 sm:translate-y-0 sm:translate-x-2"
           enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
@@ -34,7 +34,7 @@
 
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2">
 
-              <div class="h-full w-full px-4 py-3 overflow-y-auto max-h- rounded bg-gray-50">
+              <div class="h-full w-full px-4 py-3 overflow-y-auto rounded bg-gray-50">
 
                 <input v-model="query" type="text" placeholder="Search ERP..." class="my-2 transition-all rounded border border-gray-200 leading-none focus:border-churpy-green focus:ring-churpy-green placeholder-gray-300 w-full mb-5">
 
@@ -74,7 +74,7 @@
                   </div>
                 </RadioGroup>
               </div>
-              <div class="border border-gray-700 rounded border-dashed min-h-[200px] h-[280px] p-4 mx-5">
+              <div class="mt-5 md:mt-0 border border-gray-700 rounded border-dashed min-h-[200px] md:h-auto h-[340px] px-4 py-5 mx-5">
                 <h2 class="my-2 text-gray-700 font-bold text-xl">Can't find your ERP?</h2>
                 <p>
                   All accounting platforms listed here have been officially integrated by Churpy.
@@ -85,7 +85,7 @@
                   <input type="text" placeholder="E.g SAP ECC..." class="mt-3 border-gray-400 text-sm py-1 rounded focus:ring-churpy-green focus:border-churpy-green placeholder-gray-400">
                 </div>
 
-                <div class="mt-4 flex relative">
+                <div class="mt-8 md:mt-4 flex relative">
                   <button type="button" class="inline-flex absolute right-0 items-center px-2.5 py-1.5 border border-transparent text-xs rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
                     <i class="fa-solid fa-phone mr-2"></i>
                     Schedule a call</button>
@@ -121,15 +121,15 @@
               Once you agree to transfering your accounting data to Churpy, the process will take a while in the background as you explore other features of the platform.
               Once done, you will see your data within the <b>Reconciliation</b> view as wel as the <b>Marketplace</b>
             </p>
-            <div class="flex justify-between items-center w-[80%] mt-5">
+            <div class="flex justify-between items-center md:w-[80%] mt-5">
               <div class="w-fit">
-                <h3 class="font-bold text-3xl">{{selected.name}}</h3>
+                <h3 class="font-bold md:text-3xl">{{selected.name}}</h3>
               </div>
               <div class="w-14 flex justify-center">
                 <i class="fa-duotone fa-arrow-right-arrow-left text-gray-700 text-3xl"></i>
               </div>
               <div class="w-fit mx-4 flex">
-                <img class="h-20" src="/images/logo-full.png" alt="">
+                <img class="md:h-20" src="/images/logo-full.png" alt="">
               </div>
             </div>
 
@@ -147,10 +147,12 @@
           </TabPanel>
         </Transition>
         <!--buttons-->
-        <div class="absolute bottom-0 md:w-[900px] py-2 px-2 flex justify-between">
-          <button type="button" class="inline-flex items-center px-4 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-churpy-dark bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400 transition-all h-fit">&leftarrow; Back</button>
+        <div class="hidden md:block mt-20">
+          <div class="absolute bottom-0 md:w-[900px] py-2 px-2 flex justify-between">
+            <button type="button" class="inline-flex items-center px-4 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-churpy-dark bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400 transition-all h-fit">&leftarrow; Back</button>
 
-        <button type="button" class="inline-flex items-center px-4 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">Next &rightarrow;</button>
+          <button type="button" class="inline-flex items-center px-4 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">Next &rightarrow;</button>
+        </div>
 
         </div>
       </TabPanels>
