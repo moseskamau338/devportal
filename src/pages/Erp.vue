@@ -1,5 +1,5 @@
 <template>
- <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[98%] max-w-fit overflow-x-auto lg:overflow-x-hidden relative">
+ <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[98%] max-w-full overflow-x-auto lg:overflow-x-hidden relative">
      <TabGroup>
         <TabList as="div" class="border-b-2 border-slate-200 pt-3 px-3 flex">
           <Tab as="div" class="-mb-0.5" v-slot="{ selected }" v-for="(item, index) in [

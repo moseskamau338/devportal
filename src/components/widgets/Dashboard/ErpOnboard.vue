@@ -34,9 +34,9 @@
 
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2">
 
-              <div class="h-full w-full px-4 py-3 overflow-y-auto rounded bg-gray-50">
+              <div class="h-full w-full px-4 py-3 overflow-y-auto rounded bg-gray-50 dark:bg-churpy-night">
 
-                <input v-model="query" type="text" placeholder="Search ERP..." class="my-2 transition-all rounded border border-gray-200 leading-none focus:border-churpy-green focus:ring-churpy-green placeholder-gray-300 w-full mb-5">
+                <input v-model="query" type="text" placeholder="Search ERP..." class="my-2 transition-all rounded border border-gray-200 dark:border-gray-600 leading-none focus:border-churpy-green focus:ring-churpy-green placeholder-gray-300 w-full mb-5 dark:bg-churpy-night-box">
 
                 <RadioGroup class="max-h-[300px]" v-model="selected">
                   <RadioGroupLabel class="sr-only">ERP</RadioGroupLabel>
@@ -52,14 +52,14 @@
                         :class="[
                           checked ? 'border-2 border-churpy-green bg-opacity-75 ' : '',
                         ]"
-                        class="relative flex cursor-pointer rounded px-5 py-2 shadow-md focus:outline-none"
+                        class="relative flex cursor-pointer rounded px-5 py-2 shadow-md focus:outline-none dark:bg-churpy-night-box"
                       >
                         <div class="flex w-full items-center justify-between">
                           <div class="flex items-center">
                             <div class="text-md">
                               <RadioGroupLabel
                                 as="p"
-                                class="font-medium text-gray-600"
+                                class="font-medium text-gray-600 dark:text-gray-500"
                               >
                                 {{ erp.name }}
                               </RadioGroupLabel>
@@ -75,14 +75,14 @@
                 </RadioGroup>
               </div>
               <div class="mt-5 md:mt-0 border border-gray-700 rounded border-dashed min-h-[200px] md:h-auto h-[340px] px-4 py-5 mx-5">
-                <h2 class="my-2 text-gray-700 font-bold text-xl">Can't find your ERP?</h2>
+                <h2 class="my-2 text-gray-700 dark:text-gray-50 font-bold text-xl">Can't find your ERP?</h2>
                 <p>
                   All accounting platforms listed here have been officially integrated by Churpy.
                   If you can't find yours, schedule a call with us below for further assistance
                 </p>
                 <div class="flex flex-col w-[50%] mt-4">
                   <label class="font-light">Enter ERP name</label>
-                  <input type="text" placeholder="E.g SAP ECC..." class="mt-3 border-gray-400 text-sm py-1 rounded focus:ring-churpy-green focus:border-churpy-green placeholder-gray-400">
+                  <input type="text" placeholder="E.g SAP ECC..." class="mt-3 border-gray-400 text-sm py-1 rounded focus:ring-churpy-green focus:border-churpy-green placeholder-gray-400 dark:border-gray-600 dark:bg-churpy-night">
                 </div>
 
                 <div class="mt-8 md:mt-4 flex relative">
@@ -126,10 +126,10 @@
                 <h3 class="font-bold md:text-3xl">{{selected.name}}</h3>
               </div>
               <div class="w-14 flex justify-center">
-                <i class="fa-duotone fa-arrow-right-arrow-left text-gray-700 text-3xl"></i>
+                <i class="fa-duotone fa-arrow-right-arrow-left text-gray-700 dark:text-gray-100 text-3xl"></i>
               </div>
               <div class="w-fit mx-4 flex">
-                <img class="md:h-20" src="/images/logo-full.png" alt="">
+                  <img class="md:h-20" src="/images/logo-full.png" alt="">
               </div>
             </div>
 
