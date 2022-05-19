@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .table-cell{
+        @apply  whitespace-nowrap px-3 py-4 text-sm text-gray-500;
+    }
+}
