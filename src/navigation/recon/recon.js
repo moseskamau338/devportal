@@ -10,7 +10,7 @@ export default [
 
   {
     title: 'Bank Transactions',
-    route: 'workArea',
+    route: 'transactions',
     icon: 'fa-solid fa-file-invoice-dollar',
   },
 

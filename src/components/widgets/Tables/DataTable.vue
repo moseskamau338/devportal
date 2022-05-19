@@ -1,13 +1,13 @@
 <template>
-  <h1>Current: dynamic tables</h1>
-  <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="px-4">
     <div class="sm:flex sm:items-center">
-      <div class="sm:flex-auto">
-        Table sample design
-        <p class="mt-2 text-sm text-gray-700">Table description goes here or maybe a <code class="bg-red-200/50 px-0.5 rounded px-1">slot</code>.</p>
+      <div class="sm:flex-auto text-lg">
+        <slot name="title">Table sample design</slot>
+        <p class="mt-2 text-sm text-gray-700">
+          <slot name="description"></slot>
+        </p>
       </div>
-      <div class="mt-4 sm:mt-0 md:ml-4 sm:ml-16 sm:flex-none">
+      <div class="mt-4 sm:mt-0 md:max-w-5xl sm:max-w-5xl sm:flex-none">
         <div class="mt-1 relative rounded-md shadow-sm">
           <input type="text" name="account-number" id="account-number" class="focus:ring-churpy-green focus:border-churpy-green block w-full dark:bg-churpy-night-box dark:border-gray-500 pr-10 sm:text-sm border-gray-300 rounded-md leading-3 py-1.5" placeholder="Search records...">
           <div class=" flex absolute inset-y-0 right-0 pr-3 items-center pointer-events-none">
@@ -17,9 +17,9 @@
         </div>
       </div>
     </div>
-    <div class="mt-4 flex flex-col">
-      <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle">
+    <div v-if="records.length > 0" class="mt-4 flex flex-col">
+      <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 flex justify-center">
+        <div class="inline-block relative w-full mx-12 py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded-lg h-80 overflow-y-auto">
             <table class="min-w-full divide-y divide-gray-300">
               <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
@@ -28,7 +28,7 @@
                     <!--<i class="fa-solid fa-arrow-alt-down text-gray-400 cursor-pointer ml-0 mr-1 group-hover:scale-105 group-hover:text-gray-600 transition-all "></i>-->
 
                     <span v-if="!field.action" class="relative flex items-center justify-between">
-                      <input v-show="field.selectable" type="checkbox" class="w-4 h-4 rounded focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green"/>
+                      <input v-show="selectable" type="checkbox" class="w-4 h-4 rounded focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green"/>
                       <span>{{field.label}}</span>
 
                        <Popover v-slot="{ open }" class="relative">
@@ -223,65 +223,47 @@
             </div>
           </div>
 
-
         </div>
       </div>
     </div>
+
+    <Alert v-else class="mt-4 w-1/2">
+      Your table has no records yet
+    </Alert>
+
   </div>
 </template>
 
-<script>
-export default{
-  name: "TableWidget"
-}
-</script>
 
-<script setup>
-import { ref } from 'vue'
+<script>
 import { Popover, PopoverButton, PopoverPanel,
 TabGroup, TabList, Tab, TabPanels, TabPanel
 } from '@headlessui/vue'
+import Alert from "@/components/parts/Alert.vue";
 
-const data = ref([
-  {id:'910043527347y387463874y3784y934y984', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Customer X', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-  {id:'910043527', date:'29/03/2022', ccy:'KSH',amount:340000, recon_amount:0, gl:'GL-34434534', customer:'Unga farmcare LTD - Nairobi Feeds', recon_status: 'pending',source:'SAP'},
-])
+export default{
+  name: "TableWidget",
+  components:{
+    Alert, Popover, PopoverButton, PopoverPanel,
+    TabGroup, TabList, Tab, TabPanels, TabPanel
+  },
+  props:{
+    records:{required: true, type:Array},
+    selectable: {type:Boolean, default: false},
+    fields:{required: true, type:Array},
+  },
+  setup(props){
 
-const fields = ref([
-  {type:'text',label: 'Invoice ID', filterable: true, searchable:false, selectable:true},
-  {type:'date',label: 'Date', filterable: true, searchable:false},
-  {type:'text',label: 'Currency', filterable: true, searchable:false},
-  {type:'number',label: 'Invoice Amount', filterable: true, searchable:false},
-  {type:'number',label: 'Reconciled Amount', filterable: true, searchable:false},
-  {type:'text',label: 'GL/Bank Account', filterable: true, searchable:false},
-  {type:'text',label: 'Customer', filterable: true, searchable:false},
-  {type:'text',label: 'Recon. Status', filterable: true, searchable:false},
-  {type:'text',label: 'Source', filterable: true, searchable:false},
-  {type:'text',label: 'Edit', action: true},
-])
+    function rowClicked(index){
+      console.log(index)
+      data.value[data.value.indexOf(index)].id = 'Clicked'
+      // alert('Row clicked!', JSON.stringify(index))
+    }
 
-
-
-function rowClicked(index){
-  console.log(index)
-  data.value[data.value.indexOf(index)].id = 'Clicked'
-  // alert('Row clicked!', JSON.stringify(index))
+    return {rowClicked}
+  }
 }
+
+
+
 </script>

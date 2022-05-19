@@ -80,7 +80,7 @@
 
 <script>
 import {ref, inject} from "vue";
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import Members from "@/components/page/Teams/Members.vue";
 import Permissions from "@/components/page/Teams/Permissions.vue";
@@ -102,7 +102,7 @@ export default{
 
     let group_name = ref('')
     let groups = ref([
-        {name:'Admin', users:12, created_at:moment('12/03/2022').format('MMMM Do YYYY')}
+        {name:'Admin', users:12, created_at:dayjs('12/03/2022').format('MMM D, YYYY')}
     ])
 
     const removeGroup = (group) => {remove(groups.value, group)}
@@ -111,7 +111,7 @@ export default{
       if (group_name.value.length>0){
         processing.value = true
         setTimeout(()=>{
-          groups.value.unshift({name: group_name.value, users:0, created_at:moment().format('MMMM Do YYYY')})
+          groups.value.unshift({name: group_name.value, users:0, created_at:dayjs().format('MMM D, YYYY')})
           //reset
           group_name.value = ''
           //emitter.emit('toast', {title:'Group added successfully', type:'success'})

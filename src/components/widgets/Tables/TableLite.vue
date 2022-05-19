@@ -1,6 +1,6 @@
 <template>
 
-    <div class="px-4 mt-5">
+    <div class="px-4 mt-5 max-w-7xl">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <slot name="header"></slot>
@@ -9,14 +9,14 @@
         <slot name="actions"></slot>
       </div>
     </div>
-    <div class="mt-4 flex flex-col" v-if="props.records.length > 0">
+    <div class="mt-4 flex flex-col mx-4" v-if="records.length > 0">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
-          <div class="ring-1 ring-black ring-opacity-5 md:rounded-lg h-80 overflow-y-auto">
+          <div class="ring-1 ring-black ring-opacity-5 md:rounded h-fit overflow-y-auto">
             <table class="min-w-full divide-y divide-gray-300">
               <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
               <tr class="py-0">
-                <th  v-for="(field, index) in props.headers" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">
+                <th  v-for="(field, index) in headers" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">
                     <!--<i class="fa-solid fa-arrow-alt-down text-gray-400 cursor-pointer ml-0 mr-1 group-hover:scale-105 group-hover:text-gray-600 transition-all "></i>-->
 
                     <span v-if="!field.action" class="relative flex items-center justify-between">
@@ -121,13 +121,16 @@
               </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
-              <tr :key="index" v-for="(record, index) in props.records" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
+              <tr :key="index" v-for="(record, index) in records" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
                 <td :key="ind" v-for="(key, ind) in Object.keys(record)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <!--key => row key-->
                   <!--headers[index].key => header index-->
                   <slot :name="key" v-bind:record="record">
                     {{record[key]}}
                   </slot>
+                </td>
+                <td v-if="actioned">
+                  <slot name="row_actions"></slot>
                 </td>
 
               </tr>
@@ -136,6 +139,7 @@
           </div>
           <!--pagination-->
           <div class="px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+            <!--mobile view-->
             <div class="flex-1 flex justify-between sm:hidden">
               <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Previous </a>
               <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Next </a>
@@ -144,16 +148,16 @@
               <div>
                 <p class="text-sm text-gray-700">
                   Showing
-                  <span class="font-medium">1</span>
+                  <span class="font-medium">{{ paginateData.from }}</span>
                   to
-                  <span class="font-medium">10</span>
+                  <span class="font-medium">{{ paginateData.to }}</span>
                   of
-                  <span class="font-medium">97</span>
+                  <span class="font-medium">{{ paginateData.of }}</span>
                   results
                 </p>
               </div>
               <div class="flex items-center">
-                <select class="h-fit py-1 top-0 mr-3 border-gray-400 rounded text-xs text-center align-middle focus:ring-churpy-green focus-visible:ring-churpy-green dark:bg-churpy-night-box dark:border-gray-500">
+                <select v-model="perPage" class="h-fit py-1 top-0 mr-3 border-gray-400 rounded text-xs text-center align-middle focus:ring-churpy-green focus-visible:ring-churpy-green dark:bg-churpy-night-box dark:border-gray-500">
                   <option>5</option>
                   <option>10</option>
                   <option>20</option>
@@ -202,10 +206,10 @@
           </div>
           <div class="ml-3">
             <p class="text-sm text-yellow-700">
-              <span v-if="props.records.length === 0">
+              <span v-if="records.length === 0">
                 <strong>No records available</strong>
               </span>
-              <span v-if="props.records.length > 0">
+              <span v-if="records.length > 0">
                 Your records structure might be incorrect
               </span>
             </p>
@@ -224,6 +228,7 @@ export default {
   name: "TableLite",
   props:{
     headers:{required:true, type:Array},
+    actioned:{default:false, type:Boolean},
     records:{
       required:true,
       type:Array,
@@ -238,14 +243,13 @@ export default {
 
     const paginateData = computed(() => {
          return {
-            from: perPage.value * (currentPage.value - 1) + (perPage.value ? 1 : 0),
-            to: perPage.value * (currentPage.value - 1) + perPage.value,
+            from: parseInt(perPage.value * (currentPage.value - 1) + (perPage.value ? 1 : 0)),
+            to: parseInt(perPage.value * (currentPage.value - 1) + perPage.value),
             of: props.records.length, //check pagination structure
           }
         })
 
         return {
-          props,
           perPage,
           currentPage,
           perPageOptions,

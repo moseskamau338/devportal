@@ -20,6 +20,7 @@ export default {
             case 'success': return 'text-white bg-churpy-green hover:bg-green-600 focus:ring-churpy-green';
             case 'danger' :return 'text-white bg-red-500 hover:bg-red-600 focus:ring-red-500';
             case 'warning' : return 'text-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-400';
+            case 'dark' : return 'text-white bg-churpy-dark hover:bg-churpy-dark/90 focus:ring-churpy-dark';
             default: return 'text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-500';
             }
           })(),

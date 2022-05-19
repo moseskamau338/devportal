@@ -34,6 +34,21 @@ const routes = [
         }
     },
     {
+        path: '/banks/transactions',
+        name: 'transactions',
+        component: () => import('@/pages/BankTransactions.vue'),
+        meta:{
+            title: 'Bank Transactions',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'View Transactions',
+                    active: true,
+                },
+            ]),
+        }
+    },
+    {
         path: '/audit',
         name: 'audit',
         component: () => import('@/pages/Audit.vue'),

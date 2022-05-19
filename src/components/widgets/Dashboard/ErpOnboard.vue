@@ -74,7 +74,7 @@
                   </div>
                 </RadioGroup>
               </div>
-              <div class="mt-5 md:mt-0 border border-gray-700 rounded border-dashed min-h-[200px] md:h-auto h-[340px] px-4 py-5 mx-5">
+              <div class="mt-5 md:mt-0 border border-gray-700 rounded border-dashed min-h-[200px] h-fit px-4 py-5 pb-12 mx-5 relative flex flex-col">
                 <h2 class="my-2 text-gray-700 dark:text-gray-50 font-bold text-xl">Can't find your ERP?</h2>
                 <p>
                   All accounting platforms listed here have been officially integrated by Churpy.
@@ -85,7 +85,7 @@
                   <input type="text" placeholder="E.g SAP ECC..." class="mt-3 border-gray-400 text-sm py-1 rounded focus:ring-churpy-green focus:border-churpy-green placeholder-gray-400 dark:border-gray-600 dark:bg-churpy-night">
                 </div>
 
-                <div class="mt-8 md:mt-4 flex relative">
+                <div class="relative bottom-0">
                   <button type="button" class="inline-flex absolute right-0 items-center px-2.5 py-1.5 border border-transparent text-xs rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
                     <i class="fa-solid fa-phone mr-2"></i>
                     Schedule a call</button>

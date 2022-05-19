@@ -71,7 +71,8 @@
 import Modal from "../Modal.vue";
 import Permissions from "./Permissions.vue";
 import {ref} from "vue";
-import moment from "moment";
+import dayjs from 'dayjs'
+
 export default {
   name: "EditMember",
   components: {Permissions, Modal},
@@ -88,7 +89,7 @@ export default {
 
   setup(props){
     let groups = ref([
-        {name:'Admin', users:12, created_at:moment('12/03/2022').format('MMMM Do YYYY')}
+        {name:'Admin', users:12, created_at:dayjs('12/03/2022').format('MMMM Do YYYY')}
     ])
     return {props, groups}
   }
