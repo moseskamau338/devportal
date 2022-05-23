@@ -2,15 +2,15 @@
   <section class="px-4 py-5 bg-white dark:bg-churpy-night-box rounded shadow-md min-h-full">
     <header class="flex border-b border-b-gray-200">
       <select name="accounts" class="border-none dark:bg-churpy-night-box focus:border-none focus:outline-none focus:ring-0 font-bold text-green-600">
-        <option>NCBA - 501*****345</option>
-        <option>KCB - 501*****345</option>
-        <option>CITI - 501*****345</option>
+        <option>
+          Company X Ltd
+        </option>
+        <option>Company Y</option>
+        <option>Client Z</option>
       </select>
     </header>
 
-    <p class="mt-4">Overview of bank transactions discovered by Churpy. <b>Select a bank account above</b> to view related transactions.</p>
-
-      <div class="mt-10 ml-4">
+      <div class="mt-5 ml-4">
         Applied filters
         <div class="w-fit flex flex-col md:flex-row px-4 py-2 space-y-1 md:space-x-2">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-300 text-gray-800 hover:scale-105 hover:shadow transition-all w-fit">
@@ -171,21 +171,16 @@
 
         </template>
 
-
-        <template #direction="data">
-          <span class="inline-flex items-center px-2.5 py-0.5 text-sm font-medium" :class="{
-            'text-green-500': data.record.direction.toLowerCase() === 'cr',
-            'text-red-500': data.record.direction.toLowerCase() !== 'cr',
-          }"> {{data.record.direction}}
-
-          <i class="fa-solid ml-1" :class="[data.record.direction.toLowerCase() === 'cr'? 'fa-arrow-down-left':'fa-arrow-up-right']"></i>
-          </span>
+        <template #paid="data">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium shadow" :class="[
+              helpers.parseTableStatus(data.record.paid.toLowerCase(), [{name:'tentative', status:'warning'}])
+            ]"> {{data.record.paid.toUpperCase()}} </span>
         </template>
 
          <template #recon_status="data">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium shadow" :class="[
-              helpers.parseTableStatus(data.record.recon_status.toLowerCase())
-            ]"> {{data.record.recon_status.toUpperCase()}} </span>
+               helpers.parseTableStatus(data.record.recon_status.toLowerCase())
+              ]"> {{data.record.recon_status.toUpperCase()}} </span>
         </template>
 
 
@@ -198,7 +193,7 @@
 </template>
 
 <script>
-import {ref, inject} from "vue";
+import {inject, ref} from "vue";
 
 //get the date picker docs here: https://litepie.com/
 import LitepieDatepicker from 'litepie-datepicker-tw3'
@@ -208,7 +203,7 @@ import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import CButton from "@/components/parts/CButton.vue";
 
 export default{
-    name: "BankTransactions",
+    name: "ExpectedPayments",
   components:{
     CButton,
     TableLite,
@@ -218,21 +213,21 @@ export default{
   },
     setup(){
       const helpers = inject('helpers')
+
       const dateValue = ref([]);
       const data = ref([
-        {id:'910043527347y387463874y3784y934y984', trans_date:'29/03/2022', val_date:'29/04/2022',amount:'34,200', direction:'CR', description:'Some description', customer:'Customer X', recon_status: 'pending'},
-        {id:'TR-325684734', trans_date:'29/03/2022', val_date:'29/04/2022',amount:'210,700', direction:'DR', description:'Some description', customer:'Customer Y', recon_status: 'USER'},
+        {id:'91004300', date:'29/03/2022',amount:'34,200', description:'Some description', paid:'pending', recon_status: 'pending'},
+        {id:'938629193', date:'29/03/2022',amount:'43,442', description:'Another desc', paid:'tentative', recon_status: 'suggested'},
+        {id:'92001200', date:'29/03/2022',amount:'23,200', description:'Some description', paid:'pending', recon_status: 'suggested'},
       ])
 
 
       const fields = ref([
-          {type:'text',key:'id',label: 'Transaction Ref.', filterable: true, searchable:false},
-          {type:'date',key:'trans_date',label: 'Transaction Date', filterable: true, searchable:false},
-          {type:'text',key:'val_date',label: 'Value Date', filterable: true, searchable:false},
+          {type:'text',key:'id',label: 'Invoice ID', filterable: true, searchable:false},
+          {type:'date',key:'trans_date',label: 'Date', filterable: true, searchable:false},
           {type:'number',key:'amount',label: 'Amount', filterable: true, searchable:false},
-          {type:'number',key:'direction',label: 'Direction', filterable: true, searchable:false},
           {type:'text',key:'description',label: 'Description', filterable: true, searchable:false},
-          {type:'text',key:'customer',label: 'Counter Party', filterable: true, searchable:false},
+          {type:'text',key:'paid',label: 'Paid Status', filterable: true, searchable:false},
           {type:'text',key:'recon_status',label: 'Recon. Status', filterable: true, searchable:false},
           {type:'text',key:'action',label: 'Edit', action: true},
         ])

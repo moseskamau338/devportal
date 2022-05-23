@@ -19,9 +19,9 @@ import('./setup')
   const app = createApp(App)
     app.provide('emitter', emitter)
     app.provide('keycloak', keycloak)
+    app.provide('helpers', functions)
 
     app.config.globalProperties.$filters = AppFilters
-    app.config.globalProperties.$helpers = functions
 
     app.use(router)
         .use(pinia)

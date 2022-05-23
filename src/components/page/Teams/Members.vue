@@ -36,7 +36,7 @@
               <tbody class="divide-y divide-gray-200 bg-white">
                 <tr v-for="(member, index) in members" :key="index">
                   <td class="whitespace-nowrap flex items-center py-4 pl-4 pr-3 text-sm font-medium text-gray-700 sm:pl-6">
-                    <div class="h-6 w-6 rounded-full text-sm flex items-center justify-center mr-2 p-4" :style="`background-color: ${$helpers.getRandomColor(member.name).color}`">{{$helpers.getRandomColor(member.name).character}}</div>
+                    <div class="h-6 w-6 rounded-full text-sm flex items-center justify-center mr-2 p-4" :style="`background-color: ${helpers.getRandomColor(member.name).color}`">{{helpers.getRandomColor(member.name).character}}</div>
                     {{ member.name }}
                   </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ member.phone }}</td>
@@ -115,6 +115,8 @@ export default {
   },
   setup(){
     const emitter = inject('emitter')
+    const helpers = inject('helpers')
+
     const members = ref([
       {name: 'Moses Kamau Muchiri', email: 'moseskamau338@gmail.com', phone:'+2547566453', role: {id:1,name:'Admin'}},
       {name: 'James Kamau', email: 'james@companyx.com', phone:'+2547236853', role: {id:1,name:'Admin'}}
@@ -143,7 +145,7 @@ export default {
         })
 
 
-    return {members, showCreate, actions, edit}
+    return {members, showCreate, actions, edit, helpers}
   }
 }
 </script>

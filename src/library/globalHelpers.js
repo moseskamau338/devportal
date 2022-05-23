@@ -1,3 +1,5 @@
+import find from "./filters/array/find";
+
 export const functions = {
    getRandomColor(name) {
     // get first alphabet in upper case
@@ -18,6 +20,32 @@ export const functions = {
       color: 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)',
       character: firstAlphabet.toUpperCase()+name.charAt(1).toUpperCase()
     };
-  }
+  },
+    parseTableStatus(status, mappings = []){
+       // take list of mappings: ['tentative' => warning]
+        let newmappings = [
+          {name:'pending', status:'danger'},
+          {name:'suggested', status:'warning'},
+          {name:'user', status:'success'},
+          {name:'user-p', status:'success'},
+        ].concat(mappings)
+        console.log('concatnated mappings: ', newmappings)
+        //get status mapping:
+        let mapping = find(newmappings, status)[0]
+
+        if (!mapping) {
+            console.log('Could not find mapping for: ', status, newmappings, mapping)
+            return 'bg-indigo-100 text-churpy-dark'
+        }
+
+        //compute tailwind classes
+        switch(mapping.status) {
+            case 'success': return 'bg-green-100 text-green-500';
+            case 'danger' :return 'bg-red-100 text-red-500';
+            case 'warning' : return 'bg-orange-100 text-orange-500';
+            default: return 'bg-blue-100 dark:bg-blue-300 border-blue-400';
+        }
+
+    }
 
 }

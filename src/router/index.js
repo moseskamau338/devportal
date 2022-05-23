@@ -49,6 +49,21 @@ const routes = [
         }
     },
     {
+        path: '/payments/expected',
+        name: 'expected_payments',
+        component: () => import('@/pages/ExpectedPayments.vue'),
+        meta:{
+            title: 'Expected Payments',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Payments',
+                    active: true,
+                },
+            ]),
+        }
+    },
+    {
         path: '/audit',
         name: 'audit',
         component: () => import('@/pages/Audit.vue'),

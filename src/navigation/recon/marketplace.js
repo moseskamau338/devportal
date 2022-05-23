@@ -9,7 +9,7 @@ export default [
   },
   {
     title: 'Expected Payments',
-    route: 'audit',
+    route: 'expected_payments',
     icon: 'fa-solid fa-money-bill-wave',
   },
   {
