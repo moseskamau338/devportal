@@ -127,9 +127,6 @@ export default {
       member: {}
     })
     const actions = {
-      submitCreateForm : () =>{
-        console.log('creating')
-      },
       showEditForm: (member) => {
         edit.value.show = true;
         edit.value.member = member

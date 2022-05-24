@@ -29,12 +29,10 @@ export const functions = {
           {name:'user', status:'success'},
           {name:'user-p', status:'success'},
         ].concat(mappings)
-        console.log('concatnated mappings: ', newmappings)
         //get status mapping:
         let mapping = find(newmappings, status)[0]
 
         if (!mapping) {
-            console.log('Could not find mapping for: ', status, newmappings, mapping)
             return 'bg-indigo-100 text-churpy-dark'
         }
 

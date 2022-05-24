@@ -183,6 +183,31 @@ const routes = [
             ]),
         }
     },
+     {
+        path: '/invoice/marketplace/:id',
+        name: 'marketplace-view',
+        component: () => import('@/pages/Client.vue'),
+        meta:{
+            title: route => `View Client: ${route.params.id}`,
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Marketplace',
+                    active: false,
+                    to: {name: 'marketplace'}
+                },
+                {
+                    text: 'View Client',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',
@@ -264,30 +289,28 @@ export let requiresGuest = false;
 
    router.beforeEach((to, from, next) => {
        if (to.path) {NProgress.start()}
-       console.log('About to check auth')
+
+       const { title } = to.meta;
+        to.meta.title = typeof title === 'function' ? title(to) : title;
+
        requiresAuth = to.matched.some(record => record.meta.requiresAuth)
        requiresGuest = to.matched.some(record => record.meta.requiresGuest)
        if (to.matched.some(record => record.meta.requiresAuth)){
-           console.log('Auth required')
            nextMain = next
            if (checkAuth()){
-               console.log('Auth passed')
 
                //guest screen?
                if (requiresGuest){
-                    console.log('Must be guest to access')
                     next({name: 'dashboard'})
               }else{next()}
 
            }else{
-               console.log('Auth check failed')
                setTimeout(()=>{
                    //recheck authentication (should be updated by main.js)
                    if (!checkAuth()){keycloak.login()}
                }, 500)
            }
        }else{
-           console.log('No need for auth')
            next()
        }
  })

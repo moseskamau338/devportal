@@ -130,7 +130,7 @@
                   </slot>
                 </td>
                 <td v-if="actioned">
-                  <slot name="row_actions"></slot>
+                  <slot name="row_actions" v-bind:record="record"></slot>
                 </td>
 
               </tr>

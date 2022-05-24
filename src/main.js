@@ -31,20 +31,15 @@ import('./setup')
 
 
 keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
-  console.log('Authentication status: ', auth)
   if (!auth) {
-    console.log('Requires auth? ', requiresAuth)
     if (requiresAuth) {keycloak.login();}
     else {
-        console.log('LOGGED IN or NOT')
         app.mount('#app')
         nextMain()
     }
     //
   } else {
-      console.log("Authenticated");
       app.mount('#app')
-      console.log('App loaded')
 
       nextMain() //force next route
     //Token Refresh
@@ -55,7 +50,6 @@ keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
               + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
           }
         }).catch(() => {
-          console.log('Failed to refresh token');
           keycloak.login()
         });
       }, 6000)

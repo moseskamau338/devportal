@@ -11,7 +11,6 @@ import {useUiStore} from '@/db/ui'
 
 //listen to state changes
 uiStore.$subscribe((mutation, state) =>{
-  console.log('Current theme: ', state.theme)
   uiStore.changeTheme(state.theme? 'dark' : 'light')
 }, { detached: true })
 </script>

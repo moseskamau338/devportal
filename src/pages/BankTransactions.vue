@@ -237,7 +237,6 @@ export default{
           {type:'text',key:'action',label: 'Edit', action: true},
         ])
 
-      console.log(data.value)
       return {data, fields,dateValue, helpers}
     }
   }

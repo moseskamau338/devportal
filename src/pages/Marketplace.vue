@@ -45,8 +45,11 @@
             <Badge :themes="[{name:'active', status:'success'},]" :status="data.record.status" />
           </template>
 
-          <template #row_actions>
-            <CButton variant="success">View</CButton>
+          <template #row_actions="{record}">
+
+            <router-link :to="{name:'marketplace-view', params:{id: record.id }}">
+              <CButton variant="success">View</CButton>
+            </router-link>
           </template>
         </TableLite>
       </div>

@@ -124,7 +124,6 @@ const gridConfig = ref(
 
 
  setTimeout(() => {
-  //  console.log('loaded');
     loaded.value = true
   }, 3000);
 </script>

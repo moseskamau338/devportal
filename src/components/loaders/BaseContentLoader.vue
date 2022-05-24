@@ -1,8 +1,8 @@
 <template>
-<div class="flex flex-col hover:cursor-progress w-screen h-screen m-auto">
+<div class="flex flex-col hover:cursor-progress items-center mx-auto">
 
   <content-loader
-    viewBox="0 0 450 350"
+    viewBox="0 0 1000 1000"
     :speed="2"
     :primaryColor="primaryColor"
     :secondaryColor="secondaryColor"
@@ -15,21 +15,22 @@
 <script>
   import { ContentLoader } from "vue-content-loader"
   import { useUiStore } from "@/db/ui"
+  import {computed} from "vue";
 
 
   export default {
     components: { ContentLoader },
-    computed:{
-      primaryColor(){
-        return '#ebebeb';
-        //return useUiStore().theme === 'dark'?
-        //  '#1E293B': '#ebebeb'
-      },
-      secondaryColor(){
-        return '#ffffff';
-        //return useUiStore().theme === 'dark'?
-        //  '#283046': '#ffffff'
-      }
-    }
+    setup(){
+     const primaryColor = computed(() => {
+       console.log('Current theme: ', useUiStore().theme)
+          return useUiStore().theme? '#1E293B': '#cfd2df'
+     })
+      const secondaryColor = computed(() => {
+          return useUiStore().theme? '#283046': '#ffffff'
+     })
+
+      return {primaryColor, secondaryColor}
+    },
+
   }
 </script>

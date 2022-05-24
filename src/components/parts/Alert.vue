@@ -1,5 +1,5 @@
 <template>
-<div :key="variant" :class="themeGenerator.bgColor" class="border-l-4 px-4 py-2 w-fit shadow rounded">
+<div :key="variant" :class="themeGenerator.bgColor" class="border-l-4 px-2 py-1 w-fit shadow rounded">
     <div class="flex items-center">
       <div class="flex-shrink-0">
         <i class="fa-solid" :class="themeGenerator.icon"></i>
