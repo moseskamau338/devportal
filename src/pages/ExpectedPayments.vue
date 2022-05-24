@@ -172,15 +172,11 @@
         </template>
 
         <template #paid="data">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium shadow" :class="[
-              helpers.parseTableStatus(data.record.paid.toLowerCase(), [{name:'tentative', status:'warning'}])
-            ]"> {{data.record.paid.toUpperCase()}} </span>
+          <Badge :themes="[{name:'tentative', status:'warning'}]" :status="data.record.recon_status" />
         </template>
 
          <template #recon_status="data">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium shadow" :class="[
-               helpers.parseTableStatus(data.record.recon_status.toLowerCase())
-              ]"> {{data.record.recon_status.toUpperCase()}} </span>
+           <Badge :status="data.record.recon_status" />
         </template>
 
 
@@ -197,6 +193,7 @@ import {inject, ref} from "vue";
 
 //get the date picker docs here: https://litepie.com/
 import LitepieDatepicker from 'litepie-datepicker-tw3'
+import Badge from "@/components/parts/Badge.vue";
 
 import TableLite from "@/components/widgets/Tables/TableLite.vue";
   import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
@@ -207,6 +204,7 @@ export default{
   components:{
     CButton,
     TableLite,
+    Badge,
     Menu, MenuButton,
     MenuItems, MenuItem,
     LitepieDatepicker

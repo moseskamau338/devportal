@@ -162,6 +162,27 @@ const routes = [
             ]),
         }
     },
+    //marketplace
+     {
+        path: '/invoice/marketplace',
+        name: 'marketplace',
+        component: () => import('@/pages/Marketplace.vue'),
+        meta:{
+            title: 'Marketplace',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Invoice Marketplace',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',

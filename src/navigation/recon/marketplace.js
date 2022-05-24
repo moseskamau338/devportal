@@ -4,7 +4,7 @@ export default [
   },
    {
     title: 'Invoice Marketplace',
-    route: 'audit',
+    route: 'marketplace',
     icon: 'fa-solid fa-store',
   },
   {

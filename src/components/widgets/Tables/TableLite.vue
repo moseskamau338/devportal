@@ -13,7 +13,7 @@
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded h-fit overflow-y-auto">
-            <table class="min-w-full divide-y divide-gray-300">
+            <table class="min-w-full table-auto divide-y divide-gray-300">
               <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
               <tr class="py-0">
                 <th  v-for="(field, index) in headers" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">
@@ -207,7 +207,7 @@
           <div class="ml-3">
             <p class="text-sm text-yellow-700">
               <span v-if="records.length === 0">
-                <strong>No records available</strong>
+                <strong>Table has no records</strong>
               </span>
               <span v-if="records.length > 0">
                 Your records structure might be incorrect
