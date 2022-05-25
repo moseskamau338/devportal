@@ -1,22 +1,23 @@
 <template>
- <div class="bg-white dark:bg-churpy-night-box mx-10 mb-14 min-h-[500px] rounded-md shadow-md pl-3 pt-4 relative">
-  <h1 class="text-xl">Welcome to <span class="font-brand">Churpy</span> Reconciliation Engine</h1>
-   <p class="prose-base">We have a few options to get you up and running fast. Feel free to skip any step.</p>
+ <div class="bg-white dark:bg-churpy-night-box md:mx-5 mb-14 min-h-[500px] rounded-md shadow-md pl-3 pt-4 relative">
+  <h1 class="text-xl font-bold">Welcome to <span class="font-brand">Churpy</span> Reconciliation Engine</h1>
+   <p class="prose-base mt-2">We have a few options to get you up and running fast. Feel free to skip any step.</p>
 
-   <TabGroup as="div" vertical class="min-h-[300px] mt-8 mx-20 grid grid-cols-2">
-      <TabList as="div" class="grid grid-cols-1 gap-5 justify-items-start h-32">
+   <TabGroup as="div" vertical class="md:min-h-[300px] mt-8 md:mx-20 md:grid md:grid-cols-2">
+      <TabList ref="tabs" as="div" class="flex flex-row overflow-x-auto mb-4 px-4 md:mb-0 md:grid md:grid-cols-1 md:gap-5 justify-items-start md:h-fit scroll-smooth">
         <Tab as="template" :key="index" v-for="(action, index) in ['Setup your team', 'Manage connections', 'Invite and manage clients', 'Go LIVE']" v-slot="{ selected }"
         >
-          <div class="flex items-center w-[90%] py-1.5 px-2 rounded cursor-pointer" :class="{'bg-gray-200 dark:bg-churpy-night' : selected}">
+          <div class="flex flex-shrink-0 items-center w-fit md:w-[90%] py-1.5 px-2 rounded cursor-pointer" :class="{'bg-gray-200 dark:bg-churpy-night' : selected}">
             <span :class="[
                 selected ? 'bg-white' : 'bg-gray-200',
                 'flex items-center justify-center h-6 w-6 rounded-full text-gray-800 shadow-md mr-3']">{{index+1}}</span>
 
-            <h2 class="text-lg" :class="{'font-bold': selected}">{{ action }}</h2>
+            <h2 class="text-xs md:text-lg" :class="{'font-bold': selected}">{{ action }}</h2>
           </div>
         </Tab>
 
       </TabList>
+
       <TabPanels as="div" class="border rounded-md p-4">
         <TabPanel>
           <h1 class="font-semibold text-lg">Setting up team</h1>

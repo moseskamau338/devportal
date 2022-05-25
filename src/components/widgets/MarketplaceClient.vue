@@ -13,7 +13,7 @@
           <span>Credit/Debit</span>
         </button>
 
-        <button class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
+        <button @click="viewDetails = !viewDetails" class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
           <i class="fa-solid fa-eye"></i>
           <span>View details</span>
         </button>
@@ -85,6 +85,9 @@
         </template>
       </InvoiceTable>
     </div>
+
+    <ClientDetails @close="viewDetails = false" :client="client" :open="viewDetails"/>
+
   </div>
 </template>
 
@@ -94,23 +97,26 @@ import InvoiceTable from "@/components/widgets/InvoiceTable.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import CButton from "@/components/parts/CButton.vue";
 import Alert from "@/components/parts/Alert.vue";
+import ClientDetails from "@/components/page/ClientDetails.vue";
 
 const loadName = async () => {
   return new Promise((resolve, reject) => {
         setTimeout(()=>{
           resolve('Moses')
-        }, 3000)
+        }, 1000)
       })
 }
 
 export default {
   name: "MarketplaceClient",
-  components: {Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
+  components: {ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
   async setup(){
       const helpers = inject('helpers')
       let name = ref(await loadName())
+      const viewDetails = ref(false)
+    const client = ref({})
 
-      return {helpers, name}
+      return {helpers, name, viewDetails, client}
     }
 }
 </script>
