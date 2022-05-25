@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/pages/Home.vue'
 import NProgress from 'nprogress/nprogress'
 import 'nprogress/nprogress.css'
 import {keycloak, checkAuth} from "../library/Auth/keycloak";
@@ -12,7 +11,16 @@ const routes = [
     {
         path: '/',
         name: 'dashboard',
-        component: Home,
+        component: () => import('@/pages/Home.vue'),
+        meta:{
+            requiresAuth: true
+        }
+
+    },
+    {
+        path: '/test',
+        name: 'test',
+        component: () => import('@/components/widgets/DynamicGrid.vue'),
         meta:{
             requiresAuth: true
         }
@@ -203,6 +211,31 @@ const routes = [
                 },
                 {
                     text: 'View Client',
+                    active: true,
+                },
+            ]),
+        }
+    },
+     {
+        path: '/invoice/marketplace/:client/:invoice',
+        name: 'marketplace-view-invoice',
+        component: () => import('@/pages/InvoiceView.vue'),
+        meta:{
+            title: route => `View invoice: #${route.params.invoice}`,
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Marketplace',
+                    active: false,
+                    to: {name: 'marketplace'}
+                },
+                {
+                    text: 'Invoice',
                     active: true,
                 },
             ]),

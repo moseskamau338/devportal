@@ -33,7 +33,7 @@
                       class="inline-flex w-full justify-center items-center rounded-md bg-churpy-dark px-4 py-1 text-sm font-medium text-white hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-all"
                     >
                       <i class="fa-solid fa-check-square mr-2 hover:text-white" aria-hidden="true"></i>
-                      Recon Status
+                      Reconciliation Status
 
                       <i class="fa-solid fa-chevron-down ml-2 hover:text-white" aria-hidden="true"></i>
                     </MenuButton>
@@ -146,7 +146,11 @@
 
 
         <template #row_actions>
-          <button class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-red-200 flex justify-center items-center p-2"><i class="fa-solid fa-trash-alt text-red-600 text-xs"></i></button>
+          <div class="flex items-center space-x-2 justify-start">
+            <router-link to="/invoice/marketplace/40000022/Invoice Y" class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-green-100 flex justify-center items-center p-2"><i class="fa-solid fa-eye text-green-600 text-xs"></i></router-link>
+
+            <!--<button class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-red-200 flex justify-center items-center p-2"><i class="fa-solid fa-trash-alt text-red-600 text-xs"></i></button>-->
+          </div>
         </template>
       </TableLite>
 </template>

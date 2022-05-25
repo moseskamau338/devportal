@@ -69,7 +69,7 @@
                     class="inline-flex w-full justify-center items-center rounded-md bg-churpy-dark px-4 py-1 text-sm font-medium text-white hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition-all"
                   >
                     <i class="fa-solid fa-check-square mr-2 hover:text-white" aria-hidden="true"></i>
-                    Recon Status
+                    Reconciliation Status
 
                     <i class="fa-solid fa-chevron-down ml-2 hover:text-white" aria-hidden="true"></i>
                   </MenuButton>

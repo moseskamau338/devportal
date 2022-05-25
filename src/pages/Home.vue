@@ -39,7 +39,7 @@
         <TabPanel>
           <h1 class="font-semibold text-lg">Invite and manage clients (Marketplace)</h1>
           <p class="prose-base">Your clients are key, inviting them to use Churpy's Marketplace early will smoothen your collection flows and make reconciliation a breeze.</p>
-          <router-link :to="{name: 'marketplace'}" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Add Clients &rightarrow;
+          <router-link :to="{name: 'marketplace'}" as="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Add Clients &rightarrow;
           </router-link>
 
         </TabPanel>

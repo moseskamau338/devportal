@@ -52,7 +52,7 @@ import { ref } from '@vue/runtime-core';
 // import DashboardLoader from '@/components/loaders/DashboardLoader.vue';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 // import Bank from '@/components/widgets/Dashboard/Bank.vue';
-import GridRow from '../components/widgets/GridRow.vue';
+import GridRow from '@/components/widgets/GridRow.vue';
 import { defineAsyncComponent } from 'vue';
 
 const widgetRegister = ref({
