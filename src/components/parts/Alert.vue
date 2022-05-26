@@ -5,7 +5,7 @@
         <i class="fa-solid" :class="themeGenerator.icon"></i>
       </div>
       <div class="ml-3">
-        <p :class="themeGenerator.text" class="text-sm">
+        <p :class="themeGenerator.text" class="text-xs md:text-sm">
           <slot></slot>
         </p>
       </div>

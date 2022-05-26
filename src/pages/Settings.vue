@@ -1,14 +1,14 @@
 <template>
-  <TabGroup @change="changeTab" vertical as="section" class="grid grid-cols-1 gap-3 grid-cols-7">
+  <TabGroup @change="changeTab" vertical as="section" class="grid grid-cols-1 gap-3 lg:grid-cols-7">
     <div class="bg-white dark:bg-churpy-night-box col-span-1 rounded shadow-md py-2">
-      <TabList as="div" class="flex flex-row md:flex-col overflow-x-auto space-y-2 md:mb-0 md:grid md:grid-cols-1 md:gap-2 justify-items-start md:h-fit scroll-smooth">
+      <TabList as="div" class="flex flex-row lg:flex-col overflow-x-auto space-y-2 space-x-2 lg:space-x-reverse lg:space-y-reverse lg:mb-0 lg:grid lg:grid-cols-1 lg:gap-2 justify-items-start lg:h-fit scroll-smooth">
         <Tab as="template" v-for="(action, index) in options" v-slot="{ selected }"
         >
-          <div class="flex flex-shrink-0 space-x-2 items-center w-full py-2 px-2 cursor-pointer transition-all" :class="{
-            'text-green-600 border-l-2 border-green-600' : selected}">
+          <div class="flex flex-shrink-0 space-x-2 items-center lg:w-full py-2 px-2 cursor-pointer transition-all" :class="{
+            'text-green-600 border-b-2 lg:border-l-2 lg:border-b-0 border-green-600' : selected}">
             <i :class="action.icon" class="fa-solid"></i>
 
-            <h2 class="text-xs md:text-md" :class="{'font-bold': selected}">{{ action.name }}</h2>
+            <h2 class="text-xs lg:text-md" :class="{'font-bold': selected}">{{ action.name }}</h2>
           </div>
         </Tab>
 
