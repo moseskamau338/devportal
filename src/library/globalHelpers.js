@@ -1,4 +1,5 @@
 import find from "./filters/array/find";
+import {ThemeGenerator} from "./ThemeGenerator";
 
 export const functions = {
    getRandomColor(name) {
@@ -37,12 +38,7 @@ export const functions = {
         }
 
         //compute tailwind classes
-        switch(mapping.status) {
-            case 'success': return 'bg-green-100 text-green-500';
-            case 'danger' :return 'bg-red-100 text-red-500';
-            case 'warning' : return 'bg-orange-100 text-orange-500';
-            default: return 'bg-blue-100 dark:bg-blue-300 border-blue-400';
-        }
+        return new ThemeGenerator().badge(mapping.status)
 
     }
 

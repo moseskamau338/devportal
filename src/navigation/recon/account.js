@@ -9,7 +9,7 @@ export default [
   },
    {
     title: 'Account Settings',
-    route: 'audit',
+    route: 'settings',
     icon: 'fa-duotone fa-gear',
   },
 ]

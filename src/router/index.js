@@ -241,6 +241,27 @@ const routes = [
             ]),
         }
     },
+     //settings
+     {
+        path: '/settings',
+        name: 'settings',
+        component: () => import('@/pages/Settings.vue'),
+        meta:{
+            title:'System Settings',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Settings',
+                    active: true,
+                },
+            ]),
+        }
+    },
     //auth pages
     {
         path: '/auth/signup',
