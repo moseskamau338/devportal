@@ -10,7 +10,7 @@
     <div :class="{
       'md:pl-[13rem]' : store.mainSidebarOpen,
       'md:pl-[5rem]' : !store.mainSidebarOpen
-    }" class="flex flex-col flex-1 transition-all">
+    }" class="flex flex-col flex-1 h-full transition-all">
      <TopBar @toggle-sidebar="sidebarOpen = !sidebarOpen" />
       <main class="mb-auto">
         <div class="py-6">
@@ -23,9 +23,7 @@
           </div>
         </div>
       </main>
-    </div>
-
-    <footer class="max-w-8xl w-[85%] h-16 mx-auto items-center absolute bottom-0 flex justify-between">
+       <footer class="max-w-8xl w-[95%] h-16 mx-auto items-center relative bottom-0 flex justify-between">
           <div>
             <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="https://churpy.co" target="_blank"
             class="text-churpy-green">Churpy Inc.</a>, All rights Reserved</h6>
@@ -38,6 +36,7 @@
               </h6>
           </div>
         </footer>
+    </div>
   </div>
 
 </template>
