@@ -11,15 +11,15 @@
       </div>
       <div class="col-span-1 lg:col-span-2 mt-4 md:mt-0 flex flex-col space-y-5 md:space-y-reverse md:space-x-5 md:flex-row">
          <div class="md:w-fit">
-            <label for="f-name" class="block text-sm font-medium text-gray-700">First Name</label>
+            <label for="f-name" class="block text-sm font-medium text-gray-700 dark:text-gray-400">First Name</label>
             <div class="mt-1">
-              <input type="text" name="f-name" id="f-name" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="John" />
+              <input type="text" name="f-name" id="f-name" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="John" />
             </div>
           </div>
          <div class="md:w-fit">
-            <label for="l-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <label for="l-name" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Last Name</label>
             <div class="mt-1">
-              <input type="text" name="f-name" id="l-name" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Doe" />
+              <input type="text" name="f-name" id="l-name" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="Doe" />
             </div>
           </div>
       </div>
@@ -33,9 +33,9 @@
       </div>
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0 flex space-x-5">
          <div class="md:w-fit">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Email</label>
             <div class="mt-1">
-              <input type="email" name="email" id="email" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="John@company.co" />
+              <input type="email" name="email" id="email" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="John@company.co" />
             </div>
           </div>
 
@@ -50,7 +50,7 @@
       </div>
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0 flex space-x-5">
          <div class="w-fit flex flex-col lg:flex-row items-center lg:space-x-8 space-y-5">
-               <span class="h-12 w-12 rounded-full bg-gray-200 ring-2 ring-blue-200 ring-offset-1 flex items-center justify-center">
+               <span class="h-12 w-12 rounded-full bg-gray-200 ring-2 ring-blue-200 ring-offset-1 flex items-center justify-center dark:bg-churpy-night-box">
                  KJ
                </span>
                 <div class="bg-gray-200 w-64 rounded-md hover:cursor-pointer">
@@ -68,22 +68,22 @@
       </div>
       <div class="col-span-1 lg:col-span-2 mt-4 md:mt-0 flex flex-col space-y-5 md:space-y-reverse md:space-x-5 md:flex-row">
          <div class="md:w-fit">
-            <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+            <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Company</label>
             <div class="mt-1">
-              <input type="text" name="company" id="company" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Company X" />
+              <input type="text" name="company" id="company" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="Company X" />
             </div>
           </div>
          <div class="md:w-fit">
-            <label for="admin" class="block text-sm font-medium text-gray-700">Role</label>
+            <label for="admin" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Role</label>
             <div class="mt-1">
-              <input type="text" name="admin" id="admin" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Admin" />
+              <input type="text" name="admin" id="admin" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="Admin" />
             </div>
           </div>
 
           <div class="md:w-fit">
-            <label for="group" class="block text-sm font-medium text-gray-700">Group</label>
+            <label for="group" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Group</label>
             <div class="mt-1">
-              <input type="text" name="group" id="group" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400" placeholder="Managers Group" />
+              <input type="text" name="group" id="group" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 dark:border-gray-400 dark:bg-churpy-night-box" placeholder="Managers Group" />
             </div>
           </div>
       </div>

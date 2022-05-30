@@ -1,12 +1,12 @@
 <template>
-  <section class="border border-gray-300 focus-within:ring focus-within:ring-green-500 bg-white dark:bg-churpy-night-box dark:text-gray-300 rounded shadow-md">
+  <section class="border border-gray-300 focus-within:ring focus-within:ring-green-500 bg-white dark:bg-churpy-night-box rounded shadow-md">
     <div class="px-5 border-b border-t mx-4 my-2 py-2 flex items-center space-x-2">
       <template :key="index" v-for="(menu, index) in menus">
         <span v-if="menu.breakpoint">
           <i class="fa-duotone opacity-50 fa-pipe"></i>
         </span>
-        <span :title="menu.name" v-else-if="editor" @click="menu.action" class="cursor-pointer hover:font-bold text-gray-500 dark:text-gray-600 hover:bg-gray-200 h-8 w-8 p-2 flex items-center justify-center rounded-full transition-all"
-        :class="{'bg-gray-200' : editor.isActive(menu.name.toLowerCase())}"
+        <span :title="menu.name" v-else-if="editor" @click="menu.action" class="cursor-pointer hover:font-bold text-gray-500 dark:text-gray-300 hover:bg-gray-200 h-8 w-8 p-2 flex items-center justify-center rounded-full transition-all"
+        :class="{'bg-gray-200 dark:bg-gray-600' : editor.isActive(menu.name.toLowerCase())}"
         >
           <i class="fa-solid text-sm" :class="[
               menu.icon,
@@ -56,7 +56,7 @@ name: "Editor",
       content: props.modelValue,
      editorProps: {
         attributes: {
-          class: 'prose prose-slate focus:outline-none px-4 py-2',
+          class: 'prose prose-slate focus:outline-none px-4 py-2 dark:text-white',
         },
       },
       extensions: [

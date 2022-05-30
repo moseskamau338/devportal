@@ -15,18 +15,18 @@
 
     <!-- The pointer-events-none class here is very important as it allows our drags and clicks to pass through to the input underneath -->
     <span
-      :class="`overlayed bg-${color}-100 border-${color}-300 border-2 border-dashed text-${color}-800 pointer-events-none flex justify-center items-center`"
+      :class="`overlayed bg-${color}-100 border-${color}-300 border-2 border-dashed text-${color}-800 pointer-events-none flex justify-center items-center dark:border-gray-400 dark:bg-churpy-night-box`"
     >
       <div class="text-center flex justify-center items-center h-full">
         <!-- Let's use a slot here to make our component a little more flexible (maybe the end developer would live to add an icon in there, etc) -->
         <slot v-if="!files.length>0">
           <div class="space-y-1 text-center">
             <i class="fa-duotone fa-file-circle-plus text-gray-400 mx-auto text-3xl"></i>
-              <div class="flex text-sm text-gray-600">
+              <div class="flex text-sm text-gray-600 dark:text-gray-400">
                   <span class="font-bold">Upload a file</span>
                 <p class="pl-1">or drag and drop</p>
               </div>
-              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 2MB</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, GIF up to 2MB</p>
             </div>
         </slot>
 

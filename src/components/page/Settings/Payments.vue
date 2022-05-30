@@ -21,8 +21,8 @@
               <input id="small" aria-describedby="small-description" name="card" type="radio" checked class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
             </div>
             <div class="ml-3 text-sm">
-              <label for="small" class="font-medium text-gray-700">Send to my account email</label>
-              <p id="small-description" class="text-gray-500">jeff@clientx.com</p>
+              <label for="small" class="font-medium text-gray-700 dark:text-gray-300">Send to my account email</label>
+              <p id="small-description" class="text-gray-500 dark:text-gray-400">jeff@clientx.com</p>
             </div>
           </div>
 
@@ -31,9 +31,9 @@
               <input id="large" aria-describedby="large-description" name="plan" type="radio" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
             </div>
             <div class="ml-3 text-sm">
-              <label for="large" class="font-medium text-gray-700">Send to an alternative email</label>
+              <label for="large" class="font-medium text-gray-700 dark:text-gray-300">Send to an alternative email</label>
               <div id="large-description" class="text-gray-500">
-                    <input type="email" name="email" id="email" class="shadow-sm py-2 px-3 leading-none focus:ring-green-500 focus:border-green-500 block w-full sm:text-xs border-gray-300 rounded-md" placeholder="you@example.com">
+                    <input type="email" name="email" id="email" class="shadow-sm py-2 px-3 leading-none dark:border-gray-400 dark:bg-churpy-night-box focus:ring-green-500 focus:border-green-500 block w-full sm:text-xs border-gray-300 rounded-md" placeholder="you@example.com">
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@
                   disabled ? 'opacity-50 pointer-events-none' : '',
                   checked ? 'border-transparent bg-green-50/60 text-green-600' : 'border-gray-300 bg-white',
                   active ? 'border-green-500 ring-2 ring-green-500 text-green-600' : '',
-                  'relative block border border-dashed rounded shadow-sm px-6 py-4 cursor-pointer grid grid-cols-1 lg:grid-cols-4 focus:outline-none']">
+                  'relative block border border-dashed rounded shadow-sm px-6 py-4 cursor-pointer grid grid-cols-1 lg:grid-cols-4 focus:outline-none dark:border-gray-400 dark:bg-churpy-night-box']">
 
                 <div class="col-span-1 flex items-center">
 
@@ -112,7 +112,7 @@
               <input aria-describedby="small-description" name="card" type="radio" checked class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
             </div>
             <div class="ml-3 text-sm">
-              <label for="small" class="font-medium text-gray-700">Send to my account email</label>
+              <label for="small" class="font-medium text-gray-700 dark:text-gray-400">Send to my account email</label>
             </div>
           </div>
 

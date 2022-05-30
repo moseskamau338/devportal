@@ -20,19 +20,19 @@
           <div class="flex flex-col md:flex-row space-y-5 space-x-reverse md:space-y-reverse md:space-x-5">
             <div class="relative flex items-start">
               <div class="flex items-center h-5">
-                <input id="small" aria-describedby="small-description" name="method" type="radio" checked class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                <input id="small" aria-describedby="small-description" name="method" type="radio" checked class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 dark:border-gray-400 dark:bg-churpy-night-box">
               </div>
               <div class="ml-3 text-sm">
-                <label for="small" class="font-medium text-gray-700">By Email</label>
+                <label for="small" class="font-medium text-gray-700 dark:text-gray-400">By Email</label>
               </div>
             </div>
 
             <div class="relative flex items-start">
               <div class="flex items-center h-5">
-                <input id="large" aria-describedby="large-description" name="method" type="radio" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                <input id="large" aria-describedby="large-description" name="method" type="radio" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 dark:border-gray-400 dark:bg-churpy-night-box">
               </div>
               <div class="ml-3 text-sm">
-                <label for="large" class="font-medium text-gray-700">By SMS</label>
+                <label for="large" class="font-medium text-gray-700 dark:text-gray-400">By SMS</label>
               </div>
             </div>
           </div>
@@ -52,37 +52,37 @@
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0">
         <h3>Create you message templates here. Need some guidance? Check this out</h3>
 
-        <form class="grid grid-cols-3 gap-5 mt-5">
-            <div>
-              <label for="plus" class="block text-sm font-medium text-gray-700">No. Of Days</label>
+        <form class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+              <label for="plus" class="block text-sm font-medium text-gray-700 dark:text-gray-400">No. Of Days</label>
               <div class="mt-1 relative rounded-md shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
                   <span class="text-gray-500 sm:text-sm"> <i class="fa-solid fa-minus"></i> </span>
                 </div>
-                <input type="number" name="days" id="plus" class="focus:ring-green-500 focus:border-green-500 block w-full px-12 sm:text-sm border-gray-300 rounded text-center plain text-sm py-2 leading-none" placeholder="0" aria-describedby="add" />
+                <input type="number" name="days" id="plus" class="focus:ring-green-500 focus:border-green-500 block w-full px-12 sm:text-sm border-gray-300 rounded text-center plain text-sm py-2 leading-none dark:border-gray-400 dark:bg-churpy-night-box" placeholder="0" aria-describedby="add" />
                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
                   <span class="text-gray-500 sm:text-sm" id="add"> <i class="fa-solid fa-plus"></i> </span>
                 </div>
               </div>
             </div>
 
-            <div>
-              <label for="location" class="block text-sm font-medium text-gray-700">Timing</label>
-              <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+              <label for="timing" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Timing</label>
+              <select id="timing" name="timing" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night-box">
                 <option>---Choose timing---</option>
                 <option>Before</option>
                 <option>After</option>
               </select>
             </div>
 
-            <div>
-              <label for="location" class="block text-sm font-medium text-gray-700">Customer Targets</label>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+              <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Customer Targets</label>
               <search-select />
             </div>
 
-          <div>
-              <label for="location" class="block text-sm font-medium text-gray-700">Notification Type</label>
-              <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+          <div class="col-span-3 md:col-span-2 lg:col-span-1">
+              <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Notification Type</label>
+              <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night-box">
                 <option>---Choose one---</option>
                 <option>New invoice Notification</option>
                 <option>Invoice Overdue Notification</option>
@@ -92,7 +92,7 @@
             </div>
 
           <div class="col-span-3">
-             <label class="block text-sm font-medium text-gray-700">Message</label>
+             <label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Message</label>
             <small class="text-sm">Draft your <b>notification message</b></small>
             <Editor class="mt-4" v-model="form.message" />
           </div>
