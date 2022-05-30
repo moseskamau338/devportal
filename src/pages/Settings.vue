@@ -26,11 +26,14 @@
       </header>
 
       <TabPanel class="mx-3 mt-8 pb-5">
-          Profile here
+          <Profile />
       </TabPanel>
 
        <TabPanel class="mx-3 mt-8 pb-5">
          <Payments />
+      </TabPanel>
+      <TabPanel class="mx-3 mt-8 pb-5">
+         <Email />
       </TabPanel>
 
     </TabPanels>
@@ -43,9 +46,11 @@
 import {Tab, TabGroup, TabList, TabPanel, TabPanels} from "@headlessui/vue";
 import {ref} from "vue";
 import Payments from "@/components/page/Settings/Payments.vue";
+import Profile from "@/components/page/Settings/Profile.vue";
+import Email from "@/components/page/Settings/Email.vue";
 export default {
   name: "Settings",
-  components: {Payments, TabPanel, TabPanels, Tab, TabList, TabGroup},
+  components: {Payments, TabPanel, TabPanels, Tab, TabList, TabGroup, Profile, Email},
   setup(){
     const options = ref([
       {name:'Profile', icon:'fa-user-gear'},
