@@ -28,6 +28,7 @@
     "pinia": "^2.0.12",
     "pinia-plugin-persist": "^1.0.0",
     "secure-ls": "^1.2.6",
+    "tippy.js": "^6.3.7",
     "vue": "^3.2.25",
     "vue-content-loader": "^2.0.1",
     "vue-router": "^4.0.14",

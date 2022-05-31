@@ -34,6 +34,9 @@
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import Link from '@tiptap/extension-link'
 import Underline from '@tiptap/extension-underline'
+import Mention from '@tiptap/extension-mention'
+import suggestion from "@/components/parts/EditorMentions/suggestion";
+
 import StarterKit from '@tiptap/starter-kit'
 
 import {onBeforeUnmount, ref, watch} from "vue";
@@ -65,8 +68,14 @@ name: "Editor",
               class: 'text-green-600',
             },
           }),
-          StarterKit, TextAlign.configure({alignments: ['left', 'center', 'right']
-   })
+          StarterKit,
+          TextAlign.configure({alignments: ['left', 'center', 'right']}),
+          Mention.configure({
+            HTMLAttributes: {
+              class: 'text-green-700 dark:text-green-500 font-bold',
+            },
+            suggestion
+        })
       ],
       onUpdate: () => {
         // HTML
@@ -87,6 +96,7 @@ name: "Editor",
       {icon:'fa-align-left', name:'text-left', action:() => { editor.value.commands.setTextAlign('left') }},
       {icon:'fa-align-center', name:'text-center', action:() => { editor.value.commands.setTextAlign('center') }},
       {icon:'fa-align-right', name:'text-right', action:() => { editor.value.commands.setTextAlign('right') }},
+
     ])
     let linkForm = ref({
       show:false,
