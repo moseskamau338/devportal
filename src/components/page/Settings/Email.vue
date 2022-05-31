@@ -114,6 +114,27 @@
         </form>
       </div>
 
+      <div class="col-span-3 mt-5">
+        <h3 class="font-bold">Template list</h3>
+        <TableLite actioned :headers="[
+              {key:'type', label:'Type'},
+              {key:'timing', label:'Timing'},
+              {key:'timing_period', label:'Timing Period'},
+              {key:'customers', label:'Customers Targeted'},
+              {key:'message', label:'Message'},
+              {key: 'actions'}
+            ]" :records="[
+                {type:'Invoice Overdue Notification', timing: 'before', timing_period: '15 days', customers:'All customers', message:form.message}
+            ]">
+          <template #row_actions="{record}">
+            <div class="flex space-x-2">
+              <button class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-green-200 flex justify-center items-center p-2"><i class="fa-solid fa-eye text-green-600 text-xs"></i></button>
+              <button class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-red-200 flex justify-center items-center p-2"><i class="fa-solid fa-trash-alt text-red-600 text-xs"></i></button>
+            </div>
+          </template>
+        </TableLite>
+      </div>
+
     </div>
 
   <!--save-->
@@ -133,10 +154,12 @@ import CButton from "@/components/parts/CButton.vue";
 import SearchSelect from "@/components/parts/SearchSelect.vue";
 import Editor from "@/components/parts/Editor.vue";
 import ToolTip from "@/components/parts/ToolTip.vue";
+import TableLite from "@/components/widgets/Tables/TableLite.vue";
 
 export default {
   name: "Payments",
   components: {
+    TableLite,
     ToolTip,
     Editor,
     SearchSelect, CButton, Badge, Alert, RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption},
