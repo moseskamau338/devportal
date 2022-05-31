@@ -50,7 +50,7 @@
       </div>
 
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0">
-        <h3>Create you message templates here. Need some guidance? Check this out</h3>
+        <h3>Create you message templates here. Need some guidance? <button id="template_guide">Check this out</button></h3>
 
         <form class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
@@ -125,6 +125,7 @@ export default {
     Editor,
     SearchSelect, CButton, Badge, Alert, RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption},
   setup(){
+
     let form = ref({message: 'Something here'})
     const cards = [
         { name: 'Visa Card', expiry: '06/24', card_number: '4242 4242 4242 4242', holder: 'James Musyimi', icon: 'fa-cc-visa', disabled:false },

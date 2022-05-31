@@ -6,11 +6,11 @@
           <i class="fa-duotone opacity-50 fa-pipe"></i>
         </span>
         <span :title="menu.name" v-else-if="editor" @click="menu.action" class="cursor-pointer hover:font-bold text-gray-500 dark:text-gray-300 hover:bg-gray-200 h-8 w-8 p-2 flex items-center justify-center rounded-full transition-all"
-        :class="{'bg-gray-200 dark:bg-gray-600' : editor.isActive(menu.name.toLowerCase())}"
+        :class="{'bg-gray-200 dark:bg-gray-600' : (menu.checkActive && menu.checkActive()) ||editor.isActive(menu.name.toLowerCase())}"
         >
           <i class="fa-solid text-sm" :class="[
               menu.icon,
-              editor.isActive(menu.name.toLowerCase())? 'font-semibold' : 'font-light'
+              (menu.checkActive && menu.checkActive()) || editor.isActive(menu.name.toLowerCase())? 'font-semibold' : 'font-light'
               ]"></i>
         </span>
 
@@ -63,13 +63,21 @@ name: "Editor",
         },
       },
       extensions: [
-          Underline, Link.configure({
+          Underline,
+          Link.configure({
             HTMLAttributes: {
               class: 'text-green-600',
             },
           }),
-          StarterKit,
-          TextAlign.configure({alignments: ['left', 'center', 'right']}),
+          StarterKit.configure({
+            heading: {
+              levels: [1, 2, 3],
+            },
+          }),
+          TextAlign.configure({
+            alignments: ['left', 'center', 'right'],
+              types: ['heading', 'paragraph'],
+          }),
           Mention.configure({
             HTMLAttributes: {
               class: 'text-green-700 dark:text-green-500 font-bold',
@@ -93,9 +101,31 @@ name: "Editor",
       {icon:'fa-link-simple-slash', name:'Link', action:() => { editor.value.chain().focus().unsetLink().run() }},
       {icon:'fa-strikethrough', name:'Strike', action:() => { editor.value.commands.toggleStrike() }},
       {breakpoint: true},
-      {icon:'fa-align-left', name:'text-left', action:() => { editor.value.commands.setTextAlign('left') }},
-      {icon:'fa-align-center', name:'text-center', action:() => { editor.value.commands.setTextAlign('center') }},
-      {icon:'fa-align-right', name:'text-right', action:() => { editor.value.commands.setTextAlign('right') }},
+      {icon:'fa-h1', name:'H1',
+        action:() => { editor.value.commands.toggleHeading({ level: 1 }) },
+        checkActive: () => {return editor.value.isActive('heading', { level: 1 })},
+      },
+      {icon:'fa-h2', name:'H2',
+        action:() => { editor.value.commands.toggleHeading({ level: 2 }) },
+        checkActive: () => {return editor.value.isActive('heading', { level: 2 })},
+      },
+       {icon:'fa-h3', name:'H3',
+          action:() => { editor.value.commands.toggleHeading({ level: 3 }) },
+          checkActive: () => {return editor.value.isActive('heading', { level: 3 })},
+        },
+      {breakpoint: true},
+      {icon:'fa-align-left', name:'text-left',
+        action:() => { editor.value.commands.setTextAlign('left') },
+        checkActive: () => {return editor.value.isActive({ textAlign: 'left' })},
+      },
+      {icon:'fa-align-center', name:'text-center',
+        action:() => { editor.value.commands.setTextAlign('center') },
+        checkActive: () => {return editor.value.isActive({ textAlign: 'center' })},
+      },
+      {icon:'fa-align-right', name:'text-right',
+        action:() => { editor.value.commands.setTextAlign('right') },
+        checkActive: () => {return editor.value.isActive({ textAlign: 'right' })},
+      },
 
     ])
     let linkForm = ref({
