@@ -16,28 +16,34 @@
         <div class="py-6">
           <Breadcrumb />
 
-          <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 mt-4">
+          <div class="max-w-8xl relative mx-auto px-4 sm:px-6 md:px-8 mt-4 min-h-[70vh] h-auto">
             <!-- Replace with your content -->
              <slot />
             <!-- /End replace -->
+
+
           </div>
+          <div class="max-w-8xl relative mx-auto px-4 sm:px-6 md:px-8">
+            <footer class="max-w-8xl w-[100%] h-16 items-center relative flex justify-between">
+              <div>
+                <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="https://churpy.co" target="_blank"
+                class="text-churpy-green">Churpy Inc.</a>, All rights Reserved</h6>
+                <!-- <button @click="notify = !notify">{{notify ? 'Hide' : 'Show'}} Notification</button> -->
+              </div>
+              <div>
+                <h6 class="text-xs text-brand-gray">
+                  <i class="fa-solid fa-microchip font-semibold text-churpy-green"></i>
+                  Churpy Reconciliation Engine
+                  </h6>
+              </div>
+            </footer>
+          </div>
+
         </div>
       </main>
-       <footer class="max-w-8xl w-[95%] h-16 mx-auto items-center relative bottom-0 flex justify-between">
-          <div>
-            <h6 class="text-xs text-brand-gray">COPYRIGHT © 2022 <a href="https://churpy.co" target="_blank"
-            class="text-churpy-green">Churpy Inc.</a>, All rights Reserved</h6>
-            <!-- <button @click="notify = !notify">{{notify ? 'Hide' : 'Show'}} Notification</button> -->
-          </div>
-          <div>
-            <h6 class="text-xs text-brand-gray">
-              <i class="fa-solid fa-microchip font-semibold text-churpy-green"></i>
-              Churpy Reconciliation Engine
-              </h6>
-          </div>
-        </footer>
     </div>
   </div>
+
 
 </template>
 
