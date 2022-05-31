@@ -11,6 +11,7 @@
       class="overlayed"
       :multiple="multiple"
       @change="handleUpload"
+      accept=".pdf,.csv,.xls,.xlsx"
     />
 
     <!-- The pointer-events-none class here is very important as it allows our drags and clicks to pass through to the input underneath -->
@@ -26,7 +27,7 @@
                   <span class="font-bold">Upload a file</span>
                 <p class="pl-1">or drag and drop</p>
               </div>
-              <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, GIF up to 2MB</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">CSV, XLS, XLSX up to 2MB</p>
             </div>
         </slot>
 

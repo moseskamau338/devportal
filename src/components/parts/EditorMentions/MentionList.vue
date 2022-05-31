@@ -1,5 +1,5 @@
 <template>
- <div class="flex flex-col p-2 bg-white dark:bg-churpy-night-box text-gray-600 dark:text-gray-400 shadow-md items-start text-left space-y-px rounded border">
+ <div class="-mx-2.5 -my-2 flex flex-col p-2 bg-white dark:bg-churpy-night-box text-gray-600 dark:text-gray-400 shadow-md items-start text-left space-y-px rounded border">
      <h2 class="font-bold tracking-widest uppercase text-xs pb-3">Choose option</h2>
     <template v-if="items.length">
       <button

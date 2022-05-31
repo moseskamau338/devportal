@@ -65,13 +65,13 @@
                 :key="item.name"
                 v-slot="{ active }"
               >
-                <a
-                  :href="item.href"
+                <router-link
+                  :to="item.route"
                   :class="[
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700',
                   ]"
-                  >{{ item.name }}</a
+                  >{{ item.name }}</router-link
                 >
               </MenuItem>
               <MenuItem v-slot="{ active }">
@@ -94,8 +94,7 @@ const keycloak = inject('keycloak')
 
 
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
+  { name: "Settings", route: "settings" },
 ];
 
 function openSidebar(){

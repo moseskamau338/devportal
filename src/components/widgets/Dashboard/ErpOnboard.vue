@@ -121,15 +121,15 @@
               Once you agree to transfering your accounting data to Churpy, the process will take a while in the background as you explore other features of the platform.
               Once done, you will see your data within the <b>Reconciliation</b> view as wel as the <b>Marketplace</b>
             </p>
-            <div class="flex justify-between items-center md:w-[80%] mt-5">
-              <div class="w-fit">
-                <h3 class="font-bold md:text-3xl">{{selected.name}}</h3>
+            <div class="flex justify-between items-center mx-auto md:w-[60%] mt-5">
+              <div class="w-fit mx-4">
+                <h3 class="font-bold text-2xl md:text-3xl">{{selected.name}}</h3>
               </div>
               <div class="w-14 flex justify-center">
                 <i class="fa-duotone fa-arrow-right-arrow-left text-gray-700 dark:text-gray-100 text-3xl"></i>
               </div>
-              <div class="w-fit mx-4 flex">
-                  <img class="md:h-20" src="/images/logo-full.png" alt="">
+              <div class="w-fit mx-4 flex flex-shrink-0">
+                  <img class="h-12 md:h-16" src="/images/logo-full.png" alt="">
               </div>
             </div>
 

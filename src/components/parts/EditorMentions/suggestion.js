@@ -6,8 +6,9 @@ import MentionList from './MentionList.vue'
 
 export default {
   char:'//',
+  allowSpaces: true,
   items: ({ query }) => {
-    return ['Client ID', 'Client Name', 'Company Name', 'Invoice due date', 'Invoice date', 'Invoice Number', 'Invoice total', 'Invoice Items'].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+    return ['Client ID', 'Client Name', 'Company Name', 'Invoice ID','Invoice due date', 'Invoice date', 'Invoice total', 'Invoice Items'].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
   },
 
   render: () => {

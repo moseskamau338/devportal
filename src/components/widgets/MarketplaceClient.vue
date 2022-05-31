@@ -74,7 +74,7 @@
                         <div class="w-12">
                           <img :class="method.customClass" :src="method.image" alt="">
                         </div>
-                        <span class="text-lg ml-2">{{ method.name }}</span>
+                        <span class="text-md ml-2">{{ method.name }}</span>
                       </button>
                     </MenuItem>
                   </div>

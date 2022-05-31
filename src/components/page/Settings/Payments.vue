@@ -170,7 +170,7 @@ export default {
         { name: 'Master Card', expiry: '02/23', card_number: '5555 5555 5555 4444', holder: 'James Musyimi', icon: 'fa-cc-mastercard', disabled:false },
       ]
 
-    const selected = ref(null)
+    const selected = ref(cards[0])
 
     return {cards,selected}
   }

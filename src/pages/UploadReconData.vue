@@ -2,17 +2,18 @@
  <div class="bg-white dark:bg-churpy-night-box rounded-md shadow-md min-h-full w-[98%] max-w-full overflow-x-auto lg:overflow-x-hidden relative py-4 px-3">
   <div class="grid grid-cols-1 lg:grid-cols-2">
    <div id="upload-section" class="lg:border-r px-4">
-      <select id="data" name="data" class="mt-1 block w-min pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
-      <option>---Choose Data type---</option>
-      <option>Upload ERP data</option>
-      <option>Upload Bank Data</option>
+      <select id="data" v-model="data" class="mt-1 block w-min pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+      <option value="">---Choose Data type---</option>
+      <option value="erp">Upload ERP data</option>
+      <option value="bank">Upload Bank Data</option>
     </select>
       <p class="prose-base mt-2">
         This assumes you have prepared a CSV file prepared for this process.
         Your data will be parsed to understand how the data is represented. Additionally, in <b>the right pane</b>, you will have the chance to <b>confirm the column mapping</b> if it fits your desired state before continuing.
       </p>
 
-      <FileUploader class="mt-4" />
+      <FileUploader class="mt-4" :class="{'pointer-events-none opacity-50' : data.length === 0}" />
+     <small v-if="data.length === 0" class="text-red-500 mt-4">You have to choose your dataset type first at the top</small>
       <div class="mt-3 flex flex-col md:flex-row md:space-x-2 md:items-center">
         <alert variant="warning" class="mb-2">
           To overwrite records, <b>check the adjacent box and <b>re-upload</b></b>
@@ -91,6 +92,8 @@
 import FileUploader from "@/components/parts/FileUploader.vue";
 import Alert from "@/components/parts/Alert.vue";
 import CButton from "@/components/parts/CButton.vue";
+import {ref} from "vue";
+
 export default{
   name: 'UploadReconData',
   components:{
@@ -98,6 +101,11 @@ export default{
     Alert,
     FileUploader
   },
+  setup(){
+    const data = ref('')
+
+    return {data}
+  }
 
 }
 </script>

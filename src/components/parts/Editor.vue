@@ -1,6 +1,6 @@
 <template>
   <section class="border border-gray-300 focus-within:ring focus-within:ring-green-500 bg-white dark:bg-churpy-night-box rounded shadow-md">
-    <div class="px-5 border-b border-t mx-4 my-2 py-2 flex items-center space-x-2">
+    <div class="px-5 border-b border-t mx-4 my-2 py-2 flex flex-shrink-0 items-center space-x-2 overflow-x-auto">
       <template :key="index" v-for="(menu, index) in menus">
         <span v-if="menu.breakpoint">
           <i class="fa-duotone opacity-50 fa-pipe"></i>

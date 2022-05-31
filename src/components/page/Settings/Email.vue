@@ -50,7 +50,21 @@
       </div>
 
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0">
-        <h3>Create you message templates here. Need some guidance? <button id="template_guide">Check this out</button></h3>
+        <h3>Create you message templates here. Need some guidance? <tool-tip class="text-green-600 cursor-pointer">
+          <template #html>
+            <div class="py-2 px-3">
+              <h1 class="font-bold text-md mb-2">Writing custom templates</h1>
+              <p class="mb-1">
+                Here are some easy guidelines to consider as you develop your message templates:
+              </p>
+              <ul class="list-decimal px-2 mx-4">
+                <li class="text-xs">Each entry will be used to target selected customers, so be careful not to add duplicates.</li>
+                <li class="text-xs">To personalise a message, use <code class="bg-red-100/60 px-1 py-px rounded"><b>//</b></code> to see a list of accessible details such as <strong>customer details, company details and invoice fields</strong></li>
+              </ul>
+            </div>
+          </template>
+          Check this out
+        </tool-tip></h3>
 
         <form class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
@@ -118,15 +132,17 @@ import Badge from "@/components/parts/Badge.vue";
 import CButton from "@/components/parts/CButton.vue";
 import SearchSelect from "@/components/parts/SearchSelect.vue";
 import Editor from "@/components/parts/Editor.vue";
+import ToolTip from "@/components/parts/ToolTip.vue";
 
 export default {
   name: "Payments",
   components: {
+    ToolTip,
     Editor,
     SearchSelect, CButton, Badge, Alert, RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption},
   setup(){
 
-    let form = ref({message: 'Something here'})
+    let form = ref({message: 'Engage your customer...'})
     const cards = [
         { name: 'Visa Card', expiry: '06/24', card_number: '4242 4242 4242 4242', holder: 'James Musyimi', icon: 'fa-cc-visa', disabled:false },
         { name: 'Master Card', expiry: '02/23', card_number: '5555 5555 5555 4444', holder: 'James Musyimi', icon: 'fa-cc-mastercard', disabled:false },

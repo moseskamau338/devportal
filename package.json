@@ -32,6 +32,7 @@
     "vue": "^3.2.25",
     "vue-content-loader": "^2.0.1",
     "vue-router": "^4.0.14",
+    "vue-tippy": "^6.0.0-alpha.58",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
