@@ -96,7 +96,7 @@ const routes = [
         name: 'recon',
         component: () => import('@/pages/Recon.vue'),
         meta:{
-            title: 'Reconciliation',
+            title: 'Reconciliation Summary',
             breadcrumb: (route) => ([
                 {
                     text: 'Dashboard',
