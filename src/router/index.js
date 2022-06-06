@@ -244,7 +244,7 @@ const routes = [
      //settings
      {
         path: '/settings',
-        name: 'settings',
+        name: 'system-settings',
         component: () => import('@/pages/Settings.vue'),
         meta:{
             title:'System Settings',

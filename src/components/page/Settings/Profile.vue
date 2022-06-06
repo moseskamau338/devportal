@@ -54,7 +54,16 @@
                  KJ
                </span>
                 <div class="bg-gray-200 w-64 rounded-md hover:cursor-pointer">
-                 <FileUploader />
+                  <FileUploader>
+                    <div class="space-y-1 text-center">
+                      <i class="fa-solid fa-image-landscape text-gray-400 mx-auto text-3xl"></i>
+                    <div class="flex text-sm text-gray-600 dark:text-gray-400">
+                        <span class="font-bold">Upload image</span>
+                      <p class="pl-1">or drag and drop</p>
+                    </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, JPEG up to 1MB</p>
+                  </div>
+                  </FileUploader>
                 </div>
          </div>
       </div>
