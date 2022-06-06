@@ -97,6 +97,7 @@ const routes = [
         component: () => import('@/pages/Recon.vue'),
         meta:{
             title: 'Reconciliation Summary',
+            requiresAuth: true,
             breadcrumb: (route) => ([
                 {
                     text: 'Dashboard',
@@ -105,6 +106,26 @@ const routes = [
                 },
                 {
                     text: 'Recon.',
+                    active: true,
+                },
+            ]),
+        }
+    },
+    {
+        path: '/reconciliation/engine',
+        name: 'recon-engine',
+        component: () => import('@/pages/ReconEngine.vue'),
+        meta:{
+            title: 'Reconciliation Engine',
+            requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Reconciliation Engine',
                     active: true,
                 },
             ]),
@@ -309,26 +330,6 @@ const routes = [
             layout: 'FlatLayout',
         }
     },
-    // {
-    //     path: '/reconciliation',
-    //     name: 'recon',
-    //     component: () => import('@/pages/Recon.vue'),
-    //     meta:{
-    //         layout: 'FlatLayout',
-    //         title: 'Reconciliation',
-    //         breadcrumb: (route) => ([
-    //             {
-    //                 text: 'Dashboard',
-    //                 active: false,
-    //                 to: {name: 'dashboard'}
-    //             },
-    //             {
-    //                 text: 'Recon.',
-    //                 active: true,
-    //             },
-    //         ]),
-    //     }
-    // },
 
 
 ]

@@ -33,7 +33,7 @@
           </div>
 
           <router-link v-if="!item.header && !item.disabled" :to="{name:item.route}" :class="[
-              $route.name.includes(item.route) ?
+              activeRoute(item.route) ?
               'bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4' :
               'text-slate-400 hover:bg-green-400/30',
               status? 'p-1 ml-0 pl-2' : 'px-2 py-1 mb-2',
@@ -48,13 +48,23 @@
     </template>
 </template>
 <script>
+import {useRoute} from "vue-router";
+
 export default {
   props: {
     navs: Array,
     status: Boolean
   },
-  setup(props) {
-    return {props}
+  setup() {
+    const route = useRoute()
+    function activeRoute(currentRoute){
+      if (route.name){
+        return route.name.includes(currentRoute)
+      }
+      return route.name === currentRoute
+    }
+
+    return {activeRoute}
   }
 }
 </script>

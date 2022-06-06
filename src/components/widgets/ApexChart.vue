@@ -1,6 +1,6 @@
 <template>
 <div class="w-full">
-  <vue-apex-charts class="" type="bar" :options="options" :series="series"/>
+  <vue-apex-charts v-bind="$attrs" type="bar" :options="options" :series="series"/>
 </div>
 </template>
 
@@ -10,26 +10,40 @@ import {ref} from "vue";
 export default {
   name: "ApexChart",
   components: {VueApexCharts},
-  setup(){
+  props:{
+    singleBar:{default:false, type:Boolean},
+    theme:{default:'normal', type:String},
+    horizontal:{default:false, type:Boolean},
+    grid:{default:true, type:Boolean},
+  },
+  setup(props){
+    let axisColor = 'gray';
+
+    if (props.theme === 'light'){
+      axisColor = 'white'
+    }
 
     let series = ref([{
         name: 'SSPASS Data',
           data: [12000, 5000, 26000, 1000]
-        }, {
-          name: 'Bank Data',
-          data: [10000, 4600, 22000, 1030]
-      }])
+        },
+    ])
+    if (!props.singleBar){series.value.push( {name: 'Bank Data', data: [10000, 4600, 22000, 1030]})}
 
       let options = ref({
         chart: {
         type: 'bar',
         height: 430,
-          foreColor: 'gray'
+          foreColor: axisColor
+      },
+      grid: {
+        show: props.grid,
       },
       plotOptions: {
         bar: {
-          horizontal: false,
+          horizontal: props.horizontal,
           distributed: true,
+           columnWidth: '50%',
         }
       },
       colors: [ // this array contains different color code for each data
@@ -53,14 +67,14 @@ export default {
       },
       tooltip: {
         shared: true,
-        intersect: false
+        intersect: false,
       },
       xaxis: {
         categories: ['Manual', 'Suggested', 'Auto', 'Pending'],
-        labels: {style: {colors: 'gray'}},
+        labels: {style: {colors: axisColor}},
       },
-      yaxis: {labels: {style: {colors: 'gray'}}},
-      legend: {labels: {style: {colors: 'gray'}}}
+      yaxis: {labels: {style: {colors: axisColor}}},
+      legend: {labels: {style: {colors: axisColor}}}
     });
 
 
@@ -70,6 +84,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+ .apexcharts-theme-light .apexcharts-tooltip{
+   @apply text-gray-600
+ }
 </style>
