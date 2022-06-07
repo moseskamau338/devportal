@@ -54,41 +54,64 @@
               </tr>
               </thead>
               <tbody id="recon" class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
-              <tr :key="index" @click="rowClicked(record)" v-for="(record, index) in records" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
-                <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-400 sm:pl-6">
-                  <input type="checkbox" class="rounded mr-1 h-3 w-3 focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green"/>
-                  {{record.invoice_ref}}
-                </td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.date}}</td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.currency}}</td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-bold">
-                    {{currency(record.amount)}}
-                  </span>
-                </td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
-                  <span class="text-churpy-green font-bold">{{currency(record.reconciled_amount)}}</span>
-                </td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.gl_account}}</td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500 truncate">{{record.customer}}</td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
-                  <Badge :status="record.recon_status" class="text-xs" />
-                </td>
-                <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
-                  <span class="inline-flex tracking-widest items-center px-2 shadow-md rounded-full text-[9px] font-bold uppercase bg-green-500 text-white"> {{record.source}} </span>
-                </td>
-                <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                  <div class="flex">
-                   <span class="h-5 w-5 rounded-full flex justify-center items-center bg-green-200 mr-1 hover:bg-green-300 hover:
-                   shadow-md hover:scale-105 cursor-pointer transition-all">
-                     <i class="fa-solid fa-plus text-churpy-green text-[12px]"></i>
-                   </span>
-                    <span class="h-5 w-5 rounded-full flex justify-center items-center bg-green-200 hover:bg-green-300 hover:shadow-md hover:scale-105 cursor-pointer transition-all">
-                     <i class="fa-solid fa-eye text-churpy-green text-[12px]"></i>
-                   </span>
-                  </div>
-                </td>
-              </tr>
+              <template :key="index" @click="rowClicked(record)" v-for="(record, index) in records">
+                <tr id="rec" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
+                  <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium relative text-gray-900 dark:text-gray-400 sm:pl-8 group">
+
+                    <button @click="record['show_nested'] = !record['show_nested']" class="invisible group-hover:visible absolute hover:shadow-md transition-all -ml-6 mt-1 h-4 w-4 rounded-full bg-gray-300 hover:bg-gray-400/70 focus:ring-1 focus:ring-churpy-green hover:dark:bg-gray-500 dark:bg-gray-600 flex items-center justify-center" :class="[record['show_nested'] ? 'hover:-translate-y-0.5' : 'hover:translate-y-0.5']">
+                      <i class="fa-solid text-gray-600 dark:text-gray-300 text-xs" :class="[
+                        record['show_nested'] ? 'fa-chevron-up' : 'fa-chevron-down'
+                    ]"></i></button>
+
+                    <span class="flex items-center">
+                      <input type="checkbox" class="rounded mr-1 h-3 w-3 focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green"/>
+                      <span>{{record.invoice_ref}}</span>
+                    </span>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.date}}</td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.currency}}</td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-bold">
+                      {{currency(record.amount)}}
+                    </span>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
+                    <span class="text-churpy-green font-bold">{{currency(record.reconciled_amount)}}</span>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{{record.gl_account}}</td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500 truncate">{{record.customer}}</td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
+                    <Badge :status="record.recon_status" class="text-xs" />
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
+                    <span class="inline-flex tracking-widest items-center px-2 shadow-md rounded-full text-[9px] font-bold uppercase bg-green-500 text-white"> {{record.source}} </span>
+                  </td>
+                  <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                    <div class="flex">
+                     <span class="h-5 w-5 rounded-full flex justify-center items-center bg-green-200 mr-1 hover:bg-green-300 hover:
+                     shadow-md hover:scale-105 cursor-pointer transition-all">
+                       <i class="fa-solid fa-plus text-churpy-green text-[12px]"></i>
+                     </span>
+                      <span class="h-5 w-5 rounded-full flex justify-center items-center bg-green-200 hover:bg-green-300 hover:shadow-md hover:scale-105 cursor-pointer transition-all">
+                       <i class="fa-solid fa-eye text-churpy-green text-[12px]"></i>
+                     </span>
+                    </div>
+                  </td>
+                </tr>
+                <TransitionRoot as="div" :show="record['show_nested']"
+                  enter-active-class="transform ease-out duration-300 transition -translate-y-2 opacity-0"
+                  enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
+                  leave-active-class="transition opacity-100 ease-in duration-100"
+                  leave-to-class="opacity-0 -translate-y-2"
+                  appear
+                  class="table-row mt-1">
+                    <td :colspan="fields.length+1">
+                      <div class="px-4 py-1">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur culpa dicta, dolorum facilis hic maxime minus modi, numquam obcaecati perferendis porro possimus quasi saepe temporibus tenetur voluptatibus? Inventore, repudiandae!
+                      </div>
+                    </td>
+                </TransitionRoot>
+              </template>
               </tbody>
             </table>
           </div>
@@ -138,8 +161,9 @@
 
 <script>
 import { Popover, PopoverButton, PopoverPanel,
-TabGroup, TabList, Tab, TabPanels, TabPanel
+TabGroup, TabList, Tab, TabPanels, TabPanel, TransitionRoot
 } from '@headlessui/vue'
+
 import Alert from "@/components/parts/Alert.vue";
 import {ref, inject} from "vue";
 import CButton from "@/components/parts/CButton.vue";
@@ -153,7 +177,7 @@ export default{
     CButton,
     Alert, Popover, PopoverButton, PopoverPanel,
     TabGroup, TabList, Tab, TabPanels, TabPanel,
-    LitepieDatepicker,
+    LitepieDatepicker, TransitionRoot
   },
   setup(){
     const helpers = inject('helpers')
@@ -171,8 +195,8 @@ export default{
     ])
 
     let records = ref([
-      {invoice_ref:'9923764783', date:'12/3/22', currency:'KES', amount:3443450, reconciled_amount:4783682, gl_account:'GL-56273GJ67', customer:'Customer N', recon_status:'pending', source:'ERP'},
-      {invoice_ref:'562357283', date:'2/3/20', currency:'USD', amount:42456, reconciled_amount:786493, gl_account:'GL-56273GJ67', customer:'Customer X', recon_status:'suggested', source:'ERP'},
+      {invoice_ref:'9923764783', date:'12/3/22', currency:'KES', amount:3443450, reconciled_amount:4783682, gl_account:'GL-56273GJ67', customer:'Customer N', recon_status:'pending', source:'ERP',show_nested:false},
+      {invoice_ref:'562357283', date:'2/3/20', currency:'USD', amount:42456, reconciled_amount:786493, gl_account:'GL-56273GJ67', customer:'Customer X', recon_status:'suggested', source:'ERP',show_nested:false},
     ])
 
     function rowClicked(index){
