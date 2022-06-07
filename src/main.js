@@ -5,8 +5,7 @@ import './assets/index.css'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
-import {keycloak, initOptions, checkAuth} from "./library/Auth/keycloak";
-import AppFilters from './library/filters'
+import {keycloak, initOptions} from "./library/Auth/keycloak";
 import {functions} from './library/globalHelpers'
 import mitt from 'mitt'
 import {maska} from "maska";
@@ -20,8 +19,6 @@ import('./setup')
     app.provide('emitter', emitter)
     app.provide('keycloak', keycloak)
     app.provide('helpers', functions)
-
-    app.config.globalProperties.$filters = AppFilters
 
     app.use(router)
         .use(pinia)

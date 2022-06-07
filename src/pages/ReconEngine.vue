@@ -88,11 +88,11 @@
           <tbody>
           <tr>
             <td class="font-bold text-right">Total Invoice Amount:</td>
-            <td class="font-bold text-left text-green-600 pl-2">KES 2,340,870.00</td>
+            <td class="font-bold text-left text-green-600 pl-2">KES {{ currency(2340870.00) }}</td>
           </tr>
           <tr>
             <td class="font-bold text-right">Bank Transactions:</td>
-            <td class="font-bold text-left text-orange-400 pl-2">KES 2,340,870.00</td>
+            <td class="font-bold text-left text-orange-400 pl-2">KES {{ currency(2340870.00) }}</td>
           </tr>
           </tbody>
           <tfoot class="pt-2 border-t">
@@ -144,7 +144,7 @@
             <div class="absolute my-2 inset-y-0 right-0 flex items-center">
               <span class="pr-1">
                 <litepie-datepicker  as-single use-range v-model="period">
-                 <c-button variant="dark" class="text-xs border border-gray-400 bg-transparent dark:text-gray-400 text-churpy-night-box shadow-none hover:bg-transparent hover:text-gray-600">
+                 <c-button variant="dark" class="text-xs border border-gray-400 bg-transparent dark:text-gray-400 text-churpy-night-box shadow-none hover:bg-transparent hover:text-white">
                    <i class="fa-solid fa-calendar-days mr-1 text-md"></i>
                    Date Range
                  </c-button>
@@ -157,7 +157,7 @@
 
     </TabList>
 
-      <TabPanels as="section" class="mt-2 bg-white dark:bg-churpy-night-box shadow-md rounded w-full h-full mt-8 p-4">
+      <TabPanels as="section" class="mt-2 w-full h-full mt-8 p-2">
         <template :key="category.name" v-for="category in categories">
             <TabPanel>
              <keep-alive>
@@ -176,7 +176,7 @@ import LitepieDatepicker from 'litepie-datepicker-tw3';
 import CButton from "@/components/parts/CButton.vue";
 import ToolTip from "@/components/parts/ToolTip.vue";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import ApexChart from "@/components/widgets/ApexChart.vue";
 import ReconTable from "@/components/page/ReconTable.vue";
 import RulesButton from "@/components/parts/RulesButton.vue";
@@ -191,11 +191,12 @@ export default {
     Unreconciled,
     Partial, Reconed,
     RulesButton,
-    ReconTable, ApexChart,
+    ApexChart,
     ToolTip, CButton,
     LitepieDatepicker, TabGroup,
     TabList, Tab, TabPanels, TabPanel},
   setup(){
+    const helpers = inject('helpers')
     const period = ref({})
     const categories = ref([
       {name:'Unreconciled Records', state_color:'text-red-400', component:Unreconciled},
@@ -210,7 +211,7 @@ export default {
       {title:'Pending Reconciliation', key_color:'text-red-400', color:'bg-red-400', tooltip_name:'Pending', percentage:9,amount:56000, records:400},
     ])
 
-    return {period, status_summary, categories}
+    return {period, status_summary, categories, currency:helpers.currency}
   }
 }
 </script>

@@ -22,7 +22,7 @@ export const functions = {
       character: firstAlphabet.toUpperCase()+name.charAt(1).toUpperCase()
     };
   },
-    parseTableStatus(status, mappings = []){
+   parseTableStatus(status, mappings = []){
        // take list of mappings: ['tentative' => warning]
         let newmappings = [
           {name:'pending', status:'danger'},
@@ -40,6 +40,42 @@ export const functions = {
         //compute tailwind classes
         return new ThemeGenerator().badge(mapping.status)
 
-    }
-
+    },
+   ensignFigure(num){
+		if (typeof num === 'string'){
+		  return  parseFloat(this.cleanUpCurrency(num).toFixed(2))
+		}else if(typeof num === 'number'){
+			return parseFloat(num.toFixed(2))
+		}
+	},
+   cleanUpCurrency(s){
+        let expression = /^\$?\(?[\d,.]*\)?$/;
+        //remove commas
+        s = s.split(',').join('')
+        //remove spaces
+        s = s.split(' ').join('')
+        //Check if it is in the proper format
+        if (!isNaN(parseFloat(s))) return parseFloat(s);
+        if(s.match(expression)){
+            //It matched - strip out parentheses and append - at front
+            return parseFloat('-' + s.replace(/[$(),]/g,''));
+        }else{
+            return parseFloat(s);
+        }
+    },
+   currency(val,decimals = 2,addSymbol = false){
+       if (!addSymbol){
+          return new Intl.NumberFormat('en-US', {minimumFractionDigits: decimals, maximumFractionDigits:3}).format(val)
+       }
+       return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'KES', minimumFractionDigits: decimals, maximumFractionDigits:3 }).format(val)
+   },
+   formatMyNumber(x, dp=2){
+        x = parseFloat(x).toFixed(dp);
+        if(x && !isNaN(x)){
+            var num_parts = x.toString().split(".");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return num_parts.join(".");
+        }
+        return x;
+    },
 }
