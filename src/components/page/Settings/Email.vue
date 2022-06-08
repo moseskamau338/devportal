@@ -68,6 +68,15 @@
 
         <form class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
+              <label for="timing" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Timing</label>
+              <select id="timing" name="timing" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night-box">
+                <option>---Choose timing---</option>
+                <option>Before</option>
+                <option>After</option>
+              </select>
+            </div>
+
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
               <label for="plus" class="block text-sm font-medium text-gray-700 dark:text-gray-400">No. Of Days</label>
               <div class="mt-1 relative rounded-md shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
@@ -78,15 +87,6 @@
                   <span class="text-gray-500 sm:text-sm" id="add"> <i class="fa-solid fa-plus"></i> </span>
                 </div>
               </div>
-            </div>
-
-            <div class="col-span-3 md:col-span-2 lg:col-span-1">
-              <label for="timing" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Timing</label>
-              <select id="timing" name="timing" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night-box">
-                <option>---Choose timing---</option>
-                <option>Before</option>
-                <option>After</option>
-              </select>
             </div>
 
             <div class="col-span-3 md:col-span-2 lg:col-span-1">

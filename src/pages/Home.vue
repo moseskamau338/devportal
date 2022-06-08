@@ -1,7 +1,7 @@
 <template>
  <div class="bg-white dark:bg-churpy-night-box md:mx-5 mb-14 min-h-[500px] rounded-md shadow-md pl-3 pt-4 relative">
   <h1 class="text-xl font-bold">Welcome to <span class="font-brand">Churpy</span> Reconciliation Engine</h1>
-   <p class="prose-base mt-2">We have a few options to get you up and running fast. Feel free to skip any step.</p>
+   <p class="text-lg mt-2">We have a few options to get you up and running fast. Feel free to skip any step.</p>
 
    <TabGroup as="div" vertical class="md:min-h-[300px] mt-8 md:mx-20 md:grid md:grid-cols-2">
       <TabList ref="tabs" as="div" class="flex flex-row overflow-x-auto mb-4 px-4 md:mb-0 md:grid md:grid-cols-1 md:gap-5 justify-items-start md:h-fit scroll-smooth">
@@ -12,7 +12,7 @@
                 selected ? 'bg-white' : 'bg-gray-200',
                 'flex items-center justify-center h-6 w-6 rounded-full text-gray-800 shadow-md mr-3']">{{index+1}}</span>
 
-            <h2 class="text-xs md:text-lg" :class="{'font-bold': selected}">{{ action }}</h2>
+            <h2 class="text-xs md:text-sm" :class="{'font-bold': selected}">{{ action }}</h2>
           </div>
         </Tab>
 

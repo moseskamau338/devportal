@@ -14,12 +14,13 @@
             <small >Invoices</small>
           </h3>
 
-          <div id="progress" class="mt-5 flex space-x-2 relative rounded-full h-2">
+          <h2 class="text-xs mt-4">Summary by value</h2>
+          <div id="progress" class="mt-2 flex space-x-2 relative rounded-full h-2">
             <tool-tip :key="status.title+'_'+index" v-for="(status, index) in status_summary" :content="`${status.percentage}% | ${status.tooltip_name}`" :style="`width: ${status.percentage}%`" :class="status.color" class="h-2 rounded-full"></tool-tip>
           </div>
 
           <!--Key-->
-          <div class="flex flex-grow flex-wrap mt-8">
+          <div class="flex flex-grow flex-wrap mt-4">
             <span :key="status.tooltip_name+'_'+index" v-for="(status, index) in status_summary" class="flex h-4 ml-2 items-center">
               <span :class="status.key_color" class="text-5xl">&bullet;</span>
               <small>{{ status.title }}</small>
@@ -140,7 +141,7 @@
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <span class="text-gray-500 sm:text-sm"> <i class="fa-solid fa-search"></i> </span>
             </div>
-            <input type="text" class="dark:bg-churpy-night-box dark:border-gray-500 focus:ring-green-500 focus:border-green-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="Search records...">
+            <input type="text" class="dark:bg-churpy-night-box dark:border-gray-500 focus:ring-green-500 focus:border-green-500 block w-full pl-7 pr-28 sm:text-sm border-gray-300 rounded-md" placeholder="Search records...">
             <div class="absolute my-2 inset-y-0 right-0 flex items-center">
               <span class="pr-1">
                 <litepie-datepicker  as-single use-range v-model="period">
