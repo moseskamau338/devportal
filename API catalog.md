@@ -1,6 +1,8 @@
 ### New Recon APIs
 These APIs are meant to be short and light to distribute the load throughout the app and use less of the UI store.
 
+All data tables will have the sort and search filters as default
+
 #### Dashboard
 1. Check whether the authenticated user is a guest? `GET` 
 2. Company survey for first time users:
