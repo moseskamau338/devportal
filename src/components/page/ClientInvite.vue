@@ -69,7 +69,6 @@ export default {
   },
   setup(props, {emit}){
     const emitter = inject('emitter')
-    const helpers = inject('helpers')
 
     const contacts = ref([
         {name:'', phone:'', email:'', role: ''}
@@ -98,7 +97,7 @@ export default {
       }
     })
 
-    return {contacts, helpers, addContact, errors, removeContact}
+    return {contacts, addContact, errors, removeContact}
   }
 }
 </script>

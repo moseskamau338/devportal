@@ -1,5 +1,5 @@
 <template>
-  <button class="border border-churpy-night dark:border-gray-600 hover:opacity-90 focus:ring focus:ring-1 focus:ring-green-500/80 bg-white dark:bg-churpy-night-box dark:text-gray-300 text-churpy-night-box px-2 py-1 text-sm font-bold rounded flex items-center space-x-1 hover:bg-green-50 transition-all">
+  <button @click="showRules = true" class="border border-churpy-night dark:border-gray-600 hover:opacity-90 focus:ring focus:ring-1 focus:ring-green-500/80 bg-white dark:bg-churpy-night-box dark:text-gray-300 text-churpy-night-box px-2 py-1 text-sm font-bold rounded flex items-center space-x-1 hover:bg-green-50 transition-all">
     <svg xmlns="http://www.w3.org/2000/svg" width="19.227" height="22" viewBox="0 0 19.227 22">
       <g id="Group_691" data-name="Group 691" transform="translate(0)">
         <g id="Group_690" data-name="Group 690">
@@ -41,11 +41,23 @@
     </svg>
     <span><slot>Configure Rules</slot></span>
     </button>
+
+  <!--rules-->
+  <Rules @close="showRules = false" :open="showRules" />
 </template>
 
 <script>
+import Rules from "@/components/page/Rules/Rules.vue";
+import {ref} from "vue";
+
 export default {
-  name: "RulesButton"
+  name: "RulesButton",
+  components:{Rules},
+  setup(){
+        const showRules = ref(false)
+
+    return {showRules}
+  }
 }
 </script>
 

@@ -88,4 +88,7 @@ export default {
  .apexcharts-theme-light .apexcharts-tooltip{
    @apply text-gray-600
  }
+ .apexcharts-toolbar{
+   @apply !z-10
+ }
 </style>

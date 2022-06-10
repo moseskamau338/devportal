@@ -180,6 +180,7 @@ export default {
   components: {RulesButton, ApexChart, ToolTip, CButton, LitepieDatepicker},
   setup(){
     const period = ref({})
+
     const status_summary = ref([
       {title:'Automatic Reconciliations', color:'bg-churpy-green', icon:'fa-bolt', percentage:32,amount:23456124, records:3456},
       {title:'Suggested Matches', color:'bg-orange-400', icon:'fa-list-check', percentage:12,amount:120000, records:650},
