@@ -4,7 +4,7 @@
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 flex justify-center">
         <div class="inline-block relative w-full mx-6 py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded max-h-80 overflow-y-auto shadow-md">
-            <table class="min-w-full divide-y divide-gray-300">
+            <table class="min-w-full divide-y divide-gray-300 table-fixed">
               <thead class="bg-gray-200/50 dark:bg-churpy-dark backdrop-blur sticky z-10 top-0 shadow-md">
               <tr class="py-0">
                 <th :key="field.key+index" v-for="(field, index) in fields" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400 whitespace-nowrap">
@@ -55,7 +55,7 @@
               </thead>
               <tbody id="recon" class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
               <template :key="index" @click="rowClicked(record)" v-for="(record, index) in records">
-                <tr id="rec" :class="{'border-l-2 border-l-churpy-green odd:bg-gray-200 odd:dark:bg-gray-700' : record['show_nested'],
+                <tr id="rec" :class="{'border-l-2 border-l-churpy-green odd:bg-gray-200 odd:dark:bg-gray-700 shadow-md' : record['show_nested'],
                       'even:bg-gray-200 even:dark:bg-gray-700' : !record['show_nested']}"
                     class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all text-left cursor-pointer">
                   <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium relative text-gray-900 dark:text-gray-400 sm:pl-8 max-w-[115px] overflow-x-hidden truncate group">
@@ -100,17 +100,10 @@
                     </div>
                   </td>
                 </tr>
-                <TransitionRoot as="div" :show="record['show_nested']"
-                  enter-active-class="transform ease-out duration-300 transition -translate-y-2 opacity-0"
-                  enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
-                  leave-active-class="transition opacity-100 ease-in duration-100"
-                  leave-to-class="opacity-0 -translate-y-2"
-                  appear
-                  class="table-row mt-1">
-                    <td class="bg-gray-100 dark:bg-churpy-dark/60" :class="{'border-l-2 border-l-churpy-green' : record['show_nested']}" :colspan="fields.length+1">
-                      <ReconInnerTable actioned :fields="trans_fields" />
-                    </td>
-                </TransitionRoot>
+
+                 <ReconInnerTable
+                     v-if="record['show_nested']"
+                     :fields="trans_fields" />
               </template>
               </tbody>
             </table>
