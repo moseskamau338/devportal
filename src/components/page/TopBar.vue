@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-10 flex-shrink-0 flex h-8 md:h-12 bg-white shadow-sm rounded-md mx-auto mt-4 dark:bg-churpy-night-box dark:text-white w-[98%]"
+    class="sticky top-0 z-10 flex-shrink-0 flex h-8 md:h-12 bg-white/75 backdrop-blur shadow-sm rounded-md mx-auto mt-4 dark:bg-churpy-night-box/75 dark:text-white w-[98%]"
   >
     <button
       type="button"

@@ -1,3 +1,6 @@
+/*
+* This store manages all user preferences for the UI
+* */
 import { defineStore } from "pinia";
 
 export const useUiStore = defineStore('uiStore', {
@@ -6,6 +9,7 @@ export const useUiStore = defineStore('uiStore', {
         return {
             theme: false,
             mainSidebarOpen: true,
+            minimize_recon_stats:true,
         }
     },
     actions:{

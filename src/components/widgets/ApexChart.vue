@@ -24,7 +24,7 @@ export default {
     }
 
     let series = ref([{
-        name: 'SSPASS Data',
+        name: 'ERP Data',
           data: [12000, 5000, 26000, 1000]
         },
     ])

@@ -14,9 +14,9 @@
             <img src="/images/pages/engine.png" class="w-14" alt="">
           </div>
           <p class="text-sm px-4">
-            <b>Churpy’s Reconciliation Module</b> is one of a kind. It provides a robust
+            <b>Churpy’s Reconciliation Module</b> provides a robust
             <b>A.I driven</b> technology base to consume a vast variety of datasets and
-            provide a clean result-set and <b>soothed conscience :)</b>
+            provide accurate and real-time reconciliations.
           </p>
         </div>
         <div class="mt-2 flex justify-end items-baseline space-x-2">
@@ -63,8 +63,8 @@
         </div>
         <div class="lg:col-span-7 relative">
           <p class="text-sm">
-            <b>Rules</b> are an excellent way to instruct the reconciliation
-            engine how to behave in certain scenarios. Think of it
+            <b>Our rules</b> instruct the reconciliation
+            engine on how to match different invoice and payment scenarios. Think of it
             as a <b>learning experience</b>. The better the rules, the better
             the engine performs. <a href="#" class="text-green-600 hover:underline">Read more.</a>
           </p>
@@ -91,7 +91,7 @@
           <h3 class="font-bold text-gray-500 mt-4">Totals</h3>
         <div class="flex space-x-8 mt-2">
           <dl>
-            <dt class="text-xs md:text-md font-light">SSPASS</dt>
+            <dt class="text-xs md:text-md font-light">ERP</dt>
             <dd class="text-lg md:text-3xl font-light">KSH 1.902B</dd>
           </dl>
 
@@ -108,9 +108,9 @@
 
 
       </div>
-      <div class="col-span-7 grid grid-cols-1 md:grid-cols-2 border-l border-l-gray-400 px-5 mt-4 pb-5">
+      <div class="col-span-7 grid grid-cols-1grid-cols-1 md:grid-cols-2 border-l border-l-gray-400 px-5 mt-4 pb-5">
         <div class="col-span-1 px-2 border lg:border-none rounded">
-          <h2 class="font-semibold mb-2 shadow p-2">SSPASS Breakdown</h2>
+          <h2 class="font-semibold mb-2 shadow p-2">ERP Breakdown</h2>
 
           <div class="flex flex-col space-y-5 max-h-72 overflow-y-auto">
             <div :key="index" v-for="(status, index) in status_summary">

@@ -5,16 +5,16 @@
         <div class="inline-block relative w-full mx-6 py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded max-h-80 overflow-y-auto shadow-md">
             <table class="min-w-full divide-y divide-gray-300">
-              <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0 shadow-md">
+              <thead class="bg-gray-200/50 dark:bg-churpy-dark backdrop-blur sticky z-10 top-0 shadow-md">
               <tr class="py-0">
-                <th  v-for="(field, index) in fields" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400 whitespace-nowrap">
+                <th :key="field.key+index" v-for="(field, index) in fields" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400 whitespace-nowrap">
                     <span v-if="!field.action" class="relative flex items-center justify-between ">
                       <input v-show="field.selectable" type="checkbox" class="w-4 h-4 rounded-sm focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green text-churpy-green mr-1"/>
 
                       <span>{{field.label}}</span>
 
                       <button class="relative">
-                        <i class="fa-solid fa-sort text-gray-300 cursor-pointer ml-3 group-hover:scale-105 group-hover:text-gray-600 transition-all"></i>
+                        <i class="fa-solid fa-sort text-gray-300 dark:text-gray-700 cursor-pointer ml-3 group-hover:scale-105 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-all"></i>
                       </button>
 
                     </span>

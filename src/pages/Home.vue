@@ -27,7 +27,7 @@
         </TabPanel>
         <TabPanel>
            <h1 class="font-semibold text-lg">Bring in some data (Bank/ERP)</h1>
-          <p class="prose-base">You can connect your accounting system and pull in invoice or bank data. Alternatively, you can upload formated records and speed up the process.</p>
+          <p class="prose-base text-lg">You can connect your accounting system and pull in invoice or bank data. Alternatively, you can upload formated records and speed up the process.</p>
 
           <div class="flex flex-col w-fit">
             <router-link :to="{name: 'erp-settings'}" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Connect accounting system &rightarrow;</router-link>
@@ -38,14 +38,14 @@
         </TabPanel>
         <TabPanel>
           <h1 class="font-semibold text-lg">Invite and manage clients (Marketplace)</h1>
-          <p class="prose-base">Your clients are key, inviting them to use Churpy's Marketplace early will smoothen your collection flows and make reconciliation a breeze.</p>
+          <p class="prose-base text-lg">Your clients are key, inviting them to use Churpy's Marketplace early will smoothen your collection flows and make reconciliation a breeze.</p>
           <router-link :to="{name: 'marketplace'}" as="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit mt-8">Add Clients &rightarrow;
           </router-link>
 
         </TabPanel>
         <TabPanel>
           <h1 class="font-semibold text-lg">GO LIVE</h1>
-          <p class="prose-base">If you are all set and ready to run a <strong>LIVE</strong> account, hit the <b>GO LIVE</b> button and find out what you need for the process alongside billing details. If you need help, our <a href="#" class="text-green-700 hover:underline">support staff</a> are on standby</p>
+          <p class="prose-base text-lg">If you are all set and ready to run a <strong>LIVE</strong> account, hit the <b>GO LIVE</b> button and find out what you need for the process alongside billing details. If you need help, our <a href="#" class="text-green-700 hover:underline">support staff</a> are on standby</p>
           <button type="button" class="inline-flex mt-8 items-center px-2.5 py-1.5 text-sm font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
          <i class="fa-solid fa-power-off mr-2"></i>
          Go LIVE</button>

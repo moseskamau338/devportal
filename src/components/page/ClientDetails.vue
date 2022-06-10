@@ -1,12 +1,12 @@
 <template>
-<Modal :show="open">
+<Modal :show="open" source="client_details">
   <template #title>
     <h2 class="text-lg">Client X</h2>
   </template>
   <template #body>
     <div class="w-full border border-gray-300 rounded-md px-4 py-2">
       <h2 class="font-bold">Client Stats</h2>
-      <div class="flex flex-row space-x-24 mt-5">
+      <div class="flex flex-col lg:flex-row space-y-3 lg:space-y-reverse lg:space-x-24 mt-5">
         <div class="flex">
             <span class="h-6 w-6 shadow-md rounded-full bg-green-100 flex items-center justify-center p-4">
               <i class="fa-solid fa-dollar text-green-600"></i>
@@ -52,7 +52,7 @@
               </div>
               <input type="text" name="query" class="focus:ring-green-500 focus:border-green-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300" placeholder="John Doe" />
             </div>
-            <button type="button" class="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
+            <button @click="showInviteForm = true" type="button" class="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
               <i class="fa-solid fa-send text-gray-400 -rotate-45" aria-hidden="true"></i>
               <span>Invite more</span>
             </button>
@@ -86,6 +86,10 @@
       </template>
 
     </TableLite>
+
+
+    <ClientInvite @close="showInviteForm = false" :open="showInviteForm" />
+
   </template>
 </Modal>
 </template>
@@ -95,12 +99,13 @@ import Modal from "@/components/page/Modal.vue";
 import {inject, ref} from "vue";
 import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import Badge from "@/components/parts/Badge.vue";
+import ClientInvite from "@/components/page/ClientInvite.vue";
 export default {
   name: "ClientDetails",
-  components: {Badge, TableLite, Modal},
+  components: {ClientInvite, Badge, TableLite, Modal},
   props:{
     open:{type:Boolean, default: false, required: true },
-    clients: {type: Object, required: true}
+    client: {type: Object, required: true}
   },
   setup(props, {emit}){
     const emitter = inject('emitter')
@@ -118,12 +123,15 @@ export default {
         {name:'Eric Muthanji', phone:'(+254) 745-XXX-123', email:'eric@companyx.com', status: 'active'},
         {name:'Grace Muthoni', phone:'(+254) 723-XXX-900', email:'grace@companyx.com', status: 'pending'},
     ])
+    const showInviteForm = ref(false)
 
-    emitter.on('close_modal', ()=>{
-      emit('close')
+    emitter.on('close_modal', (source)=>{
+      if (source==='client_details'){
+        emit('close')
+      }
     })
 
-    return {headers, records, helpers}
+    return {headers, records, helpers, showInviteForm}
   }
 }
 </script>

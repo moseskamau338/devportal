@@ -11,7 +11,7 @@
     <div class="grid grid-cols-1  lg:grid-cols-3 py-5">
       <div class="col-span-1">
         <h3>Contact Email</h3>
-        <small>Where should invioce notifications be sent?</small>
+        <small>Where should invoice notifications be sent?</small>
       </div>
 
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0">

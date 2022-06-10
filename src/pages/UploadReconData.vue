@@ -29,16 +29,16 @@
       </div>
 
       <div class="mt-4 flex justify-end">
-        <c-button variant="success" class="mr-3">
+        <c-button variant="danger" class="mr-5">Cancel</c-button>
+        <c-button variant="success">
           <i class="fa-solid fa-cloud-upload mr-2"></i>
           Upload
         </c-button>
-        <c-button variant="danger">Cancel</c-button>
       </div>
    </div>
 
     <!--mapping-->
-    <div id="mapper" class="hidden lg:block px-4 py-5">
+    <div id="mapper" class="hidden lg:block px-4 py-5 relative">
       <h3 class="text-lg font-bold">Column mappings</h3>
       <p class="pr-8">
         If you wish to better understand Churpy's column identifiers, please read
@@ -79,6 +79,10 @@
           </div>
         </div>
       </div>
+
+       <div class="flex justify-end mt-12 absolute bottom-0 right-5 w-full">
+          <c-button variant="success">Save Mappings</c-button>
+       </div>
     </div>
 
   </div>

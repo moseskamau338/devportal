@@ -37,7 +37,7 @@
               'bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4' :
               'text-slate-400 hover:bg-green-400/30',
               status? 'p-1 ml-0 pl-2' : 'px-2 py-1 mb-2',
-              'group text-xs rounded-md transition-all hover:translate-x-1']">
+              'group text-sm rounded transition-all hover:translate-x-1']">
               <i :class="[
                 status? 'mr-3' : 'text-lg',
                 item.icon

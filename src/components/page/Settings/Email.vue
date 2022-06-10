@@ -50,7 +50,7 @@
       </div>
 
       <div class="col-span-1 lg:col-span-2 mt-4 lg:mt-0">
-        <h3>Create you message templates here. Need some guidance? <tool-tip class="text-green-600 cursor-pointer">
+        <h3>Create your message templates here. Need some guidance? <tool-tip class="text-green-600 cursor-pointer">
           <template #html>
             <div class="py-2 px-3">
               <h1 class="font-bold text-md mb-2">Writing custom templates</h1>
@@ -68,11 +68,12 @@
 
         <form class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
-              <label for="timing" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Timing</label>
+              <label
+                  for="timing" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Timing</label>
               <select id="timing" name="timing" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night-box">
                 <option>---Choose timing---</option>
-                <option>Before</option>
-                <option>After</option>
+                <option>Before Due Date</option>
+                <option>After Due Date</option>
               </select>
             </div>
 
@@ -109,6 +110,11 @@
              <label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Message</label>
             <small class="text-sm">Draft your <b>notification message</b></small>
             <Editor class="mt-4" v-model="form.message" />
+          </div>
+
+          <div class="col-span-3 flex justify-end space-x-4">
+            <c-button variant="success">Save</c-button>
+            <c-button variant="danger">Cancel</c-button>
           </div>
 
         </form>
