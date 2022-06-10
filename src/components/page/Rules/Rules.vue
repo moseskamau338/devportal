@@ -23,7 +23,7 @@
             <ExistingRules />
           </TabPanel>
           <TabPanel as="div" class="transition-all">
-            Create custom
+            <ManageCustom />
           </TabPanel>
         </TabPanels>
      </TabGroup>
@@ -45,12 +45,14 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import Modal from "@/components/page/Modal.vue";
 import {inject} from "vue";
 import ExistingRules from "@/components/page/Rules/ExistingRules.vue";
+import ManageCustom from "@/components/page/Rules/ManageCustom.vue";
 export default {
   name: "Rules",
   props:{
     open:{type:Boolean, default: false, required: true },
   },
   components:{
+    ManageCustom,
     ExistingRules,
     Modal, CButton,
     TabGroup, TabList,
