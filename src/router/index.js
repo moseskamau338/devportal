@@ -27,21 +27,6 @@ const routes = [
 
     },
     {
-        path: '/work-area',
-        name: 'workArea',
-        component: () => import('@/pages/WorkArea.vue'),
-        meta:{
-            title: 'Working Area',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Working Area',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
         path: '/banks/transactions',
         name: 'transactions',
         component: () => import('@/pages/BankTransactions.vue'),
@@ -257,6 +242,31 @@ const routes = [
                 },
                 {
                     text: 'Invoice',
+                    active: true,
+                },
+            ]),
+        }
+    },
+     {
+        path: '/invoice/marketplace/adjustments',
+        name: 'marketplace-adjustments',
+        component: () => import('@/pages/Adjustments.vue'),
+        meta:{
+            title: 'Adjustments',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to: {name: 'dashboard'}
+                },
+                {
+                    text: 'Marketplace',
+                    active: false,
+                    to: {name: 'marketplace'}
+                },
+                {
+                    text: 'Manage Adjustments',
                     active: true,
                 },
             ]),

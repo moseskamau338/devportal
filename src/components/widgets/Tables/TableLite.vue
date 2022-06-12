@@ -1,6 +1,5 @@
 <template>
-
-    <div class="px-4 mt-5 max-w-7xl">
+    <div class="px-4 max-w-7xl">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <slot name="header"></slot>
@@ -12,9 +11,9 @@
     <div class="mt-4 flex flex-col mx-4" v-if="records.length > 0">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
-          <div class="ring-1 ring-black ring-opacity-5 md:rounded h-fit overflow-y-auto">
+          <div class="ring-1 ring-black ring-opacity-5 md:rounded min-h-[150px] overflow-y-auto">
             <table class="min-w-full table-auto divide-y divide-gray-300">
-              <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-10 top-0">
+              <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-0 top-0">
               <tr class="py-0">
                 <th  v-for="(field, index) in headers" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">
                     <!--<i class="fa-solid fa-arrow-alt-down text-gray-400 cursor-pointer ml-0 mr-1 group-hover:scale-105 group-hover:text-gray-600 transition-all "></i>-->
@@ -22,107 +21,19 @@
                     <span v-if="!field.action" class="relative flex items-center justify-between">
                       <input v-show="field.selectable" type="checkbox" class="w-4 h-4 rounded focus:ring-offset-1 focus:ring-churpy-green focus:bg-churpy-green focus:border-churpy-green"/>
                       <span>{{field.label || field.key}}</span>
-
-                       <!--<Popover v-slot="{ open }" class="relative">-->
-                       <!--   <PopoverButton-->
-                       <!--       :class="open ? '' : 'text-opacity-90'">-->
-                       <!--     <i class="fa-solid fa-align-right text-gray-300 cursor-pointer ml-3 group-hover:scale-105 group-hover:text-gray-600 transition-all "></i>-->
-                       <!--   </PopoverButton>-->
-
-                       <!--   <transition-->
-                       <!--       enter-active-class="transition duration-200 ease-out"-->
-                       <!--       enter-from-class="translate-y-1 opacity-0"-->
-                       <!--       enter-to-class="translate-y-0 opacity-100"-->
-                       <!--       leave-active-class="transition duration-150 ease-in"-->
-                       <!--       leave-from-class="translate-y-0 opacity-100"-->
-                       <!--       leave-to-class="translate-y-1 opacity-0"-->
-                       <!--   >-->
-                       <!--     <PopoverPanel-->
-                       <!--         class="absolute z-10 w-56 px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"-->
-                       <!--     >-->
-                       <!--       <div-->
-                       <!--           class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"-->
-                       <!--       >-->
-                       <!--         <div class="relative bg-white p-2">-->
-                       <!--           <TabGroup>-->
-                       <!--             <TabList class="flex p-1 space-x-1">-->
-                       <!--               <Tab-->
-                       <!--                   as="template"-->
-                       <!--                   v-slot="{ selected }"-->
-                       <!--               >-->
-                       <!--                 <button-->
-                       <!--                     :class="[-->
-                       <!--                     'w-full py-1 text-xs font-medium transition-all',-->
-                       <!--                     selected-->
-                       <!--                       ? 'text-churpy-green border-b-2 border-churpy-green'-->
-                       <!--                       : 'text-gray-700 hover:text-green-600/50',-->
-                       <!--                   ]"-->
-                       <!--                 >-->
-                       <!--                   <i class="fa-solid fa-search"></i>-->
-                       <!--                 </button>-->
-                       <!--               </Tab>-->
-                       <!--                <Tab-->
-                       <!--                   as="template"-->
-                       <!--                   v-slot="{ selected }"-->
-                       <!--               >-->
-                       <!--                 <button-->
-                       <!--                     :class="[-->
-                       <!--                     'w-full py-1 text-xs font-medium transition-all',-->
-                       <!--                     selected-->
-                       <!--                       ? 'text-churpy-green border-b-2 border-churpy-green'-->
-                       <!--                       : 'text-gray-700 hover:text-green-600/50',-->
-                       <!--                   ]"-->
-                       <!--                 >-->
-                       <!--                   <i class="fa-solid fa-filter"></i>-->
-                       <!--                 </button>-->
-                       <!--               </Tab>-->
-                       <!--             </TabList>-->
-
-                       <!--             <TabPanels class="mt-2">-->
-                       <!--               <TabPanel>-->
-                       <!--                 <ul role="list" class="divide-y divide-gray-200">-->
-                       <!--                   <li class="px-0 py-0 sm:px-6">-->
-                       <!--                     <input type="text" placeholder="Search column..." class="rounded border-gray-200 leading-3 py-1 text-xs focus:ring-churpy-green focus:border-churpy-green">-->
-                       <!--                     <p class="text-gray-400 mt-1">-->
-                       <!--                       Search this column by ID-->
-                       <!--                     </p>-->
-                       <!--                   </li>-->
-
-                       <!--                   &lt;!&ndash; More items... &ndash;&gt;-->
-                       <!--                 </ul>-->
-
-
-
-
-                       <!--               </TabPanel>-->
-                       <!--             </TabPanels>-->
-                       <!--             <TabPanels class="mt-2">-->
-                       <!--               <TabPanel>-->
-                       <!--                 Filters 2-->
-                       <!--               </TabPanel>-->
-                       <!--             </TabPanels>-->
-                       <!--           </TabGroup>-->
-
-
-
-                       <!--         </div>-->
-
-                       <!--       </div>-->
-                       <!--     </PopoverPanel>-->
-                       <!--   </transition>-->
-                       <!-- </Popover>-->
-
-
                     </span>
 
                   <span v-else class="sr-only">Edit</span>
+                </th>
+                <th v-if="actioned">
+
                 </th>
 
               </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white dark:bg-churpy-dark/60 h-9 overflow-auto">
-              <tr :key="index" v-for="(record, index) in records" class="dark:hover:bg-gray-300/20 hover:bg-gray-100 transition-all cursor-pointer">
-                <td :key="ind" v-for="(key, ind) in Object.keys(record)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <tr :key="index" v-for="(record, index) in records" class="dark:hover:bg-gray-300/20 hover:bg-gray-100/60 dark:odd:bg-gray-600 odd:bg-gray-100 transition-all cursor-pointer">
+                <td :key="ind" v-for="(key, ind) in Object.keys(record)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">
                   <!--key => row key-->
                   <!--headers[index].key => header index-->
                   <slot :name="key" v-bind:record="record">

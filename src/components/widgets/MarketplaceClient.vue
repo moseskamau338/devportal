@@ -8,10 +8,10 @@
 
     <!--far right 😂-->
       <div class="flex space-x-2">
-        <button class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
+        <router-link :to="{name: 'marketplace-adjustments'}" class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
           <i class="fa-solid fa-file-circle-check"></i>
           <span>Credit/Debit</span>
-        </button>
+        </router-link>
 
         <button @click="viewDetails = !viewDetails" class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
           <i class="fa-solid fa-eye"></i>
