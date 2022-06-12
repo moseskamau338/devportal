@@ -11,7 +11,7 @@
     <div class="mt-4 flex flex-col mx-4" v-if="records.length > 0">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
-          <div class="ring-1 ring-black ring-opacity-5 md:rounded min-h-[150px] overflow-y-auto">
+          <div class="ring-1 ring-black ring-opacity-5 md:rounded min-h-[150px] max-h-80 overflow-y-auto">
             <table class="min-w-full table-auto divide-y divide-gray-300">
               <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-0 top-0">
               <tr class="py-0">
@@ -57,7 +57,7 @@
             </div>
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
               <div>
-                <p class="text-sm text-gray-700">
+                <p class="text-sm text-gray-700 dark:text-gray-400">
                   Showing
                   <span class="font-medium">{{ paginateData.from }}</span>
                   to

@@ -1,14 +1,5 @@
 <template>
-<div class="mt-5">
-    <slot name="header">
-      <div class="sm:flex sm:items-center">
-      <div class="sm:flex-auto">
-        <h1 class="text-xl font-semibold">Invoice</h1>
-        <p class="mt-2 text-sm">Some description here.</p>
-      </div>
-    </div>
-    </slot>
-    <div class="-mx-4 mt-8 flex flex-col flex-shrink-0 sm:-mx-6 md:mx-0 overflow-x-auto">
+<div class="-mx-4 mt-8 flex flex-col flex-shrink-0 sm:-mx-6 md:mx-0 overflow-x-auto">
       <table class="min-w-full divide-y divide-gray-300">
         <thead>
           <tr>
@@ -48,15 +39,24 @@
         </tfoot>
       </table>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: "LineItems",
+  name: "NoteLineitems",
   props:{
-    items:{required: true, type: Array}
+    records:{type:Array, default:[]}
   },
+  setup(){
+    let headers = ref([
+      {key: 'description',label:'Description'},
+      {key: 'order_qty',label:'Order Quantity'},
+      {key: 'difference',label:'Difference'},
+      {key: 'unit_price',label:'Unit Price'},
+      {key: 'total',label:'Total'},
+    ])
+    return {headers}
+  }
 }
 </script>
 

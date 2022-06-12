@@ -23,7 +23,7 @@
 
 
     <template #row_actions="{record}">
-      <div class="z-10">
+      <div class="-z-10">
           <Dropdown class="bg-gray-700 rounded hover:bg-opacity-80 focus:ring-offset-1 focus:ring focus:ring-gray-600 rounded-sm" name="Manage" :options="[
               {name:'Approve', icon:'fa-circle-check text-green-600'},
               {name:'Decline', icon:'fa-ban text-red-600'},
@@ -34,6 +34,8 @@
     </template>
   </TableLite>
 
+  <ViewNote />
+
 </template>
 
 <script>
@@ -41,9 +43,10 @@ import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import Dropdown from "@/components/parts/Dropdown.vue";
 import {inject} from "vue";
 import Badge from "@/components/parts/Badge.vue";
+import ViewNote from "@/components/page/Adjustments/ViewNote.vue";
 export default {
   name: "NotesTable",
-  components: {Badge, Dropdown, TableLite},
+  components: {ViewNote, Badge, Dropdown, TableLite},
   setup(){
     const helpers = inject('helpers')
     let headers = [
@@ -59,6 +62,15 @@ export default {
 
     let records = [
       {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
+        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
     ]
 
 
