@@ -109,12 +109,6 @@ export default {
     ]
 
     let records = [
-      {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
-        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
-        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
-        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
-        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
-        {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
         {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
         {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
         {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},

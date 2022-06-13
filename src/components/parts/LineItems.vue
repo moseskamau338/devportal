@@ -36,6 +36,21 @@
             <td class="pl-3 pr-4 pt-6 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$3,900.00</td>
           </tr>
           <tr>
+            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Payments</th>
+            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Payments</th>
+            <td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Credit Notes</th>
+            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Credit Notes</th>
+            <td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
+          </tr>
+          <tr>
+            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Debit Notes</th>
+            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Debit Notes</th>
+            <td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
+          </tr>
+          <tr>
             <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Tax</th>
             <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Tax</th>
             <td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>

@@ -2,7 +2,6 @@
     <TableLite :records="data" :headers="fields" actioned class="mt-8">
 
         <!--filters-->
-
         <template #header>
           <slot name="headerx">
             <h2 class="font-bold my-1">Filters</h2>
@@ -99,13 +98,19 @@
 
 
         <template #row_actions>
-          <div class="flex items-center space-x-2 justify-start">
-            <router-link to="/invoice/marketplace/40000022/Invoice Y" class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-green-100 flex justify-center items-center p-2"><i class="fa-solid fa-eye text-green-600 text-xs"></i></router-link>
+          <div @click="showAdjustmentForm = true" class="flex items-center space-x-2 justify-start">
+            <button class="w-6 h-6 hover:shadow-md hover:scale-105 hover:bg-gray-300 transition-all rounded-full bg-gray-100 flex justify-center items-center shadow focus:ring-1 focus:ring-offset-1 focus:ring-cyan-900 p-2"><i class="fa-solid fa-plus text-gray-600 text-xs"></i></button>
 
-            <!--<button class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-red-200 flex justify-center items-center p-2"><i class="fa-solid fa-trash-alt text-red-600 text-xs"></i></button>-->
+            <router-link to="/invoice/marketplace/40000022/Invoice Y" class="w-6 h-6 hover:shadow-md hover:scale-105 transition-all rounded-full bg-green-100 flex justify-center items-center shadow p-2"><i class="fa-solid fa-eye text-green-600 text-xs"></i></router-link>
+
           </div>
         </template>
       </TableLite>
+
+  <CreateStandardAdjustment
+      @close="showAdjustmentForm = !showAdjustmentForm"
+      :open="showAdjustmentForm" />
+
 </template>
 
 <script>
@@ -115,11 +120,13 @@ import Badge from "@/components/parts/Badge.vue";
 import CButton from "@/components/parts/CButton.vue";
 import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import ExportButton from "@/components/parts/ExportButton.vue";
-
+import CreateStandardAdjustment from "@/components/page/Adjustments/CreateStandardAdjustment.vue";
 import {inject, ref} from "vue";
+
 export default {
   name: "InvoiceTable",
   components:{
+    CreateStandardAdjustment,
     ExportButton,
     TableLite,
     CButton,
@@ -130,6 +137,7 @@ export default {
   },
   setup(){
       const helpers = inject('helpers')
+      const showAdjustmentForm = ref(false);
 
       const dateValue = ref([]);
       const data = ref([
@@ -149,7 +157,7 @@ export default {
           {type:'text',key:'action',label: 'Edit', action: true},
         ])
 
-      return {data, fields,dateValue, helpers}
+      return {data, fields,dateValue, helpers, showAdjustmentForm}
     }
 }
 </script>

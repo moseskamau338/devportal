@@ -33,7 +33,7 @@
     <!--  line items-->
       <line-items :items="projects" />
     <!--print-->
-      <div class="mt-5">
+      <div class="invisible md:visible mt-5">
         <c-button variant="success" class="bg-green-300">
           <i class="fa-solid fa-print mr-2"></i>
           Print
@@ -42,8 +42,13 @@
     </div>
 
     <!--sidebar-->
-    <invoice-actions class="hidden lg:block" />
+    <invoice-actions class="lg:block" />
 </section>
+
+  <section class="mt-4 bg-white dark:bg-churpy-night-box p-4 rounded">
+    <h2 class="py-2 font-bold">Related Adjustments</h2>
+    <AdjustmentCategories />
+  </section>
 </template>
 
 <script>
@@ -52,6 +57,7 @@ import InvoiceActions from "@/components/parts/InvoiceActions.vue";
 import LineItems from "@/components/parts/LineItems.vue";
 
 import {inject, ref} from "vue";
+import AdjustmentCategories from "@/components/page/Adjustments/AdjustmentCategories.vue";
 const loadName = async () =>{
   return new Promise((resolve,reject) =>{
       setTimeout(()=>{
@@ -61,7 +67,7 @@ const loadName = async () =>{
 }
 export default {
   name: "InvoiceDetails",
-  components:{LineItems, InvoiceActions, CButton},
+  components:{AdjustmentCategories, LineItems, InvoiceActions, CButton},
   async setup(){
     const helpers = inject('helpers')
     const client = ref(await loadName())

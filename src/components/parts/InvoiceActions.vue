@@ -1,6 +1,6 @@
 <template>
 <div class="col-span-2 rounded-md bg-gray-100 border border-2 border-gray-400 dark:bg-churpy-dark dark:border-gray-500 border-dashed p-2">
-    <header class="flex justify-between items-center">
+    <header class="flex flex-col space-y-3 md:flex-row md:space-y-reverse justify-between items-center">
       <div class="space-x-2">
         <Badge status="USER" />
         <span class="text-churpy-green text-sm">Invoice Reconciled</span>
