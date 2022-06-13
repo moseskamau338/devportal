@@ -6,9 +6,15 @@
         <span class="text-churpy-green text-sm">Invoice Reconciled</span>
       </div>
     <dropdown name="Create adjustment" :options="[
-        {name:'Raise Credit Note'},
-        {name:'Raise Debit Note'},
-    ]" />
+        {key:'raise_cn',name:'Raise Credit Note', },
+        {key:'raise_dn',name:'Raise Debit Note'},
+    ]">
+      <template #raise_cn>
+        <button @click="showCreateCn = !showCreateCn" class="group flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:bg-gray-700">
+          Raise Credit Note
+        </button>
+      </template>
+    </dropdown>
     </header>
     <div id="inv_details" class="mt-6">
       <h2 class="underline">Counterparty address</h2>
@@ -87,15 +93,25 @@
       <c-button variant="danger">Raise Dispute</c-button>
     </div>
   </div>
+
+  <!--modals-->
+  <ViewNote @close="showCreateCn = !showCreateCn" creating :open="showCreateCn" />
 </template>
 
 <script>
+import {ref} from 'vue'
 import Badge from "@/components/parts/Badge.vue";
 import CButton from "@/components/parts/CButton.vue";
 import Dropdown from "@/components/parts/Dropdown.vue";
+import ViewNote from "@/components/page/Adjustments/ViewNote.vue";
 export default {
   name: "InvoiceActions",
-  components: {CButton, Dropdown, Badge},
+  components: {ViewNote, CButton, Dropdown, Badge},
+  setup(){
+    const showCreateCn = ref(false)
+
+    return {showCreateCn}
+  }
 }
 </script>
 

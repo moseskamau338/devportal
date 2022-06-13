@@ -23,7 +23,7 @@
         >
           <div class="px-1 py-1" :key="index" v-for="(option, index) in options">
             <MenuItem as="div" v-slot="{ active, disabled }">
-              <slot :name="option.name" v-bind:active="active" v-bind:disabled="disabled">
+              <slot :name="option.key" v-bind:active="active" v-bind:disabled="disabled">
                 <button
                   :class="[
                     active ? 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300' : 'text-gray-900 dark:text-gray-400',

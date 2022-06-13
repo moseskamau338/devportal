@@ -22,7 +22,6 @@
     components: { ContentLoader },
     setup(){
      const primaryColor = computed(() => {
-       console.log('Current theme: ', useUiStore().theme)
           return useUiStore().theme? '#1E293B': '#cfd2df'
      })
       const secondaryColor = computed(() => {

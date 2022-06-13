@@ -68,7 +68,10 @@
                   Status
                 </span>
               </th>
-              <td class="text-xs">  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> RECONCILED </span></td>
+              <td class="text-xs">
+                <span v-if="!creating" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> APPROVED </span>
+                <span v-else class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"> PENDING </span>
+              </td>
             </tr>
             <tr class="whitespace-nowrap">
               <th class="text-xs font-bold">
@@ -103,7 +106,8 @@
                 </span>
               </th>
               <td class="text-xs">
-                07/04/2022
+                <span v-if="!creating">07/12/2021</span>
+                <span v-else>{{dayjs().format('DD/MM/YYYY')}}</span>
               </td>
             </tr>
           </table>
@@ -113,7 +117,7 @@
         <!-- files-->
           <h2 class="font-bold">Attachments</h2>
 
-          <table class="table-auto w-full">
+          <table v-if="!creating" class="table-auto w-full">
             <tr class="hover:bg-gray-100">
               <th class="text-xs font-bold text-green-600 pl-2 py-1.5">file.pdf</th>
               <td class="text-xs pr-2 text-center py-1.5">
@@ -133,14 +137,25 @@
       </div>
     </section>
   </template>
+
+  <template #footer>
+    <div class="flex space-x-5">
+      <c-button v-if="creating || updating" variant="danger">Cancel</c-button>
+      <c-button variant="success">
+        {{ creating? 'Request' : updating? 'Save' : 'Ok'}}
+      </c-button>
+    </div>
+  </template>
 </Modal>
 </template>
 
 <script>
+import dayjs from "dayjs";
 import Modal from "@/components/page/Modal.vue";
 import NoteLineitems from "@/components/page/Adjustments/NoteLineitems.vue";
 import {inject, computed} from "vue";
 import FileUploader from "@/components/parts/FileUploader.vue";
+import CButton from "@/components/parts/CButton.vue";
 
 export default {
   name: "ViewNote",
@@ -151,6 +166,7 @@ export default {
     note:{type: Object, default: null},
   },
   components:{
+    CButton,
     FileUploader,
     NoteLineitems,
     Modal
@@ -170,7 +186,7 @@ export default {
       }
     })
 
-    return {helpers, source}
+    return {helpers, source, dayjs}
   }
 }
 </script>
