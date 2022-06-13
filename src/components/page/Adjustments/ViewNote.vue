@@ -1,13 +1,24 @@
 <template>
-<Modal :show="open">
-  <template #title>View Credit Note</template>
+<Modal :show="open" :source="source" size="large">
+  <template #title>
+    <span v-if="!updating && !creating">View Credit Note</span>
+    <span v-if="updating">Edit Credit Note</span>
+    <span v-if="creating">Create Credit Note</span>
+  </template>
 
   <template #body>
     <section class="grid grid-cols-1 lg:grid-cols-12">
       <div class="col-span-8 h-fit max-h-[500px] overflow-y-auto px-2">
         <h2 class="font-bold">Line Items</h2>
-         <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <NoteLineitems />
+         <p v-if="!updating && !creating" class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <div v-else-if="creating || updating ">
+            <label for="description" class="block text-sm font-medium text-gray-500">Description</label>
+            <div class="mt-1">
+              <textarea rows="4" name="description" id="description" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md dark:bg-churpy-night-box dark:border-gray-500">{{updating ? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit':''}}</textarea>
+            </div>
+          </div>
+
+          <NoteLineitems :editable="creating || updating" />
 
         <div class="w-full relative">
           <!-- discussions -->
@@ -28,7 +39,7 @@
               </header>
             </div>
 
-            <div class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
+            <div v-if="!creating" class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
               <span class="absolute -mx-8 h-8 w-8 flex items-center justify-center bg-cyan-600 p-2 rounded-full border-2 border-gray-100 dark:border-churpy-night-box text-xs text-white">
                 {{helpers.getRandomColor('Grace Chim').character}}
               </span>
@@ -128,13 +139,16 @@
 <script>
 import Modal from "@/components/page/Modal.vue";
 import NoteLineitems from "@/components/page/Adjustments/NoteLineitems.vue";
-import {inject} from "vue";
+import {inject, computed} from "vue";
 import FileUploader from "@/components/parts/FileUploader.vue";
 
 export default {
   name: "ViewNote",
   props:{
-    open:{required: true, type: Boolean}
+    open:{required: true, type: Boolean},
+    updating:{type: Boolean, default:false},
+    creating:{type: Boolean, default:false},
+    note:{type: Object, default: null},
   },
   components:{
     FileUploader,
@@ -145,11 +159,18 @@ export default {
     const emitter = inject('emitter')
     const helpers = inject('helpers')
 
-    emitter.on('close_modal', ()=>{
-        emit('close')
+    const source = computed(() => {
+        return props.creating? 'creating':
+            props.updating? 'updating' : 'viewNote'
     })
 
-    return {helpers}
+    emitter.on('close_modal', (modal_source)=>{
+      if (modal_source === source.value){
+          emit('close')
+      }
+    })
+
+    return {helpers, source}
   }
 }
 </script>

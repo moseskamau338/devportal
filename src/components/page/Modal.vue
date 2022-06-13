@@ -10,7 +10,7 @@
             <!-- This element is to trick the browser into centering the modal contents. -->
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-              <div class="relative inline-block bg-white dark:bg-churpy-night-box rounded-lg  text-left overflow-hidden shadow-xl transform transition-all sm:my-8 w-full min-h-[500px] align-middle sm:align-middle sm:max-w-4xl sm:w-full">
+              <div :class="getSize()" class="relative inline-block bg-white dark:bg-churpy-night-box rounded-lg  text-left overflow-hidden shadow-xl transform transition-all sm:my-8 w-full align-middle sm:align-middle sm:w-full">
                 <header class="bg-gradient-to-r from-churpy-green via-churpy-green to-churpy-night-box/90 dark:bg-gray-700 m-0 px-3 pt-3 pb-2 flex justify-between text-white px-4">
                   <h3 class="font-bold">
                     <slot name="title">Title here</slot>
@@ -50,10 +50,11 @@ import { ref, toRef, inject } from 'vue'
 import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
 export default {
+  name:'Modal',
   props: {
     show: {type: Boolean, required: true},
     source:{type:String, default: 'page', },
-    size: {type: String, default: 'lg'}
+    size: {type: String, default: 'medium'}
   },
   components: {
     Dialog,
@@ -66,6 +67,19 @@ export default {
     //preliminaries:
     const emitter = inject('emitter')
     const open = toRef(props, 'show')
+
+    function getSize(){
+      let classes = ''
+      switch (props.size) {
+        case 'large': classes = 'sm:max-w-6xl min-h-[700px]'; break;
+        case 'normal': classes = 'sm:max-w-4xl min-h-[500px]'; break;
+        case 'small': classes = 'sm:max-w-md min-h-[300px]'; break;
+        default: classes = 'sm:max-w-4xl min-h-[500px]';
+      }
+
+      return classes
+    }
+
 
     function close(){
       emitter.emit('close_modal', props.source)
@@ -88,7 +102,8 @@ export default {
 
     return {
       open,
-      close
+      close,
+      getSize
     }
   },
 }

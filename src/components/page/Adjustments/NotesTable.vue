@@ -48,7 +48,7 @@
                         {name:'Approve', icon:'fa-circle-check text-green-600', action: toggleNote},
                         {name:'Decline', icon:'fa-ban text-red-600', action: toggleNote},
                         {name:'View', icon:'fa-eye', action: toggleNote},
-                        {name:'Edit', icon:'fa-edit', action: toggleNote},
+                        {name:'Edit', icon:'fa-edit', action: ()=>{showCreate = !showCreate}},
                       ]"
                     class="py-2 pl-2 pr-8 text-gray-900 dark:text-gray-400 flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-200"
                   >
@@ -68,6 +68,8 @@
   </TableLite>
 
   <ViewNote @close="toggleNote" :open="showNote" />
+  <!--edit-->
+  <ViewNote updating @close="showCreate = !showCreate" :open="showCreate" />
 
 </template>
 
@@ -93,6 +95,7 @@ export default {
     const helpers = inject('helpers')
 
     let showNote = ref(false)
+    let showCreate = ref(false)
 
     let headers = [
       {key:'invoice_id', label:'Invoice ID'},
@@ -123,7 +126,12 @@ export default {
     }
 
 
-    return {headers, records, currency: helpers.currency, showNote, toggleNote}
+    return {
+      headers, records,
+      currency: helpers.currency,
+      showNote, toggleNote,
+      showCreate
+    }
   }
 }
 </script>
