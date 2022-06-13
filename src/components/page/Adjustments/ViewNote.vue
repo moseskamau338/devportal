@@ -9,23 +9,24 @@
          <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           <NoteLineitems />
 
-        <div class="w-full">
+        <div class="w-full relative">
           <!-- discussions -->
-          <h2 class="font-bold border-b mt-2">Discussion</h2>
+          <header class="flex justify-between items-center border-b mt-2">
+            <h2 class="font-bold">Discussion</h2>
+          </header>
 
-          <div class="mt-5">
+          <div class="mt-5 pb-20">
 
             <div class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
               <span class="absolute -mx-8 h-8 w-8 flex items-center justify-center bg-cyan-600 p-2 rounded-full border-2 border-gray-100 dark:border-churpy-night-box text-xs text-white">
                 {{helpers.getRandomColor('Moses Kamau').character}}
               </span>
               <header class="flex justify-between ml-2">
-                  <input type="text" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-3/4 sm:text-sm border-2 border-gray-300 placeholder-gray-400 rounded-md" placeholder="Write your comments here …" />
+                  <input type="text" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-3/4 sm:text-sm border-2 border-gray-300 placeholder-gray-400 rounded-md dark:bg-churpy-night-box dark:border-gray-500" placeholder="Write your comments here …" />
 
                 <!--<small class="uppercase tracking-wide text-[8px] font-semibold">Date: 11th April 2022</small>-->
               </header>
             </div>
-
 
             <div class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
               <span class="absolute -mx-8 h-8 w-8 flex items-center justify-center bg-cyan-600 p-2 rounded-full border-2 border-gray-100 dark:border-churpy-night-box text-xs text-white">
@@ -45,7 +46,7 @@
         </div>
 
       </div>
-      <div class="col-span-4 px-3">
+      <div class="col-span-4 mt-4 md:mt-0 px-3">
         <h2 class="font-bold">Adjustment Metadata</h2>
         <div class="mt-4">
           <table class="w-1/2 table-auto border-separate border-spacing-2">
@@ -101,6 +102,22 @@
         <!-- files-->
           <h2 class="font-bold">Attachments</h2>
 
+          <table class="table-auto w-full">
+            <tr class="hover:bg-gray-100">
+              <th class="text-xs font-bold text-green-600 pl-2 py-1.5">file.pdf</th>
+              <td class="text-xs pr-2 text-center py-1.5">
+                <div>
+                  <button class="flex items-center justify-center hover:scale-105 h-5 w-5 bg-green-200 rounded-full focus:ring-1 focus:ring-green-500">
+                    <i class="fa-solid fa-download text-xs text-green-600"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <FileUploader class="mt-5">
+            <h6 class="dark:text-gray-400">Upload</h6>
+          </FileUploader>
         </div>
       </div>
     </section>
@@ -112,6 +129,7 @@
 import Modal from "@/components/page/Modal.vue";
 import NoteLineitems from "@/components/page/Adjustments/NoteLineitems.vue";
 import {inject} from "vue";
+import FileUploader from "@/components/parts/FileUploader.vue";
 
 export default {
   name: "ViewNote",
@@ -119,6 +137,7 @@ export default {
     open:{required: true, type: Boolean}
   },
   components:{
+    FileUploader,
     NoteLineitems,
     Modal
   },

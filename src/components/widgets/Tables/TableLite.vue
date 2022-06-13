@@ -26,6 +26,7 @@
                   <span v-else class="sr-only">Edit</span>
                 </th>
                 <th v-if="actioned">
+                  <span class="sr-only">actions</span>
 
                 </th>
 
@@ -40,7 +41,7 @@
                     {{record[key]}}
                   </slot>
                 </td>
-                <td v-if="actioned">
+                <td v-if="actioned" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">
                   <slot name="row_actions" v-bind:record="record"></slot>
                 </td>
 

@@ -23,7 +23,7 @@
 
 
     <template #row_actions="{record}">
-      <div>
+      <div class="relative">
         <Popover>
           <PopoverButton>
             <c-button variant="dark">Options <i class="fa-solid fa-chevron-down ml-1"></i></c-button>
