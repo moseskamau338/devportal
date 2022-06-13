@@ -23,32 +23,77 @@
 
 
     <template #row_actions="{record}">
-      <div class="-z-10">
-          <Dropdown class="bg-gray-700 rounded hover:bg-opacity-80 focus:ring-offset-1 focus:ring focus:ring-gray-600 rounded-sm" name="Manage" :options="[
-              {name:'Approve', icon:'fa-circle-check text-green-600'},
-              {name:'Decline', icon:'fa-ban text-red-600'},
-              {name:'View', icon:'fa-eye'},
-              {name:'Edit', icon:'fa-edit'},
-          ]"></Dropdown>
+      <div>
+        <Popover>
+          <PopoverButton>
+            <c-button variant="dark">Options <i class="fa-solid fa-chevron-down ml-1"></i></c-button>
+          </PopoverButton>
+
+          <!-- Use the built-in <transition> component to add transitions. -->
+          <transition
+            enter-active-class="transition duration-200 ease-out"
+            enter-from-class="translate-y-1 opacity-0"
+            enter-to-class="translate-y-0 opacity-100"
+            leave-active-class="transition duration-150 ease-in"
+            leave-from-class="translate-y-0 opacity-100"
+            leave-to-class="translate-y-1 opacity-0"
+          >
+            <PopoverPanel class="absolute z-10 mt-1 w-fit max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-8">
+              <div class="overflow-hidden rounded shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="relative bg-white dark:bg-churpy-night">
+                  <button
+                      @click="option.action()"
+                      :key="index"
+                      v-for="(option, index) in [
+                        {name:'Approve', icon:'fa-circle-check text-green-600', action: toggleNote},
+                        {name:'Decline', icon:'fa-ban text-red-600', action: toggleNote},
+                        {name:'View', icon:'fa-eye', action: toggleNote},
+                        {name:'Edit', icon:'fa-edit', action: toggleNote},
+                      ]"
+                    class="py-2 pl-2 pr-8 text-gray-900 dark:text-gray-400 flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-200"
+                  >
+                    <span class="flex items-center">
+                      <i v-if="option.icon" class="fa-solid mr-2" :class="option.icon"></i>
+                      {{option.name}}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </PopoverPanel>
+          </transition>
+        </Popover>
+
       </div>
     </template>
   </TableLite>
 
-  <ViewNote />
+  <ViewNote @close="toggleNote" :open="showNote" />
 
 </template>
 
 <script>
 import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import Dropdown from "@/components/parts/Dropdown.vue";
-import {inject} from "vue";
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+
+import { ref,inject } from "vue";
 import Badge from "@/components/parts/Badge.vue";
 import ViewNote from "@/components/page/Adjustments/ViewNote.vue";
+import CButton from "@/components/parts/CButton.vue";
 export default {
   name: "NotesTable",
-  components: {ViewNote, Badge, Dropdown, TableLite},
+  components: {
+    CButton,
+    ViewNote, Badge,
+    Dropdown, TableLite,
+    Popover, PopoverButton,
+    PopoverPanel
+  },
   setup(){
     const helpers = inject('helpers')
+
+    let showNote = ref(false)
+
     let headers = [
       {key:'invoice_id', label:'Invoice ID'},
       {key:'supplier', label:'Supplier'},
@@ -73,8 +118,12 @@ export default {
         {invoice_id:'4567283923', supplier:'Supplier 1', date:'12/12/20', amount:234234223, reconciled_amount:236453, description:'', recon_status:'user-p', approved: true},
     ]
 
+    let toggleNote = () =>{
+      showNote.value = !showNote.value
+    }
 
-    return {headers, records, currency: helpers.currency}
+
+    return {headers, records, currency: helpers.currency, showNote, toggleNote}
   }
 }
 </script>

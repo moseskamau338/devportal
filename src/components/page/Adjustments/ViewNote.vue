@@ -1,20 +1,107 @@
 <template>
-<Modal :show="true">
+<Modal :show="open">
   <template #title>View Credit Note</template>
 
   <template #body>
     <section class="grid grid-cols-1 lg:grid-cols-12">
-      <div class="col-span-8">
+      <div class="col-span-8 h-fit max-h-[500px] overflow-y-auto px-2">
+        <h2 class="font-bold">Line Items</h2>
+         <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <NoteLineitems />
 
-        <LineItems :items="projects">
-          <template #header>
-             <h2 class="font-bold">Line Items</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </template>
-        </LineItems>
+        <div class="w-full">
+          <!-- discussions -->
+          <h2 class="font-bold border-b mt-2">Discussion</h2>
+
+          <div class="mt-5">
+
+            <div class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
+              <span class="absolute -mx-8 h-8 w-8 flex items-center justify-center bg-cyan-600 p-2 rounded-full border-2 border-gray-100 dark:border-churpy-night-box text-xs text-white">
+                {{helpers.getRandomColor('Moses Kamau').character}}
+              </span>
+              <header class="flex justify-between ml-2">
+                  <input type="text" class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-3/4 sm:text-sm border-2 border-gray-300 placeholder-gray-400 rounded-md" placeholder="Write your comments here …" />
+
+                <!--<small class="uppercase tracking-wide text-[8px] font-semibold">Date: 11th April 2022</small>-->
+              </header>
+            </div>
+
+
+            <div class="border-l border-gray-300 border-dashed pl-4 mx-4 pb-4">
+              <span class="absolute -mx-8 h-8 w-8 flex items-center justify-center bg-cyan-600 p-2 rounded-full border-2 border-gray-100 dark:border-churpy-night-box text-xs text-white">
+                {{helpers.getRandomColor('Grace Chim').character}}
+              </span>
+              <header class="flex justify-between ml-2">
+                <h2 class="text-sm font-bold">Grace Chim</h2>
+                <small class="uppercase tracking-wide text-[8px] font-semibold">Date: 11th April 2022</small>
+              </header>
+              <p class="prose text-sm ml-2 pr-16 text-gray-500 dark:text-gray-300">
+                Hi Moses, I recounted the line-items and confirmed that there was a mistake.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="col-span-4">
-        kjbdjhwb
+      <div class="col-span-4 px-3">
+        <h2 class="font-bold">Adjustment Metadata</h2>
+        <div class="mt-4">
+          <table class="w-1/2 table-auto border-separate border-spacing-2">
+            <tr class="whitespace-nowrap">
+              <th class="text-xs font-bold">
+                <span class="flex items-center">
+                  <i class="fa-solid fa-check mr-1"></i>
+                  Status
+                </span>
+              </th>
+              <td class="text-xs">  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> RECONCILED </span></td>
+            </tr>
+            <tr class="whitespace-nowrap">
+              <th class="text-xs font-bold">
+                <span class="flex items-center">
+                  <i class="fa-solid fa-user mr-1"></i>
+                  Raised by
+                </span>
+              </th>
+              <td class="text-xs">
+                Moses Kamau
+              </td>
+            </tr>
+
+            <tr class="whitespace-nowrap">
+              <th class="text-xs font-bold">
+                <span class="flex items-center">
+                  <i class="fa-solid fa-file-invoice mr-1"></i>
+                  Invoice
+                </span>
+              </th>
+              <td class="text-xs">
+                <span class="font-bold text-green-600 hover:underline cursor-pointer">994537467 <sup>
+                  <i class="fa-solid fa-square-arrow-up-right text-[8px]"></i>
+                </sup></span>
+              </td>
+            </tr>
+            <tr class="whitespace-nowrap">
+              <th class="text-xs font-bold">
+                <span class="flex items-center">
+                  <i class="fa-solid fa-calendar mr-1"></i>
+                  Date
+                </span>
+              </th>
+              <td class="text-xs">
+                07/04/2022
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="mt-5">
+        <!-- files-->
+          <h2 class="font-bold">Attachments</h2>
+
+        </div>
       </div>
     </section>
   </template>
@@ -23,22 +110,27 @@
 
 <script>
 import Modal from "@/components/page/Modal.vue";
-import LineItems from "@/components/parts/LineItems.vue";
+import NoteLineitems from "@/components/page/Adjustments/NoteLineitems.vue";
+import {inject} from "vue";
 
 export default {
   name: "ViewNote",
+  props:{
+    open:{required: true, type: Boolean}
+  },
   components:{
-    LineItems,
+    NoteLineitems,
     Modal
   },
-  setup(){
-    const projects = [
-      { id: 1, name: 'New Advertising Campaign', hours: '12.0', rate: '$75.00', price: '$900.00' },
-      { id: 2, name: 'Something else', hours: '12.0', rate: '$75.00', price: '$900.00' },
-      // More projects...
-    ]
+  setup(props, {emit}){
+    const emitter = inject('emitter')
+    const helpers = inject('helpers')
 
-    return {projects}
+    emitter.on('close_modal', ()=>{
+        emit('close')
+    })
+
+    return {helpers}
   }
 }
 </script>

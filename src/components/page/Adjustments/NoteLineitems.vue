@@ -1,40 +1,50 @@
 <template>
-<div class="-mx-4 mt-8 flex flex-col flex-shrink-0 sm:-mx-6 md:mx-0 overflow-x-auto">
+<div class="-mx-4 mt-8 flex flex-col flex-shrink-0 sm:-mx-6 md:mx-0 overflow-x-auto max-h-64 overflow-y-auto">
       <table class="min-w-full divide-y divide-gray-300">
-        <thead>
-          <tr>
-            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 md:pl-0">Description</th>
-            <th scope="col" class="hidden py-3.5 px-3 text-right text-sm font-semibold sm:table-cell">Hours</th>
-            <th scope="col" class="hidden py-3.5 px-3 text-right text-sm font-semibold sm:table-cell">Rate</th>
-            <th scope="col" class="py-3.5 pl-3 pr-4 text-right text-sm font-semibold sm:pr-6 md:pr-0">Price</th>
+        <thead class="sticky z-10 top-0 bg-gray-200 dark:bg-gray-700">
+          <tr class="pl-3">
+            <th scope="col" class="py-1 pl-4 pr-3 text-left text-xs font-semibold sm:pl-6 md:pl-4">Description</th>
+            <th scope="col" class="hidden py-1 px-3 text-right text-xs font-semibold sm:table-cell">Order Quantity</th>
+            <th scope="col" class="hidden py-1 px-3 text-right text-xs font-semibold sm:table-cell">Difference</th>
+            <th scope="col" class="py-1 pl-3 pr-4 text-right text-xs font-semibold sm:table-cell">Unit Price</th>
+            <th scope="col" class="py-1 pl-3 pr-4 text-right text-xs font-semibold sm:pr-6 md:pr-4">Total</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="item in items" :key="item.id" class="border-b border-gray-200">
-            <td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
-              <div class="font-medium">{{ item.name }}</div>
-              <div class="mt-0.5 text-gray-500 sm:hidden">{{ item.hours }} hours at {{ item.rate }}</div>
-            </td>
-            <td class="hidden py-4 px-3 text-right text-sm text-gray-500 dark:text-gray-400 sm:table-cell">{{ item.hours }}</td>
-            <td class="hidden py-4 px-3 text-right text-sm text-gray-500 dark:text-gray-400 sm:table-cell">{{ item.rate }}</td>
-            <td class="py-4 pl-3 pr-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">{{ item.price }}</td>
-          </tr>
+        <tbody class="">
+            <tr>
+              <td class="py-2 pl-4 pr-3 text-xs sm:pl-6 md:pl-0">
+                <div class="font-medium">ATTA MARK 2KG</div>
+              </td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">100</td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">40</td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">1,434.00</td>
+              <td class="py-4 pl-3 pr-4 text-right text-xs text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">86,040,675,744.00</td>
+            </tr>
+            <tr>
+              <td class="py-2 pl-4 pr-3 text-xs sm:pl-6 md:pl-0">
+                <div class="font-medium">ATTA MARK 2KG</div>
+              </td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">100</td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">40</td>
+              <td class="hidden py-4 px-3 text-right text-xs text-gray-500 dark:text-gray-400 sm:table-cell">1,434.00</td>
+              <td class="py-4 pl-3 pr-4 text-right text-xs text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">86,040,675,744.00</td>
+            </tr>
         </tbody>
         <tfoot>
           <tr>
-            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-6 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Subtotal</th>
-            <th scope="row" class="pl-4 pr-3 pt-6 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Subtotal</th>
-            <td class="pl-3 pr-4 pt-6 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$3,900.00</td>
+            <th scope="row" colspan="4" class="hidden pl-6 pr-3 pt-6 text-right text-xs font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Subtotal</th>
+            <th scope="row" class="pl-4 pr-3 pt-6 text-left text-xs font-normal text-gray-500 dark:text-gray-300 sm:hidden">Subtotal</th>
+            <td class="pl-3 pr-4 pt-6 text-right text-xs text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$3,900.00</td>
           </tr>
           <tr>
-            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Tax</th>
-            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 dark:text-gray-300 sm:hidden">Tax</th>
-            <td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
+            <th scope="row" colspan="4" class="hidden pl-6 pr-3 pt-1 text-right text-xs font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Tax</th>
+            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-xs font-normal text-gray-500 dark:text-gray-300 sm:hidden">Tax</th>
+            <td class="pl-3 pr-4 pt-4 text-right text-xs text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
           </tr>
           <tr>
-            <th scope="row" colspan="3" class="hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-300 sm:table-cell md:pl-0">Total</th>
-            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-300 sm:hidden">Total</th>
-            <td class="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-400 sm:pr-6 md:pr-0">$4,485.00</td>
+            <th scope="row" colspan="4" class="hidden pl-6 pr-3 pt-1 text-right text-xs font-normal text-gray-500 dark:text-gray-300 sm:table-cell md:pl-0">Tax</th>
+            <th scope="row" class="pl-4 pr-3 pt-4 text-left text-xs font-normal text-gray-500 dark:text-gray-300 sm:hidden">Tax</th>
+            <td class="pl-3 pr-4 pt-4 text-right text-xs text-gray-500 dark:text-gray-400 sm:pr-6 md:pr-0">$585.00</td>
           </tr>
         </tfoot>
       </table>
@@ -45,18 +55,16 @@
 export default {
   name: "NoteLineitems",
   props:{
-    records:{type:Array, default:[]}
-  },
-  setup(){
-    let headers = ref([
+    items:{type:Array, default:[]},
+    records:{type:Array, default:[
       {key: 'description',label:'Description'},
       {key: 'order_qty',label:'Order Quantity'},
       {key: 'difference',label:'Difference'},
       {key: 'unit_price',label:'Unit Price'},
       {key: 'total',label:'Total'},
-    ])
-    return {headers}
-  }
+    ]}
+  },
+
 }
 </script>
 
