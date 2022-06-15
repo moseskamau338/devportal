@@ -13,8 +13,8 @@
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="ring-1 ring-black ring-opacity-5 md:rounded min-h-[150px] max-h-80 overflow-y-auto">
-            <table class="min-w-full table-auto divide-y divide-gray-300 border-2 border-transparent border-collapse">
-              <thead class="bg-gray-200 dark:bg-churpy-dark sticky z-0 top-0">
+            <table class="min-w-full table-fixed divide-y divide-gray-300 border-2 border-transparent border-collapse">
+              <thead class="bg-gray-200 dark:bg-churpy-dark whitespace-nowrap sticky z-0 top-0">
               <tr class="py-0">
                 <th  v-for="(field, index) in headers" scope="col" class="px-2 min-w-2 group py-3 text-left text-xs font-semibold text-churpy-dark dark:text-gray-400">
 
@@ -99,7 +99,7 @@ export default {
   name: "TableLite",
   components: {Paginator},
   props:{
-    selectable:{default:true, type:Boolean},
+    selectable:{default:false, type:Boolean},
     headers:{required:true, type:Array},
     actioned:{default:false, type:Boolean},
     records:{

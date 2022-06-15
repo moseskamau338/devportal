@@ -1,5 +1,5 @@
 <template>
-    <TableLite v-model:selection="selected" :records="records" :headers="headers" actioned class="mt-8">
+    <TableLite selectable v-model:selection="selected" :records="records" :headers="headers" actioned class="mt-8">
 
         <!--filters-->
         <template #header>

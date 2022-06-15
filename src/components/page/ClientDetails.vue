@@ -115,7 +115,6 @@ export default {
         {key: 'phone', label: 'Phone'},
         {key: 'email', label: 'Email'},
         {key: 'status', label: 'Status'},
-        {key: 'actions', label: 'Actions'},
     ])
 
     const records = ref([

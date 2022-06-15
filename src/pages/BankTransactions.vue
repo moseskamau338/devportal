@@ -220,7 +220,7 @@ export default{
       const helpers = inject('helpers')
       const dateValue = ref([]);
       const data = ref([
-        {id:'910043527347y387463874y3784y934y984', trans_date:'29/03/2022', val_date:'29/04/2022',amount:'34,200', direction:'CR', description:'Some description', customer:'Customer X', recon_status: 'pending'},
+        {id:'9100435274', trans_date:'29/03/2022', val_date:'29/04/2022',amount:'34,200', direction:'CR', description:'Some description', customer:'Customer X', recon_status: 'pending'},
         {id:'TR-325684734', trans_date:'29/03/2022', val_date:'29/04/2022',amount:'210,700', direction:'DR', description:'Some description', customer:'Customer Y', recon_status: 'USER'},
       ])
 
@@ -234,7 +234,6 @@ export default{
           {type:'text',key:'description',label: 'Description', filterable: true, searchable:false},
           {type:'text',key:'customer',label: 'Counter Party', filterable: true, searchable:false},
           {type:'text',key:'recon_status',label: 'Recon. Status', filterable: true, searchable:false},
-          {type:'text',key:'action',label: 'Edit', action: true},
         ])
 
       return {data, fields,dateValue, helpers}

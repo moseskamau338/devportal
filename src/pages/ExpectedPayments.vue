@@ -73,7 +73,6 @@ export default{
           {type:'text',key:'description',label: 'Description', filterable: true, searchable:false},
           {type:'text',key:'paid',label: 'Paid Status', filterable: true, searchable:false},
           {type:'text',key:'recon_status',label: 'Recon. Status', filterable: true, searchable:false},
-          {type:'text',key:'action',label: 'Edit', action: true},
         ])
 
       return {data, fields,dateValue, helpers}
