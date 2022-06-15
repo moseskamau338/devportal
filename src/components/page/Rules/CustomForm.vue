@@ -161,7 +161,6 @@ export default {
     updating:{default: false},
   },
   setup(props){
-    console.log(props.updating)
     const rulesets = ref([
       {invoice_column:'', operand:'', bank_column:'', value:''}
     ])

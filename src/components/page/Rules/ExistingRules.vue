@@ -31,14 +31,14 @@
       </td>
       <td>
          <div class="flex space-x-2">
-              <span v-if="index > 2" class="h-5 w-5 rounded-full flex justify-center items-center bg-red-200 hover:bg-red-300 hover:shadow-md hover:scale-105 cursor-pointer transition-all">
-               <i class="fa-solid fa-trash-alt text-red-600 text-[12px]"></i>
-             </span>
-
              <span v-if="rules.length > 0" class="h-5 w-5 rounded-full flex justify-center items-center bg-green-200 mr-1 hover:bg-green-300 hover:
              shadow-md hover:scale-105 cursor-pointer transition-all">
                <i class="fa-solid fa-eye text-churpy-green text-[12px]"></i>
              </span>
+              <span v-if="index > 2" class="h-5 w-5 rounded-full flex justify-center items-center bg-red-200 hover:bg-red-300 hover:shadow-md hover:scale-105 cursor-pointer transition-all">
+               <i class="fa-solid fa-trash-alt text-red-600 text-[12px]"></i>
+             </span>
+
             </div>
       </td>
     </tr>
