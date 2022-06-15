@@ -37,7 +37,7 @@
         </div>
       </div>
       <!--<template #title>Overview of bank transactions discovered by Churpy</template>-->
-      <InvoiceTable />
+      <InvoiceTable :headers="fields" :records="data" />
   </section>
 
 </template>

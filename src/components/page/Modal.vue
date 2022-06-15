@@ -51,6 +51,7 @@ import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } f
 
 export default {
   name:'Modal',
+  emits:['close_modal'],
   props: {
     show: {type: Boolean, required: true},
     source:{type:String, default: 'page', },

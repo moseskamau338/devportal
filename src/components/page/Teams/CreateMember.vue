@@ -49,13 +49,13 @@
     </template>
     <template #footer>
       <div class="pr-8">
-          <button @click="close" type="button" class="inline-flex items-center px-2.5 py-0.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green mr-3">
-            <i class="fa-solid fa-save mr-1"></i>
-              Create User
-            </button>
-        <button @click="close" type="button" class="inline-flex items-center px-2.5 py-0.5 border border-transparent text-xs rounded shadow-sm text-gray-500 border-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green">
+        <button @click="close" type="button" class="inline-flex items-center px-2.5 py-0.5 border border-transparent text-xs rounded shadow-sm text-gray-500 border-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green mr-3">
             <i class="fa-solid fa-user-plus mr-1"></i>
               Save and add new
+            </button>
+          <button @click="close" type="button" class="inline-flex items-center px-2.5 py-0.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-churpy-green hover:bg-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-churpy-green">
+            <i class="fa-solid fa-save mr-1"></i>
+              Create User
             </button>
       </div>
     </template>

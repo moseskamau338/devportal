@@ -23,9 +23,9 @@
 
     <div class="mx-3 mt-8 pb-5">
 
-      <InvoiceTable>
+      <InvoiceTable v-model:selection="selected" :records="data" :headers="fields">
         <template #headerx>
-          <c-button variant="success">Generate CRN</c-button>
+          <c-button :disabled="!invoicesSelected" @click="showCrn = !showCrn" variant="success">Generate CRN</c-button>
           <Menu as="div" class="relative inline-block text-left ml-3">
               <div>
                 <MenuButton
@@ -87,17 +87,18 @@
     </div>
 
     <ClientDetails @close="viewDetails = false" :client="client" :open="viewDetails"/>
-
+    <GenerateCrn v-show="!invoicesSelected" @close="showCrn = false" :open="showCrn" :selection="selected" />
   </div>
 </template>
 
 <script>
-import { inject, ref} from "vue";
+import {computed, inject, onMounted, ref} from "vue";
 import InvoiceTable from "@/components/widgets/InvoiceTable.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import CButton from "@/components/parts/CButton.vue";
 import Alert from "@/components/parts/Alert.vue";
 import ClientDetails from "@/components/page/ClientDetails.vue";
+import GenerateCrn from "@/components/page/Payments/GenerateCrn.vue";
 
 const loadName = async () => {
   return new Promise((resolve, reject) => {
@@ -109,14 +110,43 @@ const loadName = async () => {
 
 export default {
   name: "MarketplaceClient",
-  components: {ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
+  components: {GenerateCrn, ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
   async setup(){
+      // element refs
       const helpers = inject('helpers')
       let name = ref(await loadName())
       const viewDetails = ref(false)
-    const client = ref({})
+      const showCrn = ref(false)
+      const selected = ref({})
 
-      return {helpers, name, viewDetails, client}
+      const invoicesSelected = computed(() => {
+        return Object.keys(selected.value).length > 0 &&
+            selected.value.selection && selected.value.selection.length > 0
+      })
+
+    const client = ref({})
+    const data = ref([
+        {id:'91004300', date:'29/03/2022',amount:'34,200', description:'Some description', paid:'pending', recon_status: 'pending'},
+        {id:'938629193', date:'29/03/2022',amount:'43,442', description:'Another desc', paid:'tentative', recon_status: 'suggested'},
+        {id:'92001200', date:'29/03/2022',amount:'23,200', description:'Some description', paid:'pending', recon_status: 'suggested'},
+      ])
+    const fields = ref([
+          {type:'text',key:'id',label: 'Invoice ID', filterable: true, searchable:false},
+          {type:'date',key:'date',label: 'Date', filterable: true, searchable:false},
+          {type:'number',key:'amount',label: 'Amount', filterable: true, searchable:false},
+          {type:'text',key:'description',label: 'Description', filterable: true, searchable:false},
+          {type:'text',key:'paid',label: 'Paid Status', filterable: true, searchable:false},
+          {type:'text',key:'recon_status',label: 'Recon. Status', filterable: true, searchable:false},
+        ])
+
+
+      return {
+        fields, data,
+        helpers, name,
+        viewDetails, client,
+        showCrn, selected,
+        invoicesSelected
+      }
     }
 }
 </script>

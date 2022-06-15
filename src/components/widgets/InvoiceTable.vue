@@ -1,5 +1,5 @@
 <template>
-    <TableLite :records="data" :headers="fields" actioned class="mt-8">
+    <TableLite v-model:selection="selected" :records="records" :headers="headers" actioned class="mt-8">
 
         <!--filters-->
         <template #header>
@@ -121,10 +121,20 @@ import CButton from "@/components/parts/CButton.vue";
 import TableLite from "@/components/widgets/Tables/TableLite.vue";
 import ExportButton from "@/components/parts/ExportButton.vue";
 import CreateStandardAdjustment from "@/components/page/Adjustments/CreateStandardAdjustment.vue";
-import {inject, ref} from "vue";
+import { inject, ref, watch } from "vue";
+
 
 export default {
   name: "InvoiceTable",
+  emits:['update:selection'],
+  props:{
+    headers:{
+      type: Array,
+      required: true,
+    },
+    records: {type: Array, required: true},
+    selection:{type:Object}
+  },
   components:{
     CreateStandardAdjustment,
     ExportButton,
@@ -135,29 +145,17 @@ export default {
     MenuItems, MenuItem,
     LitepieDatepicker
   },
-  setup(){
+  setup(props, {emit}){
       const helpers = inject('helpers')
       const showAdjustmentForm = ref(false);
+       let selected = ref({})
+
+      watch(selected,(newVal)=>{emit('update:selection', newVal)}, {deep:true})
 
       const dateValue = ref([]);
-      const data = ref([
-        {id:'91004300', date:'29/03/2022',amount:'34,200', description:'Some description', paid:'pending', recon_status: 'pending'},
-        {id:'938629193', date:'29/03/2022',amount:'43,442', description:'Another desc', paid:'tentative', recon_status: 'suggested'},
-        {id:'92001200', date:'29/03/2022',amount:'23,200', description:'Some description', paid:'pending', recon_status: 'suggested'},
-      ])
 
 
-      const fields = ref([
-          {type:'text',key:'id',label: 'Invoice ID', filterable: true, searchable:false},
-          {type:'date',key:'trans_date',label: 'Date', filterable: true, searchable:false},
-          {type:'number',key:'amount',label: 'Amount', filterable: true, searchable:false},
-          {type:'text',key:'description',label: 'Description', filterable: true, searchable:false},
-          {type:'text',key:'paid',label: 'Paid Status', filterable: true, searchable:false},
-          {type:'text',key:'recon_status',label: 'Recon. Status', filterable: true, searchable:false},
-          {type:'text',key:'action',label: 'Edit', action: true},
-        ])
-
-      return {data, fields,dateValue, helpers, showAdjustmentForm}
+      return {dateValue, helpers, showAdjustmentForm, selected}
     }
 }
 </script>
