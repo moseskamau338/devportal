@@ -10,7 +10,7 @@
               {name:'Update Existing'},
               ]" v-slot="{ selected }"
           >
-            <div class="flex items-center py-1.5 px-2 cursor-pointer" :class="{'bg-green-300/30 border-r-4 border-r-green-500 -mr-0.5' : selected}">
+            <div class="flex items-center py-1.5 px-2 cursor-pointer" :class="{'bg-green-300/30 border-b-4 md:border-b-0 border-b-green-500 md:border-r-4 md:border-r-green-500 -mr-0.5' : selected}">
 
               <h2 class="text-[10px] md:text-xs flex items-center w-full justify-end" :class="{'font-semibold text-green-600': selected}">
                 <span>{{ action.name }}</span>
