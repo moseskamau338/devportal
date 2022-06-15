@@ -5,13 +5,25 @@
         <Badge status="USER" />
         <span class="text-churpy-green text-sm">Invoice Reconciled</span>
       </div>
-    <dropdown name="Create adjustment" :options="[
+    <dropdown name="Actions" :options="[
         {key:'raise_cn',name:'Raise Credit Note', },
         {key:'raise_dn',name:'Raise Debit Note'},
+        {key:'pay_with_mpesa',name:'Pay Via MPESA'},
+        {key:'generate_crn',name:'Generate CRN'},
     ]">
       <template #raise_cn>
         <button @click="showCreateCn = !showCreateCn" class="group flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:bg-gray-700">
           Raise Credit Note
+        </button>
+      </template>
+      <template #pay_with_mpesa>
+        <button @click="showMpesa = !showMpesa" class="group flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:bg-gray-700">
+          Pay Via MPESA
+        </button>
+      </template>
+      <template #generate_crn>
+        <button @click="showCrn = !showCrn" class="group flex w-full items-center rounded-sm px-2 py-2 text-sm hover:bg-gray-200 dark:bg-gray-700">
+          Generate CRN
         </button>
       </template>
     </dropdown>
@@ -96,6 +108,8 @@
 
   <!--modals-->
   <ViewNote @close="showCreateCn = !showCreateCn" creating :open="showCreateCn" />
+  <GenerateCrn @close="showCrn = false" :open="showCrn" :selection="selected" />
+  <PayViaMpesa @close="showMpesa = false" :open="showMpesa" :selection="selected" />
 </template>
 
 <script>
@@ -104,13 +118,20 @@ import Badge from "@/components/parts/Badge.vue";
 import CButton from "@/components/parts/CButton.vue";
 import Dropdown from "@/components/parts/Dropdown.vue";
 import ViewNote from "@/components/page/Adjustments/ViewNote.vue";
+import GenerateCrn from "@/components/page/Payments/GenerateCrn.vue";
+import PayViaMpesa from "@/components/page/Payments/PayViaMpesa.vue";
+
 export default {
   name: "InvoiceActions",
-  components: {ViewNote, CButton, Dropdown, Badge},
+  components: {ViewNote, CButton, Dropdown, Badge,GenerateCrn,PayViaMpesa},
   setup(){
     const showCreateCn = ref(false)
+    const showCrn = ref(false)
+    const showMpesa = ref(false)
 
-    return {showCreateCn}
+    const selected = ref({selection: [{}]}) // switch to check for single and multiple
+
+    return {showCreateCn, selected, showMpesa, showCrn}
   }
 }
 </script>
