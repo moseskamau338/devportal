@@ -27,7 +27,7 @@
         If you do need to <b>specify an amount</b> for certain invoices, you can do so in the form below before downloading
       </p>
 
-      <form v-if="selection.selection.length > 0" class="mt-4 mb-20 max-h-64 overflow-y-auto">
+      <form v-if="selection.selection.length > 0" class="mt-4 mb-20 px-3 max-h-64 overflow-y-auto">
         <div class="space-y-6 sm:space-y-5">
           <div v-for="ind in 5">
             <label class="flex flex-row space-x-2 text-sm font-medium sm:mt-px sm:pt-2">
@@ -35,14 +35,14 @@
               <small class="text-xs font-light">(KES 45,000.00)</small>
             </label>
             <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" class="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
+              <input type="text" class="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md dark:bg-churpy-night dark:border-gray-500" />
 
               <div class="relative flex items-start mt-2">
               <div class="flex items-center h-5">
-                <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="focus:ring-green-500 h-4 w-4 text-churpy-green border-gray-300 rounded" />
+                <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="focus:ring-green-500 h-4 w-4 text-churpy-green border-gray-300 rounded dark:bg-churpy-night dark:border-gray-500" />
               </div>
               <div class="ml-3 text-sm">
-                <label for="comments" class="font-medium text-gray-700">Set full amount?</label>
+                <label for="comments" class="font-medium">Set full amount?</label>
               </div>
             </div>
 
@@ -61,6 +61,7 @@
     <div class="flex space-x-5">
       <c-button variant="danger">Cancel</c-button>
       <c-button variant="success">
+        <i class="fa-solid fa-download mr-2"></i>
         Generate
       </c-button>
     </div>
@@ -86,8 +87,6 @@ export default {
     Modal, CButton
   },
   setup(props, {emit}){
-
-    console.log(props.selection.selected)
 
     const emitter = inject('emitter')
      emitter.on('close_modal', (modal_source)=>{

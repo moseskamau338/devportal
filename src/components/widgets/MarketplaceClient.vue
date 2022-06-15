@@ -48,7 +48,7 @@
                   class="absolute left-0 mt-2 w-56 origin-top-left divide-y divide-gray-100 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40"
                 >
                   <div class="px-1 py-1">
-                    <MenuItem disabled v-slot="{ active, disabled }">
+                    <MenuItem :disabled="!invoicesSelected" v-slot="{ active, disabled }">
                       <span
                         :class="[
                           active ? 'bg-green-300 text-green-600' : 'text-gray-900',
@@ -60,10 +60,10 @@
                         <alert variant="warning">Disabled in <b>Sandbox</b></alert>
                       </span>
                     </MenuItem>
-                    <MenuItem disabled :key="index" v-for="(method, index) in [
-                          {name:'MPESA', image:'/images/brands/mpesa.svg', customClass:'h-6'},
-                          {name:'Card', image:'/images/brands/card.svg',customClass:'h-6'},
-                          {name:'Pesalink', image:'/images/brands/pesalink.svg', customClass:'h-6'},
+                    <MenuItem :disabled="!invoicesSelected" @click="method.action()" :key="index" v-for="(method, index) in [
+                          {name:'MPESA', image:'/images/brands/mpesa.svg', customClass:'h-6', action:() => {showMpesa = !showMpesa}},
+                          {name:'Card', image:'/images/brands/card.svg',customClass:'h-6', action: () => {}},
+                          {name:'Pesalink', image:'/images/brands/pesalink.svg', customClass:'h-6', action: () => {}},
                         ]" v-slot="{ active }">
                       <button
                         :class="[
@@ -88,6 +88,7 @@
 
     <ClientDetails @close="viewDetails = false" :client="client" :open="viewDetails"/>
     <GenerateCrn v-show="!invoicesSelected" @close="showCrn = false" :open="showCrn" :selection="selected" />
+    <PayViaMpesa v-show="!invoicesSelected" @close="showMpesa = false" :open="showMpesa" :selection="selected" />
   </div>
 </template>
 
@@ -99,6 +100,7 @@ import CButton from "@/components/parts/CButton.vue";
 import Alert from "@/components/parts/Alert.vue";
 import ClientDetails from "@/components/page/ClientDetails.vue";
 import GenerateCrn from "@/components/page/Payments/GenerateCrn.vue";
+import PayViaMpesa from "@/components/page/Payments/PayViaMpesa.vue";
 
 const loadName = async () => {
   return new Promise((resolve, reject) => {
@@ -110,13 +112,14 @@ const loadName = async () => {
 
 export default {
   name: "MarketplaceClient",
-  components: {GenerateCrn, ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
+  components: {GenerateCrn,PayViaMpesa, ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
   async setup(){
       // element refs
       const helpers = inject('helpers')
       let name = ref(await loadName())
       const viewDetails = ref(false)
       const showCrn = ref(false)
+      const showMpesa = ref(false)
       const selected = ref({})
 
       const invoicesSelected = computed(() => {
@@ -144,8 +147,8 @@ export default {
         fields, data,
         helpers, name,
         viewDetails, client,
-        showCrn, selected,
-        invoicesSelected
+        showCrn,showMpesa,
+        selected,invoicesSelected
       }
     }
 }

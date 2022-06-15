@@ -1,5 +1,5 @@
 <template>
-<Modal :show="open" source="pay_via_mpesa" size="small">
+<Modal :show="open" source="mpesa_code" size="small">
   <template #title>
     <span class="flex items-center space-x-2">
      <span> Pay via</span>
@@ -19,109 +19,53 @@
   </template>
 
   <template #body>
-    <div class="space-y-6 sm:space-y-5">
-        <div>
-          <h3 class="text-lg leading-6 font-medium">Enter transaction information</h3>
-          <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-400">On submitting the details below, you will receive a <b>USSD</b> prompt on your phone requesting for authorization of the transaction. Be sure to check the total transaction amount as well.</p>
-        </div>
-        <div class="space-y-3 sm:space-y-2">
-          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-            <label for="phone" class="block text-sm font-medium sm:mt-px sm:pt-2"> Phone </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" name="phone" id="phone" autocomplete="given-name" class="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-sm border-gray-300 dark:bg-churpy-night dark:border-gray-500 rounded-md" />
-            </div>
-          </div>
-
-          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-2">
-            <label for="last-name" class="block text-sm font-medium sm:mt-px sm:pt-2"> Payment note </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <textarea rows="3" type="text" name="last-name" id="last-name" autocomplete="family-name" class="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-xs border-gray-300 rounded-md placeholder-gray-400 dark:bg-churpy-night dark:border-gray-500" placeholder="Any description to go with the payment?"/>
-            </div>
-          </div>
-
+    <div>
+      <h3 class="text-lg leading-6 font-medium">Use transaction code</h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-300">We could not manage to verify your payment, please provide the transactions MPESA code below</p>
+    </div>
+    <div class="mt-8 mb-16">
+     <div class="border border-gray-300 rounded-md px-3 py-2 mt-2 focus-within:ring-1 focus-within:ring-green-600 focus-within:border-green-600">
+        <label for="price" class="block text-sm font-medium">Enter Transaction Code</label>
+        <div class="mt-1 relative">
+          <input type="text" name="price" id="price" class="focus:ring-0 dark:bg-churpy-night-box block w-full pr-2 sm:text-sm border-0 placeholder-gray-400" placeholder="E.g QXU78..." />
         </div>
       </div>
-    <div class="mt-8">
-      <h5 class="font-bold">Assign amounts to selected invoices</h5>
-      <p class="text-xs dark:text-gray-400">
-        If you do need to <b>specify an amount</b> for certain invoices, you can do so in the form below before downloading
-      </p>
-
-      <form v-if="selection.selection.length > 0" class="mt-4 mb-20 px-3 max-h-64 overflow-y-auto">
-        <div class="space-y-6 sm:space-y-5">
-          <div v-for="ind in 2">
-            <label class="flex flex-row space-x-2 text-sm font-medium sm:mt-px sm:pt-2">
-              <span>Invoice #909302323</span>
-              <small class="text-xs font-light">(KES 45,000.00)</small>
-            </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <input type="text" class="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md dark:bg-churpy-night dark:border-gray-500" />
-
-              <div class="relative flex items-start mt-2">
-              <div class="flex items-center h-5">
-                <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="focus:ring-green-500 h-4 w-4 text-churpy-green dark:bg-churpy-night dark:border-gray-500 border-gray-300 rounded" />
-              </div>
-              <div class="ml-3 text-sm">
-                <label for="comments" class="font-medium">Set full amount?</label>
-              </div>
-            </div>
-
-            </div>
-          </div>
-
-        </div>
-      </form>
-      <Alert variant="danger" v-else>
-        <b>No invoices selected!</b>
-      </Alert>
     </div>
   </template>
 
   <template #footer>
     <div class="flex space-x-5">
-      <c-button variant="info" @click="verify_code = !verify_code">Test Verify</c-button>
-      <c-button variant="danger">Cancel</c-button>
       <c-button variant="success">
-        Pay
+        Verify
       </c-button>
     </div>
-    <MpesaCode @close="verify_code = !verify_code" :open="verify_code" />
   </template>
-
-
 </Modal>
 </template>
 
 <script>
 import Modal from "@/components/page/Modal.vue";
 import CButton from "@/components/parts/CButton.vue";
-import {inject, ref} from "vue";
-import Alert from "@/components/parts/Alert.vue";
-import MpesaCode from "@/components/page/Payments/MpesaCode.vue";
+import {inject} from "vue";
 
 export default {
-  name: "PayViaMpesa",
+  name: "MpesaCode",
   emits:['close'],
   props:{
     open:{required: true, type: Boolean},
-    selection:{required: true, type: Object},
   },
   components:{
-    MpesaCode,
-    Alert,
     Modal, CButton
   },
   setup(props, {emit}){
-    let verify_code = ref(false)
+
 
     const emitter = inject('emitter')
      emitter.on('close_modal', (modal_source)=>{
-      if (modal_source === 'pay_via_mpesa'){
+      if (modal_source === 'mpesa_code'){
           emit('close')
       }
     })
-
-    return {verify_code}
   }
 }
 </script>
