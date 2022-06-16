@@ -8,7 +8,7 @@
           >
             <div class="flex items-center  mr-2 py-1.5 px-2 rounded cursor-pointer" :class="{'bg-green-300/30' : selected}">
 
-              <h2 class="text-[10px] md:text-xs flex items-center" :class="{'font-semibold text-churpy-green': selected}">
+              <h2 class="text-[10px] md:text-xs flex items-center truncate w-14" :class="{'font-semibold text-churpy-green': selected}">
                 <i class="fa-solid mr-1" :class="action.icon"></i>
                 <span>{{ action.name }}</span>
               </h2>

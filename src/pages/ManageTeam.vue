@@ -8,7 +8,7 @@
               {name:'Groups', icon:'fa-solid fa-people-group'},
               ]"
                :key="index">
-            <button :class="{'text-churpy-green border-b-4 border-churpy-green':selected}" class="mr-6 delay-[20ms] transition-colors duration-500">
+            <button :class="{'text-churpy-green border-b-4 border-churpy-green':selected}" class="mr-6 delay-[20ms] transition-colors duration-500 w-20 md:w-max truncate">
 
               <i :class="item.icon" class="mr-2"></i>
               {{ item.name }}
@@ -16,7 +16,7 @@
           </Tab>
         </TabList>
         <TabPanels class="p-4">
-          <TabPanel as="div" class="transition-all px-14">
+          <TabPanel as="div" class="transition-all lg:px-14">
             <Members class="mt-12" />
           </TabPanel>
           <TabPanel class="transition-all">

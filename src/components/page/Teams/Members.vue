@@ -3,7 +3,7 @@
       Team management allows you to include workmates across the board to cater for different aspects of your workflow. You will be able to <strong>invite, assign roles</strong> and <strong>manage role permissions</strong> as you please.
     </p>
 
-  <div class="flex justify-between items-center mt-10">
+  <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-3 md:space-y-reverse mt-10">
     <div id="right-actions pt-10">
       <button @click="showCreate = !showCreate" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white hover:bg-green-600 bg-churpy-green focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
         <i class="fa-solid fa-user-plus mr-2 text-sm"></i>

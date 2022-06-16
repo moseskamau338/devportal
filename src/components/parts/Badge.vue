@@ -1,7 +1,11 @@
 <template>
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium shadow" :class="[
  helpers.parseTableStatus(status.toLowerCase(), themes)
-]"> {{status.toUpperCase()}} </span>
+]">
+  <slot>
+    {{status.toUpperCase()}}
+  </slot>
+</span>
 </template>
 
 <script>
