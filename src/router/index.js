@@ -158,7 +158,7 @@ const routes = [
     },
     {
         path: '/onboard/upload',
-        name: 'upload-data',
+        name: 'erp-settings-upload-data',
         component: () => import('@/pages/UploadReconData.vue'),
         meta:{
             title: 'Upload Data',

@@ -2,7 +2,7 @@ import find from "./filters/array/find";
 import {ThemeGenerator} from "./ThemeGenerator";
 
 export const functions = {
-   getRandomColor(name) {
+   getRandomColor(name, opacity = 0.3) {
     // get first alphabet in upper case
     const firstAlphabet = name.charAt(0).toLowerCase();
 
@@ -18,7 +18,7 @@ export const functions = {
     let b = num & 255;
 
     return {
-      color: 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)',
+      color: 'rgb(' + r + ', ' + g + ', ' + b + ', '+opacity+')',
       character: firstAlphabet.toUpperCase()+name.charAt(1).toUpperCase()
     };
   },

@@ -3,7 +3,7 @@
 
     <div :key="index" v-for="(category, index) in permissionStack" class="bg-white dark:bg-churpy-night-box w-full shadow py-2 px-4">
       <header class="flex justify-between">
-        <h3 class="font-bold text-gray-500">{{ capitalize(category.name) }}</h3>
+        <h3 class="font-bold text-gray-500 dark:text-gray-400">{{ capitalize(category.name) }}</h3>
 
         <div class="space-x-2">
           <button type="button" class="inline-flex items-center px-1.5 py-0.5 text-xs font-medium rounded shadow-sm text-churpy-night dark:text-white border border-churpy-night-box focus:ring-2 focus:ring-0 focus:text-white focus:bg-churpy-night-box transition-all h-fit">Cancel</button>
@@ -13,8 +13,8 @@
       </header>
 
       <div class="w-[40%] my-2">
-        <label for="location" class="block text-sm font-medium text-gray-700">Choose group</label>
-        <select v-model="selectedGroup" id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-1 text-base border-gray-300 focus:outline-none focus:ring-churpy-dark focus:border-churpy-dark sm:text-sm rounded-md">
+        <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Choose Roles</label>
+        <select v-model="selectedGroup" id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-1 text-base border-gray-300 focus:outline-none focus:ring-churpy-dark focus:border-churpy-dark sm:text-sm rounded-md dark:border-gray-400 dark:bg-churpy-night">
           <option v-for="(group,index) in props.groups">{{group.name}}</option>
         </select>
       </div>
