@@ -39,7 +39,7 @@
 
     <!--mapping-->
     <div id="mapper" class="hidden lg:block px-4 py-5 relative">
-      <h3 class="text-lg font-bold">Column mappings</h3>
+      <h3 class="text-lg font-bold">Mapping Verification</h3>
       <p class="pr-8">
         If you wish to better understand Churpy's column identifiers, please read
         more <a href="#" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></a>

@@ -33,7 +33,7 @@
               <ul class="list-['-'] marker:text-lg marker:mr-3 ml-3 font-bold">
                 <li>Use Churpy's Sandbox <router-link :to="{name:'erp-settings'}" class="text-green-600 hover:underline">bank statements</router-link></li>
                 <li>Upload your own bank statements
-                  <router-link :to="{name:'erp-settings-upload-data'}" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></router-link>
+                  <router-link :to="{name:'marketplace-upload-data'}" class="text-green-600 hover:underline">here <sup><i class="fa-duotone fa-up-right-from-square text-[8px]"></i></sup></router-link>
                 </li>
               </ul>
             </div>

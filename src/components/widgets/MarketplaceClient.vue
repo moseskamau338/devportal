@@ -7,16 +7,32 @@
       </h2>
 
     <!--far right 😂-->
-      <div class="flex space-x-2">
-        <router-link :to="{name: 'marketplace-adjustments'}" class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
-          <i class="fa-solid fa-file-circle-check"></i>
-          <span>Credit/Debit</span>
-        </router-link>
+      <div class="flex items-center flex-col md:flex-row space-y-2 md:space-y-reverse md:space-x-2">
 
-        <button @click="viewDetails = !viewDetails" class="flex space-x-2 pr-5 items-center w-fit text-churpy-green text-md">
-          <i class="fa-solid fa-eye"></i>
-          <span>View details</span>
-        </button>
+        <DropdownLifted :options="[
+            {key:'notes',name:'Credit/Debit Notes', icon:'fa-file-circle-check',},
+            {key:'view_details',name:'View Details', icon:'fa-eye',},
+            {key:'upload_docs',name:'Upload Documents', icon:'fa-upload',},
+        ]">
+          <template #notes>
+            <router-link :to="{name: 'marketplace-adjustments'}" class="flex space-x-2 py-2 pl-2 pr-8 items-center text-sm hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-200">
+              <i class="fa-solid fa-file-circle-check"></i>
+              <span>Credit/Debit</span>
+            </router-link>
+          </template>
+          <template #view_details>
+            <button @click="viewDetails = !viewDetails" class="flex w-full space-x-2 py-2 pl-2 pr-8 items-center text-sm hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-200">
+              <i class="fa-solid fa-eye"></i>
+              <span>View Details</span>
+            </button>
+          </template>
+          <template #upload_docs>
+            <router-link :to="{name: 'marketplace-upload-data', query:{client:'4345683683'}}" class="flex space-x-2 py-2 pl-2 pr-8 items-center text-sm hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-200">
+              <i class="fa-solid fa-upload"></i>
+              <span>Upload Documents</span>
+            </router-link>
+          </template>
+        </DropdownLifted>
 
       </div>
     </header>
@@ -89,11 +105,12 @@
     <ClientDetails @close="viewDetails = false" :client="client" :open="viewDetails"/>
     <GenerateCrn v-show="!invoicesSelected" @close="showCrn = false" :open="showCrn" :selection="selected" />
     <PayViaMpesa v-show="!invoicesSelected" @close="showMpesa = false" :open="showMpesa" :selection="selected" />
+
   </div>
 </template>
 
 <script>
-import {computed, inject, onMounted, ref} from "vue";
+import {computed, inject, ref} from "vue";
 import InvoiceTable from "@/components/widgets/InvoiceTable.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import CButton from "@/components/parts/CButton.vue";
@@ -101,6 +118,7 @@ import Alert from "@/components/parts/Alert.vue";
 import ClientDetails from "@/components/page/ClientDetails.vue";
 import GenerateCrn from "@/components/page/Payments/GenerateCrn.vue";
 import PayViaMpesa from "@/components/page/Payments/PayViaMpesa.vue";
+import DropdownLifted from "@/components/parts/DropdownLifted.vue";
 
 const loadName = async () => {
   return new Promise((resolve, reject) => {
@@ -112,7 +130,9 @@ const loadName = async () => {
 
 export default {
   name: "MarketplaceClient",
-  components: {GenerateCrn,PayViaMpesa, ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
+  components: {
+    DropdownLifted,
+    GenerateCrn,PayViaMpesa, ClientDetails, Alert, CButton, InvoiceTable, Menu, MenuButton, MenuItems, MenuItem},
   async setup(){
       // element refs
       const helpers = inject('helpers')

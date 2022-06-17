@@ -1,7 +1,7 @@
 <template>
 <section>
   <TabGroup as="div" class="mt-8">
-      <TabList class="flex w-full flex-col xl:flex-row xl:items-center xl:justify-between space-y-3 xl:space-y-reverse">
+      <TabList class="flex w-full flex-col xl:flex-row xl:items-center xl:justify-between space-y-3 xl:space-y-reverse whitespace-nowrap">
         <div class="flex space-x-2 flex-wrap items-center">
           <div class="flex items-center py-2 px-3 space-x-1 dark:bg-churpy-dark bg-gray-200 rounded-lg">
             <Tab
@@ -11,7 +11,7 @@
             >
               <button
                 :class="[
-                  'w-fit px-4 py-1.5 text-xs font-medium rounded-sm relative',
+                  'w-24 truncate md:w-fit px-4 py-1.5 text-xs font-medium rounded-sm relative',
                   'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-churpy-green dark:ring-offset-churpy-night ring-white ring-opacity-60 transition-all duration-800 ease-out',
                   selected
                     ? 'bg-white dark:bg-churpy-night dark:text-gray-400 shadow'
