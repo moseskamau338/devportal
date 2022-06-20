@@ -8,9 +8,19 @@
 </template>
 
 <script>
+import {inject} from "vue";
 
 export default {
   name:'Dashboard',
+  setup(){
+    const axios = inject('axiosInstance')
+
+    axios('/developer')
+    .then(({data}) => {
+      console.log('Axios response: ', data)
+    })
+
+  }
 }
 
 </script>
