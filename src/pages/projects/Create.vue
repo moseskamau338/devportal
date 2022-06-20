@@ -1,10 +1,10 @@
 <template>
-  Reconed records
+<h1>Create</h1>
 </template>
 
 <script>
 export default {
-  name: "Reconed",
+  name: "Create"
 }
 </script>
 

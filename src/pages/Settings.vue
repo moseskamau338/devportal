@@ -29,12 +29,6 @@
           <Profile />
       </TabPanel>
 
-       <TabPanel class="mx-3 mt-8 pb-5">
-         <Payments />
-      </TabPanel>
-      <TabPanel class="mx-3 mt-8 pb-5">
-         <Email />
-      </TabPanel>
 
     </TabPanels>
   </TabGroup>
@@ -45,17 +39,14 @@
 <script>
 import {Tab, TabGroup, TabList, TabPanel, TabPanels} from "@headlessui/vue";
 import {ref} from "vue";
-import Payments from "@/components/page/Settings/Payments.vue";
 import Profile from "@/components/page/Settings/Profile.vue";
-import Email from "@/components/page/Settings/Email.vue";
 export default {
   name: "Settings",
-  components: {Payments, TabPanel, TabPanels, Tab, TabList, TabGroup, Profile, Email},
+  components: { TabPanel, TabPanels, Tab, TabList, TabGroup, Profile, },
   setup(){
     const options = ref([
       {name:'Profile', icon:'fa-user-gear'},
-      {name:'Payments', icon:'fa-credit-card'},
-      {name:'Email', icon:'fa-envelopes'},
+      {name:'More soon', icon:'fa-ellipsis'},
     ])
     let currentTab = ref(options.value[0])
 

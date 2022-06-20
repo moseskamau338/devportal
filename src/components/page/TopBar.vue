@@ -20,7 +20,7 @@
       <!-- branding -->
       <div class="flex items-center">
         <h1 class="text-brand-gray dark:text-gray-400 text-xs md:text-lg">
-          <span class="font-brand ">Churpy</span> Reconciliation Engine
+          <span class="font-brand ">Churpy</span> Developer Console
         </h1>
       </div>
 
@@ -75,7 +75,7 @@
                 >
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <button @click="keycloak.logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Sign out</button>
+                <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Sign out</button>
               </MenuItem>
             </MenuItems>
           </transition>
@@ -88,9 +88,8 @@
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { inject } from 'vue';
-import Toggler from '../parts/Toggler.vue';
+import Toggler from '@/components/parts/Toggler.vue';
 const emitter = inject('emitter')
-const keycloak = inject('keycloak')
 
 
 const userNavigation = [

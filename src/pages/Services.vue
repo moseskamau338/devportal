@@ -1,10 +1,11 @@
 <template>
-<h2>General adjustments</h2>
+<h1>Services</h1>
+
 </template>
 
 <script>
 export default {
-  name: "AdjustmentsTable"
+  name: "Services"
 }
 </script>
 

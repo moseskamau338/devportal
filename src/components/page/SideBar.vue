@@ -43,7 +43,7 @@
 
    <div class="no-scrollbar hidden md:flex md:w-42 md:flex-col md:fixed md:inset-y-0 transition-all z-10">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="no-scrollbar flex flex-col flex-grow pt-5 bg-churpy-dark dark:bg-churpy-night-box overflow-y-auto">
+      <div class="no-scrollbar flex flex-col flex-grow pt-5 bg-churpy-dark dark:bg-churpy-night-box overflow-y-auto" :class="{'pr-6' : store.mainSidebarOpen}">
         <!--sidebar toggler-->
         <button
             @click="store.toggleCollapse()"
@@ -85,13 +85,6 @@
         <i :class="{'text-churpy-green' : store.mainSidebarOpen, 'text-gray-400':!store.mainSidebarOpen}" class="fa-duotone fa-arrow-right text-xs"></i>
       </button>
 
-    <!-- sandbox indicator-->
-     <div :class="{'hidden':!store.mainSidebarOpen}" class="bg-yellow-600 flex justify-between h-fit w-full px-2 py-0.5 space-x-2 items-center relative">
-      <span class="text-white font-bold text-xs">Sandbox Account</span>
-       <button type="button" class="inline-flex mt-4 items-center px-2.5 py-1.5 text-xs font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">
-         <i class="fa-solid fa-power-off mr-2"></i>
-         Go LIVE</button>
-     </div>
     </div>
 </template>
 

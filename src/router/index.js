@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress/nprogress'
 import 'nprogress/nprogress.css'
-import {keycloak, checkAuth} from "../library/Auth/keycloak";
 
 NProgress.configure({
     showSpinner: true
@@ -18,70 +17,57 @@ const routes = [
 
     },
     {
-        path: '/test',
-        name: 'test',
-        component: () => import('@/components/widgets/DynamicGrid.vue'),
+        path: '/projects',
+        name: 'projects',
+        component: () => import('@/pages/projects/List.vue'),
         meta:{
-            requiresAuth: true
+            title: 'Projects',
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to:{name: 'dashboard'}
+                },
+                {
+                    text: 'List',
+                    active: true,
+                },
+            ]),
         }
+    },
+    {
+        path: '/projects/view/:id',
+        name: 'projects-view',
+        component: () => import('@/pages/projects/View.vue'),
+        meta:{
+            title: (route) => { return 'Project: #'+route.params.id },
+             requiresAuth: true,
+            breadcrumb: (route) => ([
+                {
+                    text: 'Dashboard',
+                    active: false,
+                    to:{name: 'dashboard'}
+                },
+                {
+                    text: 'Projects',
+                    active: false,
+                    to:{name: 'projects'}
+                },
+                {
+                    text: 'View Project',
+                    active: true,
+                },
+            ]),
+        }
+    },
 
-    },
     {
-        path: '/banks/transactions',
-        name: 'transactions',
-        component: () => import('@/pages/BankTransactions.vue'),
+        path: '/projects/create',
+        name: 'projects-create',
+        component: () => import('@/pages/projects/Create.vue'),
         meta:{
-            title: 'Bank Transactions',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'View Transactions',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/payments/expected',
-        name: 'expected_payments',
-        component: () => import('@/pages/ExpectedPayments.vue'),
-        meta:{
-            title: 'Expected Payments',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Payments',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/audit',
-        name: 'audit',
-        component: () => import('@/pages/Audit.vue'),
-        meta:{
-            title: 'Audit Trail',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Audit Trail',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/reconciliation',
-        name: 'recon',
-        component: () => import('@/pages/Recon.vue'),
-        meta:{
-            title: 'Reconciliation Summary',
+            title: 'Create New Project',
             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
@@ -90,18 +76,23 @@ const routes = [
                     to: {name: 'dashboard'}
                 },
                 {
-                    text: 'Recon.',
+                    text: 'Projects',
+                    active: true,
+                    to: {name: 'projects'}
+                },
+                {
+                    text: 'Create',
                     active: true,
                 },
             ]),
         }
     },
     {
-        path: '/reconciliation/engine',
-        name: 'recon-engine',
-        component: () => import('@/pages/ReconEngine.vue'),
+        path: '/services',
+        name: 'services',
+        component: () => import('@/pages/Services.vue'),
         meta:{
-            title: 'Reconciliation Engine',
+            title: 'Services',
             requiresAuth: true,
             breadcrumb: (route) => ([
                 {
@@ -110,163 +101,7 @@ const routes = [
                     to: {name: 'dashboard'}
                 },
                 {
-                    text: 'Reconciliation Engine',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/my-team',
-        name: 'team',
-        component: () => import('@/pages/ManageTeam.vue'),
-        meta:{
-            title: 'Manage Team',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Teams',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/setup/erp',
-        name: 'erp-settings',
-        component: () => import('@/pages/Erp.vue'),
-        meta:{
-            title: 'ERP Settings',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'ERP Settings',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    {
-        path: '/onboard/upload',
-        name: 'marketplace-upload-data',
-        component: () => import('@/pages/UploadReconData.vue'),
-        meta:{
-            title: 'Upload Data',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Upload',
-                    active: true,
-                },
-            ]),
-        }
-    },
-    //marketplace
-     {
-        path: '/invoice/marketplace',
-        name: 'marketplace',
-        component: () => import('@/pages/Marketplace.vue'),
-        meta:{
-            title: 'Marketplace',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Invoice Marketplace',
-                    active: true,
-                },
-            ]),
-        }
-    },
-     {
-        path: '/invoice/marketplace/:id',
-        name: 'marketplace-view',
-        component: () => import('@/pages/Client.vue'),
-        meta:{
-            title: route => `View Client: ${route.params.id}`,
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Marketplace',
-                    active: false,
-                    to: {name: 'marketplace'}
-                },
-                {
-                    text: 'View Client',
-                    active: true,
-                },
-            ]),
-        }
-    },
-     {
-        path: '/invoice/marketplace/:client/:invoice',
-        name: 'marketplace-view-invoice',
-        component: () => import('@/pages/InvoiceView.vue'),
-        meta:{
-            title: route => `View invoice: #${route.params.invoice}`,
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Marketplace',
-                    active: false,
-                    to: {name: 'marketplace'}
-                },
-                {
-                    text: 'Invoice',
-                    active: true,
-                },
-            ]),
-        }
-    },
-     {
-        path: '/invoice/marketplace/adjustments',
-        name: 'marketplace-adjustments',
-        component: () => import('@/pages/Adjustments.vue'),
-        meta:{
-            title: 'Adjustments',
-             requiresAuth: true,
-            breadcrumb: (route) => ([
-                {
-                    text: 'Dashboard',
-                    active: false,
-                    to: {name: 'dashboard'}
-                },
-                {
-                    text: 'Marketplace',
-                    active: false,
-                    to: {name: 'marketplace'}
-                },
-                {
-                    text: 'Manage Adjustments',
+                    text: 'Services',
                     active: true,
                 },
             ]),
@@ -348,7 +183,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
-export let nextMain = ()=>{}
 export let requiresAuth = false;
 export let requiresGuest = false;
 
@@ -360,24 +194,8 @@ export let requiresGuest = false;
 
        requiresAuth = to.matched.some(record => record.meta.requiresAuth)
        requiresGuest = to.matched.some(record => record.meta.requiresGuest)
-       if (to.matched.some(record => record.meta.requiresAuth)){
-           nextMain = next
-           if (checkAuth()){
 
-               //guest screen?
-               if (requiresGuest){
-                    next({name: 'dashboard'})
-              }else{next()}
-
-           }else{
-               setTimeout(()=>{
-                   //recheck authentication (should be updated by main.js)
-                   if (!checkAuth()){keycloak.login()}
-               }, 500)
-           }
-       }else{
-           next()
-       }
+       next()
  })
 
 

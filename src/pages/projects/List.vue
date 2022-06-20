@@ -1,11 +1,11 @@
 <template>
+<h1>List</h1>
 
 </template>
 
 <script>
-// can create or edit CN and DN
 export default {
-  name: "NoteForm"
+  name: "List"
 }
 </script>
 

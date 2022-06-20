@@ -1,10 +1,11 @@
 <template>
-  Partial records
+<h1>View</h1>
+
 </template>
 
 <script>
 export default {
-  name: "Partial",
+  name: "View"
 }
 </script>
 

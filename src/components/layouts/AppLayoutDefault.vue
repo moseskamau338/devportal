@@ -33,7 +33,7 @@
               <div>
                 <h6 class="text-xs text-brand-gray">
                   <i class="fa-solid fa-microchip font-semibold text-churpy-green"></i>
-                  Churpy Reconciliation Engine
+                  Churpy Developer Console
                   </h6>
               </div>
             </footer>

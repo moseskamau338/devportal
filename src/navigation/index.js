@@ -1,12 +1,4 @@
-import recon from './recon'
-// import store from '@/store'
-// import customer from './marketplace_customers'
-// require('@/viewchanger.js')
+import navs from './devportal'
 
-// let navs;
-//  if (store.state.auth.market_guest){
-//      navs=customer
-//  }else{
-// }
- export default recon;
+ export default navs;
 
