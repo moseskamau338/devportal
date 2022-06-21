@@ -142,22 +142,21 @@ export default {
   },
   setup(){
     //const axios = inject('axiosInstance')
-    const people = [
+    const projects = [
       { id: 1, name: 'Wade Cooper' },
-      { id: 2, name: 'Arlene Mccoy shjdvfsjhdgv sdhgvsdjsdvs dfjsgdvsj' },
       { id: 3, name: 'Devon Webb' },
-      { id: 4, name: 'Tom Cook' },
-      { id: 5, name: 'Tanya Fox' },
-      { id: 6, name: 'Hellen Schmidt' },
+      { id: 4, name: 'Company XZ' },
+      { id: 5, name: 'Another Company' },
+      { id: 6, name: 'Schmidt Enterprises' },
     ]
 
-    let selected = ref(people[0])
+    let selected = ref(projects[0])
     let query = ref('')
 
     let filteredPeople = computed(() =>
       query.value === ''
-        ? people
-        : people.filter((person) =>
+        ? projects
+        : projects.filter((person) =>
             person.name
               .toLowerCase()
               .replace(/\s+/g, '')
@@ -171,7 +170,7 @@ export default {
     //})
 
     return {
-      selected, filteredPeople, query, people
+      selected, filteredPeople, query, projects
     }
 
   }
