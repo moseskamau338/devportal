@@ -25,7 +25,7 @@
         <tr :key="index+service.bank" v-for="(service, index) in services">
           <td class="relative py-4 pl-4 sm:pl-6 pr-3 text-sm border-r dark:border-r-gray-600">
             <div class="font-medium">{{ service.bank }}</div>
-            <div class="mt-1 flex flex-row flex-wrap w-64 md:w-full text-gray-500 sm:block lg:hidden">
+            <div class="mt-1 flex flex-row flex-wrap w-full text-gray-500 sm:block lg:hidden">
               <Badge :key="api.key" v-for="api in [
                   {key:'notifications', label: 'Notifications'},
                   {key:'full_statements', label: 'Full Statements'},
@@ -77,6 +77,18 @@
       </tbody>
     </table>
   </div>
+
+
+  <h2 class="mt-8 mb-4 font-semibold">Bank statement upload support</h2>
+  <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-3 mb-10">
+      <div :key="index" v-for="(bank, index) in statement_support" class="col-span-6 md:col-span-2 lg:col-span-3 flex items-center space-x-2 bg-white dark:bg-churpy-night-box shadow rounded py-4 px-3">
+        <span class="h-8 w-8 flex justify-center dark:bg-gray-700/30 bg-green-100 items-center rounded-full ring dark:ring-churpy-green ring-churpy-night-box/70">
+          CB
+        </span>
+        <span class="font-bold">{{ bank }}</span>
+      </div>
+
+  </div>
 </div>
 
 </template>
@@ -103,7 +115,10 @@ export default {
         notifications: true, full_statements: true, mini_statements: true, balance: true,}
 
     ]
-    return {services}
+    let statement_support = [
+      'Chase Bank', 'DCU Bank'
+    ]
+    return {services, statement_support}
   }
 }
 </script>
