@@ -34,39 +34,23 @@
         <a href="/auth/signup" class="font-bold hover:underline text-gray-700">Register</a>
       </nav>
 
-      <div class="mt-4">
+      <div class="mt-4 md:mt-20">
         <h1 class="font-bold text-2xl text-gray-700">Sign in to Churpy</h1>
-        <div class="flex lg:space-x-6 flex-col space-y-3 lg:flex-row text-gray-500">
-          <button class="bg-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
-            <img src="/images/brands/google-icon.svg" alt="google logo" class="h-6 w-auto mr-3" />
-            Sign in with Google
-          </button>
 
-          <button class="bg-blue-500 text-white px-2 flex flex-row items-center border py-1.5 mt-4 rounded text-md shadow-md space-x-2">
-           <i class="fa-brands fa-linkedin text-xl mr-3"></i>
-            Sign in with Linked In
-          </button>
-        </div>
-
-        <div class="mt-4">
-          <div class="relative flex py-1 items-center">
-              <div class="flex-grow border-t border-gray-400"></div>
-              <span class="flex-shrink mx-4 text-gray-400">Or signin with your email</span>
-              <div class="flex-grow border-t border-gray-400"></div>
-          </div>
-        </div>
-
-        <form class="space-y-3">
+        <form class="space-y-3 mt-4" @submit.prevent="login">
+          <small class="text-xs text-red-500" v-if="validation_errors.message">{{validation_errors.message}}</small>
           <div>
               <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
               <div class="mt-1">
-                <input type="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="e.g email@company.com" />
+                <input type="email" v-model="email" name="email" id="email" autocomplete="email" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="e.g email@company.com" />
+                <small class="text-xs text-red-500" v-if="validation_errors.email" v-for="error in validation_errors.email">{{error}}</small>
               </div>
             </div>
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
             <div class="mt-1">
-              <input type="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="******" />
+              <input type="password" v-model="password" name="password" id="password" autocomplete="password" class="shadow-sm focus:ring-churpy-green focus:border-churpy-green block w-full sm:text-sm border-gray-300 rounded-md placeholder-gray-400 text-gray-500" placeholder="******" />
+              <small class="text-xs text-red-500" v-if="validation_errors.password" v-for="error in validation_errors.password">{{error}}</small>
             </div>
           </div>
 
@@ -77,7 +61,12 @@
           </div>
 
           <div class="pt-8">
-            <button type="button" class="inline-flex items-center px-8 py-1.5 text-md font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit">Sign In</button>
+            <button :disabled="processing" type="submit" class="inline-flex items-center px-8 py-1.5 text-md font-medium rounded bg-gradient-to-br from-churpy-green via-green-600 to-emerald-600 text-white shadow-sm mb-4 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-churpy-green transition-all h-fit disabled:opacity-80 disabled:pointer-events-none">
+              <span v-if="!processing">Sign In</span>
+              <span v-else><i class="fa-duotone fa-spinner-third animate-spin mr-1"></i>
+              <span>Processing</span>
+              </span>
+            </button>
           </div>
         </form>
 
@@ -93,9 +82,33 @@
 </template>
 
 <script>
+import {ref} from "vue";
+import {useAuthStore} from "@/db/authentication";
+
 export default {
   name: "Login",
+  setup(){
+    const auth = useAuthStore()
 
+    let processing = ref(false)
+    let email = ref('')
+    let password = ref('')
+    let validation_errors = ref({})
+
+    const login = async () =>{
+      processing.value = true
+      await auth.login({email, password})
+          .then(()=>{
+            processing.value = false
+          })
+          .catch((errors) => {
+            validation_errors.value = errors.validation
+            processing.value = false
+          })
+    }
+
+    return {email, password, login, processing, validation_errors}
+  }
 }
 </script>
 

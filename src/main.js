@@ -14,6 +14,7 @@ const emitter = mitt()
 const pinia = createPinia()
 pinia.use(piniaPersist)
 
+
 import('./setup')
   const app = createApp(App)
     app.provide('emitter', emitter)

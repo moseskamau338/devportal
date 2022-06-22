@@ -7,3 +7,14 @@ export const instance = axios.create({
   //timeout: 1000,
   //headers: {'X-Custom-Header': 'foobar'}
 });
+
+export const parseError = (error) => {
+  if (error.response) {
+        return {validation:error.response.data}
+      } else if (error.request) {
+        return {request: error.request}
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        return {message:error.message}
+      }
+}
