@@ -6,7 +6,7 @@
       </nav>
 
       <div class="mt-4">
-        <h1 class="font-bold text-2xl text-gray-700">All-in-one workbench</h1>
+        <h1 class="font-bold text-2xl text-gray-700">Churpy Developer Portal</h1>
         <p class="mt-2 text-xl text-gray-600 pr-8">
           <span class="font-brand">Churpy</span> now provides you with an elegant way to customize your dashboard metrics and make the best of our analytics capabilities
         </p>

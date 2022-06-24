@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   envDir:path.resolve(__dirname),
-  server:{port:3435, host:true},
+  server:{port:8080, host:true},
   plugins: [vue()],
   resolve: {
     alias: {
