@@ -4,6 +4,6 @@ import {useAuthStore} from '@/db/authentication'
 useUiStore().init()
 
 //authentication:
-const authStore = useAuthStore()
-
-authStore.init()
+//const authStore = useAuthStore()
+//
+//authStore.init()
