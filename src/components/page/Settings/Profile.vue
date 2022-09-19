@@ -5,7 +5,7 @@
     </div>
 
     <!--name-->
-    <div class="grid grid-cols-1  lg:grid-cols-3 py-5">
+    <div class="grid grid-cols-1 lg:grid-cols-3 py-5">
       <div class="col-span-1">
         <h3>Name</h3>
       </div>

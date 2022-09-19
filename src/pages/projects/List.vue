@@ -4,10 +4,12 @@
 </p>
 
   <div class="flex justify-between mt-12">
-    <CButton variant="success">
-      <i class="fa-solid fa-plus mr-1"></i>
-      Create Project
-    </CButton>
+    <router-link :to="{name:'projects-create'}">
+      <CButton variant="success">
+        <i class="fa-solid fa-plus mr-1"></i>
+        Create Project
+      </CButton>
+    </router-link>
     <div class="mt-1 flex rounded-md shadow-sm dark:bg-churpy-night">
       <div class="relative flex items-stretch flex-grow focus-within:z-10">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
