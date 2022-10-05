@@ -76,40 +76,53 @@
       </div>
       <div class="col-span-7">
         <div>
-
-          <Pop />
-          <!--<Pop style it #container>-->
-          <!--  <template>button</template>-->
-          <!--  <template #content>-->
-          <!--    list-->
-          <!--  </template>-->
-          <!--</Pop>-->
-
-
-
-            <div class="w-[500px] bg-white border px-3 py-1 shadow rounded">
-              <div>all list will appear</div>
-
-              <div>
-              <!--all services-->
-              <!--  <ul>-->
-              <!--    <li v-for="i in 16">Service 1....</li>-->
-              <!--  </ul>-->
-              </div>
-
-            </div>
+          <treeselect
+              ref="treeselect"
+              v-model="serviceStore.selectedServices"
+              name="bank"
+              @select="select"
+              @deselect="select"
+              :flat="true"
+              :multiple="true"
+              :options="serviceStore.getServices()"
+               placeholder="Search for bank and service..."
+              class="w-[600px] [&_input]:bg-transparent focus:[&_input]:border-0 focus:[&_input]:ring-0" />
         </div>
       </div>
    </div>
+
+
+  <div class="flex justify-end space-x-2 px-16 pt-5">
+    <CButton variant="success">Save</CButton>
+    <CButton variant="secondary">Cancel</CButton>
+  </div>
+
 </section>
 </template>
 
 <script>
+import {ref} from "vue";
 import CButton from "@/components/parts/CButton.vue";
-import Pop from "@/components/parts/Pop.vue";
+ // import the component
+  import Treeselect from 'vue3-treeselect'
+  // import the styles
+  import 'vue3-treeselect/dist/vue3-treeselect.css'
+import {useServiceStore} from "@/db/services";
 export default {
   name: "Create",
-  components: {Pop, CButton}
+  components: { CButton, Treeselect },
+  setup(){
+    const serviceStore = useServiceStore()
+    const treeselect = ref(null)
+    // define the default value
+    const select = () => {
+      let selectedNodes = treeselect.value.selectedNodes
+      console.log('Check nodes: ', selectedNodes)
+      serviceStore.handleSelect(selectedNodes)
+    }
+
+    return {serviceStore, treeselect, select}
+  }
 }
 </script>
 
