@@ -73,30 +73,51 @@
   <div class="w-full px-5 py-2">
     <header class="flex justify-between">
       <h1 class="text-lg font-bold text-slate-500">Project XYZ</h1>
-      <div>
-        icons here
+      <div class="flex">
+       <Avatar size="small" text="GH" />
+       <Avatar size="small" text="UI" />
+       <Avatar size="small" text="XD" />
       </div>
     </header>
     <div>
       <p class="text-xs max-w-lg text-slate-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae debitis delectus dignissimos, dolore dolores, doloribus earum eius excepturi ipsum iste laboriosam laborum modi nostrum quo sequi, soluta tempore voluptates!
       </p>
     </div>
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-2">
+      <small class="text-slate-500">
+        <Badge status="sandbox"></Badge> &bullet; <small>Aug 30, 2022</small>
+      </small>
       <div>
-        sanbox . date
-      </div>
-      <div>
-        Actions here
+         <Dropdown name="Actions" :options="[
+             {key:'generate', name:'Generate API Key', icon:'fa-shield-keyhole'},
+             {key:'bank', name:'Add Bank', icon:'fa-building-columns'},
+             {key:'team', name:'Manage Team', icon:'fa-people-group'},
+         ]"></Dropdown>
       </div>
     </div>
   </div>
 </section>
 
+  <div class="mt-8">
+    <h3 class="text-lg font-bold text-slate-500">Connections</h3>
+    <ServiceTable />
+  </div>
+
 </template>
 
 <script>
+import ServiceTable from "@/components/page/ServiceTable.vue";
+import Dropdown from "@/components/parts/Dropdown.vue";
+import Badge from "@/components/parts/Badge.vue";
+import Avatar from "@/components/parts/Avatar.vue";
 export default {
-  name: "View"
+  name: "View",
+  components: {
+    Avatar,
+    Badge,
+    Dropdown,
+    ServiceTable
+  }
 }
 </script>
 

@@ -27,7 +27,8 @@ export const functions = {
         let newmappings = [
           {name:'pending', status:'danger'},
           {name:'suggested', status:'warning'},
-          {name:'user', status:'success'},
+          {name:'sandbox', status:'warning'},
+          {name:'live', status:'success'},
           {name:'user-p', status:'success'},
         ].concat(mappings)
         //get status mapping:
